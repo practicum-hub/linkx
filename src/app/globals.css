@@ -1,42 +1,118 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Remove default margin/padding */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
+/* Base document */
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  height: 100%;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Remove list styles */
+ol,
+ul {
+  list-style: none;
+}
+
+/* Remove quotes */
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: "";
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Forms: remove all native styles */
+button,
+input,
+textarea,
+select {
+  all: unset;
+  box-sizing: border-box;
+  font: inherit;
+  color: inherit;
+}
+
+/* Remove focus outlines */
+:focus,
+:focus-visible {
+  outline: none;
+}
+
+/* Buttons cursor */
+button {
+  cursor: pointer;
+}
+
+/* Images/media */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Text overflow */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+:root {
+  --font-family: var(--font-manrope), sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Для заголовков можно использовать более жирные веса */
+h1,
+h2,
+h3 {
+  font-weight: 700;
 }

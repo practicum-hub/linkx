@@ -1,0 +1,19 @@
+.btn {
+  background-color: #fff;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.title {
+  font-size: 18px;
+}
+
+.topics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

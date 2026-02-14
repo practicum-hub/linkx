@@ -1,0 +1,28 @@
+.track {
+  padding: 16px;
+}
+
+.title {
+  font-size: 18px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: gray;
+  border: none;
+}
+
+.title::before,
+.title::after {
+  content: "";
+  background-color: rgb(221, 221, 221);
+  height: 1px;
+  flex: 1;
+}
+
+.units {
+  margin: 16px 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}

@@ -1,0 +1,31 @@
+.item {
+  margin-top: auto;
+  border-top: 1px solid gray;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  .icon {
+    padding: 8px;
+    background-color: purple;
+    color: white;
+  }
+
+  .textBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+.dots {
+  font-size: 18px;
+  font-weight: 700;
+}

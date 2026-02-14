@@ -1,0 +1,21 @@
+.header {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 32px;
+  gap: 42px;
+  margin-top: 32px;
+}
+
+.progressBar {
+  background-color: rgb(28, 230, 28);
+  width: 100%;
+  border-radius: 30px;
+}
+
+.hearts {
+  color: red;
+  font-weight: 700;
+}
