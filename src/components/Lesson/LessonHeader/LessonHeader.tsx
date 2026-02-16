@@ -1,12 +1,16 @@
-import Link from "next/link";
 import styles from "./lessonHeader.module.css";
 
 export default function LessonHeader() {
   return (
     <header className={styles.header}>
-      <Link href="/learn">Exit</Link>
+      <div className={styles.logo}>eLEARNING</div>
+
       <div className={styles.progressBar} />
-      <div className={styles.hearts}>❤️</div>
+
+      <div className={styles.info}>
+        <p className={styles.streak}>12</p>
+        <p className={styles.userIcon}>A</p>
+      </div>
     </header>
   );
 }

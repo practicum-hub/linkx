@@ -1,21 +1,37 @@
 .header {
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  padding: 32px;
-  gap: 42px;
-  margin-top: 32px;
+  padding: 16px;
+  border-bottom: 1px solid #e1e3e7;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 900;
+  color: rgb(28, 114, 143);
 }
 
 .progressBar {
-  background-color: rgb(28, 230, 28);
-  width: 100%;
-  border-radius: 30px;
+  height: 15px;
+  width: 40%;
+  margin: 0 auto;
+  background-color: rgb(28, 114, 143);
+  clip-path: polygon(5px 0%, 100% 0%, calc(100% - 5px) 100%, 0% 100%);
 }
 
-.hearts {
-  color: red;
-  font-weight: 700;
+.info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  .userIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    background: pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: normal;
+  }
 }

@@ -1,0 +1,12 @@
+.input {
+  display: flex;
+  gap: 6px;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.value {
+  color: rgb(115, 115, 115);
+}

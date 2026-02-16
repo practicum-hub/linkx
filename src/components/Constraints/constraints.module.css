@@ -1,0 +1,21 @@
+.codeInline {
+  background-color: #f4f4f4;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.constraints {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: circle;
+}
+
+.constraint {
+  list-style: disc;
+  list-style-position: inside;
+}

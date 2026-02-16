@@ -20,4 +20,5 @@ export type ILesson = {
 export type IExercise = {
   id: number;
   text: string;
+  interactive?: boolean;
 };

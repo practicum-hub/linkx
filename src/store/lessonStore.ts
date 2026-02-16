@@ -1,57 +1,55 @@
+import { emulateCodeExecution } from "@/components/Lesson/CodePanel/CodePanelEditor/CodePanelEditor";
 import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
 
-type LessonState = {
-  totalExercises: number;
-  currentIndex: number;
-  isCompleted: boolean;
-
+type LessonStoreType = {
   userInput: string;
   setUserInput: (value: string) => void;
-
-  setTotal: (total: number) => void;
-  next: () => void;
-  reset: () => void;
-  check: (exerciseId: number) => void;
+  isExecuting: boolean;
+  results: any;
+  runCode: (problemId: string) => Promise<void>;
 };
 
-export const useLessonStore = create<LessonState>((set, get) => ({
-  totalExercises: 0,
-  currentIndex: 0,
-  isCompleted: false,
+export const useLessonStore = create<LessonStoreType>()(
+  persist(
+    (set, get) => ({
+      userInput: "",
+      isExecuting: false,
+      results: null,
 
-  userInput: "",
-  setUserInput: (value: string) => set({ userInput: value }),
+      setUserInput: (value: string) => set({ userInput: value }),
 
-  setTotal: (total: number) =>
-    set({
-      totalExercises: total,
+      runCode: async (problemId: string) => {
+        set({ isExecuting: true });
+
+        try {
+          const result = await emulateCodeExecution(get().userInput, problemId);
+
+          set({
+            results: result,
+            isExecuting: false,
+          });
+          const params = new URLSearchParams(window.location.search);
+          params.set("tab", "result");
+          const newUrl = `${window.location.pathname}?${params.toString()}`;
+
+          window.history.replaceState(null, "", newUrl);
+
+          window.dispatchEvent(new Event("popstate"));
+        } catch (error) {
+          set({
+            isExecuting: false,
+            results: { status: "error", message: "Crash!" },
+          });
+        }
+      },
     }),
-  next: () =>
-    set((state) => {
-      if (state.currentIndex + 1 >= state.totalExercises) {
-        return { isCompleted: true };
-      }
-
-      return { currentIndex: state.currentIndex + 1, userInput: "" };
-    }),
-  reset: () =>
-    set({
-      currentIndex: 0,
-      isCompleted: false,
-    }),
-  check: () =>
-    set((state) => {
-      console.log("Hello Check");
-
-      const userInput = get().userInput;
-      if (userInput.length < 0) return state;
-
-      if (state.currentIndex + 1 >= state.totalExercises) {
-        console.log("Why");
-        return { isCompleted: true };
-      }
-
-      console.log("Increment");
-      return { currentIndex: state.currentIndex + 1, userInput: "" };
-    }),
-}));
+    {
+      name: "lesson-storage",
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        userInput: state.userInput,
+      }),
+    },
+  ),
+);

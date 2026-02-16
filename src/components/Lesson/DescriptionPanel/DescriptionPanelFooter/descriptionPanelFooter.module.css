@@ -1,0 +1,30 @@
+.footer {
+  margin-top: auto;
+  background-color: #f4f4f4;
+  border-top: 1px solid #e1e3e7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 16px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    .img {
+    }
+
+    .btnText {
+    }
+  }
+}
+
+.date {
+}

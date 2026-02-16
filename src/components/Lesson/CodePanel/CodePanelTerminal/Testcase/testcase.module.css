@@ -1,0 +1,13 @@
+.cases {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
+  height: 100%;
+}
+
+.text {
+  padding: 16px;
+  color: gray;
+  margin-top: auto;
+}

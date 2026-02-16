@@ -1,5 +1,10 @@
-.lesson {
-  height: 100%;
+.page {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+}
+
+.panels {
+  display: flex;
+  height: 100%;
 }

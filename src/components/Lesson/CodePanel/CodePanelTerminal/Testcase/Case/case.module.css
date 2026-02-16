@@ -1,0 +1,27 @@
+.title {
+  margin-bottom: 16px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background-color: #f1f1f1;
+  gap: 8px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .name {
+    color: gray;
+  }
+
+  .data {
+    padding: 2px 4px;
+    background-color: #fff;
+    border: 1px solid #f4f4f4;
+  }
+}

@@ -1,0 +1,44 @@
+.panel {
+  width: 40%;
+  border-right: 1px solid #e1e3e7;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 16px;
+  border-bottom: 1px solid #e1e3e7;
+  margin-left: 10px;
+  display: flex;
+  gap: 24px;
+  height: 50px;
+
+  .headerItem:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+}
+
+.infoBlock {
+  padding: 24px;
+
+  .title {
+    font-size: 26px;
+    font-weight: bold;
+  }
+
+  .description {
+    font-size: 18px;
+    color: gray;
+    margin-top: 16px;
+    line-height: 20px;
+  }
+
+  .examples {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 24px 0;
+  }
+}

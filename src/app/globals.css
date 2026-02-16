@@ -30,6 +30,11 @@ ul {
   list-style: none;
 }
 
+li,
+ul {
+  list-style: none;
+}
+
 /* Remove quotes */
 blockquote,
 q {
