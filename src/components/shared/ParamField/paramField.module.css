@@ -1,10 +1,20 @@
 .field {
-  padding: 8px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  background-color: #f6f9ff;
+  border: 1px solid #e1e9f7;
+  border-radius: 10px;
 }
 
 .name {
-  color: gray;
+  color: #71819d;
+  font-size: 12px;
+}
+
+.value {
+  margin: 0;
+  color: #1f3657;
+  font-size: 13px;
 }

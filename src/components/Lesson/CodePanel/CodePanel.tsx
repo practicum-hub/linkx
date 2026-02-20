@@ -1,13 +1,19 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import styles from "./codePanel.module.css";
-import CodePanelHeader from "./CodePanelHeader/CodePanelHeader";
-import CodePanelTerminal from "./CodePanelTerminal/CodePanelTerminal";
-import CodePanelEditor from "./CodePanelEditor/CodePanelEditor";
+import CodePanelHeader from "./Header/CodePanelHeader";
+import CodePanelTerminal from "./Terminal/CodePanelTerminal";
+import CodePanelEditor from "./Editor/CodePanelEditor";
 
-export default function CodePanel() {
+type CodePanelProps = {
+  className?: string;
+  style?: CSSProperties;
+};
+
+export default function CodePanel({ className = "", style }: CodePanelProps) {
   return (
-    <div className={styles.panel}>
+    <div className={`${styles.panel} ${className}`.trim()} style={style}>
       <CodePanelHeader />
 
       <CodePanelEditor />

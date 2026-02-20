@@ -1,0 +1,44 @@
+.case {
+  list-style: none;
+  border: 1px solid #dce4f3;
+  border-radius: 12px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.title {
+  margin: 0;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #304a74;
+  border-bottom: 1px solid #e8edf7;
+  background: #f6f9ff;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 10px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.name {
+  color: #70809a;
+  font-size: 12px;
+}
+
+.data {
+  padding: 8px 10px;
+  background-color: #f6f9ff;
+  border: 1px solid #e2e9f7;
+  border-radius: 8px;
+  color: #1e3555;
+  font-size: 13px;
+}

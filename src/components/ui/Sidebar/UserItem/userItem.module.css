@@ -1,31 +1,67 @@
-.item {
-  margin-top: auto;
-  border-top: 1px solid gray;
-  padding: 16px;
+.user {
+  padding: 12px;
+  background-color: #ffffff;
+  border: 1px solid #cbd8ee;
+  border-radius: 0;
   display: flex;
+  gap: 10px;
   align-items: center;
-  justify-content: space-between;
 }
 
-.info {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-
-  .icon {
-    padding: 8px;
-    background-color: purple;
-    color: white;
-  }
-
-  .textBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+.imgWrap {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border: 1px solid #bfd1ef;
+  background-color: #e9f2ff;
 }
 
-.dots {
-  font-size: 18px;
+.img {
+  object-fit: cover;
+}
+
+.online {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 12px;
+  height: 12px;
+  background: #4fd38c;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.name {
+  margin: 0;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1f2a44;
+}
+
+.email {
+  margin: 0;
+  color: #667389;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.streak {
+  margin: 2px 0 0;
+  width: fit-content;
+  padding: 3px 8px;
+  background: #eef4ff;
+  border: 1px solid #cfdbef;
+  color: #2e577f;
+  font-size: 12px;
   font-weight: 700;
 }

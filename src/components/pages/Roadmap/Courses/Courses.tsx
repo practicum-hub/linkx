@@ -1,0 +1,119 @@
+import TextBlock from "../TextBlock/TextBlock";
+import Course from "./Course/Course";
+import styles from "./courses.module.css";
+
+const courses = [
+  {
+    title: "Algorithms Zero to Hero",
+    desc: "Patterns, complexity, and interview-grade problem solving.",
+    level: "Intermediate",
+    duration: "7 weeks",
+    progress: 42,
+    unitsDone: 29,
+    totalUnits: 68,
+    xp: 820,
+    imageSrc: "https://picsum.photos/id/180/900/520",
+    href: "/practice?roadmap=algorithms-zero-to-hero",
+  },
+  {
+    title: "JavaScript Fundamentals",
+    desc: "Core syntax, async flows, and browser APIs.",
+    level: "Beginner",
+    duration: "5 weeks",
+    progress: 0,
+    unitsDone: 0,
+    totalUnits: 30,
+    xp: 540,
+    imageSrc: "https://picsum.photos/id/48/900/520",
+    href: "/practice",
+  },
+  {
+    title: "React + Next.js",
+    desc: "Modern UI architecture, routing, and performance basics.",
+    level: "Intermediate",
+    duration: "6 weeks",
+    progress: 58,
+    unitsDone: 31,
+    totalUnits: 54,
+    xp: 760,
+    imageSrc: "https://picsum.photos/id/0/900/520",
+    href: "/practice",
+  },
+  {
+    title: "Python for Backend",
+    desc: "Build APIs, data layers, and production-ready services.",
+    level: "Intermediate",
+    duration: "8 weeks",
+    progress: 26,
+    unitsDone: 15,
+    totalUnits: 58,
+    xp: 690,
+    imageSrc: "https://picsum.photos/id/119/900/520",
+    href: "/practice",
+  },
+  {
+    title: "SQL & Databases",
+    desc: "Modeling, optimization, indexing, and real query practice.",
+    level: "Beginner",
+    duration: "4 weeks",
+    progress: 84,
+    unitsDone: 27,
+    totalUnits: 32,
+    xp: 460,
+    imageSrc: "https://picsum.photos/id/20/900/520",
+    href: "/practice",
+  },
+  {
+    title: "System Design Basics",
+    desc: "Scalability, tradeoffs, and architecture walkthroughs.",
+    level: "Advanced",
+    duration: "9 weeks",
+    progress: 19,
+    unitsDone: 9,
+    totalUnits: 47,
+    xp: 980,
+    imageSrc: "https://picsum.photos/id/160/900/520",
+    href: "/practice",
+  },
+  {
+    title: "TypeScript in Practice",
+    desc: "Type-safe architecture patterns for large codebases.",
+    level: "Intermediate",
+    duration: "5 weeks",
+    progress: 34,
+    unitsDone: 12,
+    totalUnits: 36,
+    xp: 610,
+    imageSrc: "https://picsum.photos/id/201/900/520",
+    href: "/practice",
+  },
+  {
+    title: "Cloud Basics",
+    desc: "Deploy and monitor apps with modern cloud workflows.",
+    level: "Beginner",
+    duration: "6 weeks",
+    progress: 12,
+    unitsDone: 5,
+    totalUnits: 40,
+    xp: 700,
+    imageSrc: "https://picsum.photos/id/29/900/520",
+    href: "/practice",
+  },
+];
+
+export default function Courses() {
+  return (
+    <div className={styles.wrapper}>
+      <TextBlock
+        title="Pick a Course"
+        desc="Start your journey from zero to hero with curated, practical tracks."
+      />
+
+      <ul className={styles.courses}>
+        {courses.map((course) => (
+          <Course key={course.title} {...course} />
+        ))}
+      </ul>
+    </div>
+  );
+}

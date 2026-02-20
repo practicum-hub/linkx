@@ -3,7 +3,7 @@ import styles from "./lessonHeader.module.css";
 export default function LessonHeader() {
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>eLEARNING</div>
+      <div className={styles.logo}>EqualLearning</div>
 
       <div className={styles.progressBar} />
 

@@ -1,22 +1,16 @@
-import { mockLevels } from "@/core/data/mock";
+import CareerPaths from "@/components/pages/Roadmap/CareerPaths/CareerPaths";
 import styles from "./page.module.css";
-import Level from "@/components/Level/Level";
+import Courses from "@/components/pages/Roadmap/Courses/Courses";
+import Hero from "@/components/pages/Roadmap/Hero/Hero";
 
 export default function Roadmap() {
   return (
     <div className={styles.page}>
-      <div className={styles.titleBlock}>
-        <h1 className={styles.title}>Mathematics Learning Roadmap</h1>
-        <p className={styles.subTitle}>
-          Your comprehensive journey from fundamentals to advanced mathematics
-        </p>
+      <div className={styles.content}>
+        <Hero />
+        <Courses />
+        <CareerPaths />
       </div>
-
-      <ul className={styles.levels}>
-        {mockLevels.map((level) => (
-          <Level key={level.name} level={level} />
-        ))}
-      </ul>
     </div>
   );
 }

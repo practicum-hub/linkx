@@ -1,7 +1,21 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .layout {
   display: flex;
+  min-height: 0;
+  flex: 1;
 }
 
 .main {
-  width: 60%;
+  flex: 1;
+  min-width: 0;
+}
+
+.learnShell {
+  height: 100dvh;
+  overflow: hidden;
 }

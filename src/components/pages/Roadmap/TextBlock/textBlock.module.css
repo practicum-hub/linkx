@@ -1,0 +1,21 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.05;
+  font-weight: 800;
+  color: #1f2532;
+  letter-spacing: 0.2px;
+}
+
+.desc {
+  margin: 0;
+  color: #475164;
+  font-size: 15px;
+  font-weight: 600;
+}

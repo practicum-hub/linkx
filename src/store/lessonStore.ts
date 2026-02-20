@@ -1,4 +1,4 @@
-import { emulateCodeExecution } from "@/components/Lesson/CodePanel/CodePanelEditor/CodePanelEditor";
+import { emulateCodeExecution } from "@/components/Lesson/CodePanel/Editor/CodePanelEditor";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 

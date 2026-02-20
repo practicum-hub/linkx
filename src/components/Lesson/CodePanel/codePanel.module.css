@@ -1,6 +1,11 @@
 .panel {
-  height: 100%;
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #d8e1f1;
+  box-shadow: 0 24px 44px rgba(18, 35, 58, 0.1);
+  min-height: 0;
 }

@@ -1,0 +1,8 @@
+.terminal {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  height: 34%;
+  flex: 0 0 34%;
+  background: #fcfdff;
+}

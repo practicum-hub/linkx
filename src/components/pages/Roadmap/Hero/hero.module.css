@@ -1,0 +1,159 @@
+.hero {
+  position: relative;
+  min-height: 380px;
+  padding: 30px;
+  border: 1px solid #cdd8ef;
+  background:
+    linear-gradient(110deg, rgba(20, 35, 64, 0.78) 0%, rgba(20, 35, 64, 0.56) 45%, rgba(20, 35, 64, 0.22) 100%),
+    url("https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  gap: 18px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 17, 32, 0.08) 0%, rgba(8, 17, 32, 0.32) 100%);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #f7fbff;
+}
+
+.eyebrow {
+  margin: 0;
+  width: fit-content;
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-size: 42px;
+  line-height: 1.05;
+  font-weight: 800;
+}
+
+.desc {
+  margin: 0;
+  max-width: 640px;
+  color: rgba(247, 251, 255, 0.9);
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.bottomRow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  border: 1px solid transparent;
+  padding: 11px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primaryBtn {
+  background: #86d2ae;
+  border-color: #63bf94;
+  color: #113a2a;
+}
+
+.secondaryBtn {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #f7fbff;
+}
+
+.accentBox {
+  width: 260px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(12, 23, 43, 0.58);
+  color: #f5f9ff;
+}
+
+.accentTitle {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9cd8ff;
+}
+
+.accentText {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    min-height: 360px;
+    padding: 22px;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+
+  .accentBox {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: 340px;
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 29px;
+  }
+
+  .bottomRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .accentBox {
+    max-width: none;
+    width: 100%;
+  }
+}

@@ -1,0 +1,255 @@
+.page {
+  min-height: 100%;
+  padding: 18px;
+  background: linear-gradient(180deg, #edf4ff 0%, #e6eeff 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.courseIntro {
+  border: 1px solid #cfdaed;
+  background: #ffffff;
+  padding: 12px 16px;
+  box-shadow: 0 10px 24px rgba(25, 46, 82, 0.08);
+}
+
+.introTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.introText {
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  color: #1d2a44;
+  font-size: 20px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.controls {
+  min-width: 220px;
+}
+
+.selectWrap {
+  position: relative;
+}
+
+.langIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6aa2ff 0%, #63d5ff 100%);
+  pointer-events: none;
+}
+
+.select {
+  width: 100%;
+  border: 1px solid #c9d8ef;
+  background: #f8fbff;
+  color: #1f2a44;
+  font-size: 14px;
+  padding: 9px 10px 9px 32px;
+}
+
+.roadmap {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.topicBlock {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.topicIndex {
+  margin: 0;
+  color: #5b6e8a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.topicLockedTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #cfd6e6;
+  background: #eef2f8;
+  color: #65748e;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+}
+
+.topicTitle {
+  margin: 0;
+  color: #1d2a44;
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.topicTitleLocked {
+  color: #7a879d;
+}
+
+.topicDesc {
+  margin: 0 auto;
+  color: #5b6b85;
+  max-width: 680px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.graphScroll {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.graphCanvas {
+  position: relative;
+  margin: 6px auto 0;
+}
+
+.edges {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.unitNode {
+  position: absolute;
+  width: 190px;
+  min-height: 96px;
+  border: 1px solid #cfdcef;
+  background: #ffffff;
+  box-shadow: 0 8px 16px rgba(31, 56, 94, 0.08);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
+  text-align: left;
+  text-decoration: none;
+}
+
+.unitNode:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 18px rgba(31, 56, 94, 0.12);
+  border-color: #b9ceef;
+}
+
+.done {
+  border-color: #8cc9a9;
+  background: #eef8f2;
+}
+
+.locked {
+  border-color: #d6dceb;
+  background: #f5f7fb;
+  color: #7a869d;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.unitType {
+  margin: 0;
+  padding: 3px 7px;
+  border: 1px solid #c9d8f1;
+  background: #e9f2ff;
+  color: #365d8f;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.done .unitType {
+  border-color: #8cc9a9;
+  background: #dff3e7;
+  color: #2f6d4d;
+}
+
+.locked .unitType {
+  border-color: #d6dceb;
+  background: #eceff5;
+  color: #7a869d;
+}
+
+.unitTitle {
+  margin: 0;
+  color: #1e2b45;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.locked .unitTitle {
+  color: #7a869d;
+}
+
+.unitStatus {
+  margin: 0;
+  color: #667792;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lockIcon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 12px;
+    gap: 18px;
+  }
+
+  .introTop {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .controls {
+    min-width: 0;
+  }
+
+  .title {
+    font-size: 19px;
+  }
+
+  .topicTitle {
+    font-size: 24px;
+  }
+}
