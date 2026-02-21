@@ -1,11 +1,18 @@
 .hero {
+  margin-top: 20px;
   position: relative;
   min-height: 380px;
   padding: 30px;
   border: 1px solid var(--border-default);
   background:
-    linear-gradient(110deg, rgba(20, 35, 64, 0.78) 0%, rgba(20, 35, 64, 0.56) 45%, rgba(20, 35, 64, 0.22) 100%),
-    url("https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+    linear-gradient(
+      110deg,
+      rgba(20, 35, 64, 0.78) 0%,
+      rgba(20, 35, 64, 0.56) 45%,
+      rgba(20, 35, 64, 0.22) 100%
+    ),
+    url("https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1400&q=80")
+      center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,7 +27,11 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8, 17, 32, 0.08) 0%, rgba(8, 17, 32, 0.32) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(8, 17, 32, 0.08) 0%,
+    rgba(8, 17, 32, 0.32) 100%
+  );
   pointer-events: none;
 }
 
@@ -83,18 +94,17 @@
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .primaryBtn {
-  background: #86d2ae;
-  border-color: #63bf94;
-  color: #113a2a;
+  background: #03ef62;
 }
 
 .secondaryBtn {
-  background: rgba(255, 255, 255, 0.12);
+  background-color: #ffffff;
   border-color: rgba(255, 255, 255, 0.35);
-  color: #f7fbff;
+  color: #113a2a;
 }
 
 .accentBox {

@@ -1,5 +1,5 @@
 .header {
-  height: 74px;
+  height: var(--main-header-height);
   position: sticky;
   top: 0;
   z-index: 80;
@@ -20,6 +20,17 @@
   gap: 10px;
   min-width: 0;
   flex: 1;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-primary);
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  padding: 0 6px 0 2px;
+  white-space: nowrap;
 }
 
 .nav {
@@ -89,8 +100,8 @@
 }
 
 .upgradeBtn {
-  border: 1px solid #4f78d1;
-  background: linear-gradient(135deg, #2f5fbf 0%, #4f8df0 100%);
+  border: 1px solid #7933ff;
+  background: linear-gradient(135deg, #7933ff 0%, #bf3072 100%);
   color: #ffffff;
   padding: 10px 12px;
   font-size: 13px;
@@ -99,7 +110,17 @@
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  box-shadow: 0 8px 16px rgba(121, 56, 255, 0.28);
+  box-shadow: 0 8px 16px rgba(121, 51, 255, 0.32);
+  transition:
+    transform 0.18s ease,
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.upgradeBtn:hover {
+  transform: translateY(-1px);
+  filter: saturate(1.08);
+  box-shadow: 0 10px 18px rgba(121, 51, 255, 0.36);
 }
 
 .langBtn {
@@ -113,6 +134,14 @@
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.langBtn:hover {
+  border-color: color-mix(in srgb, #03ef62 45%, var(--border-default));
+  background: color-mix(in srgb, #03ef62 12%, var(--bg-surface-soft));
 }
 
 .iconBtn {
@@ -125,6 +154,14 @@
   justify-content: center;
   cursor: pointer;
   position: relative;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.iconBtn:hover {
+  border-color: color-mix(in srgb, #03ef62 40%, var(--border-default));
+  background: color-mix(in srgb, #03ef62 10%, var(--bg-surface-soft));
 }
 
 .badge {
@@ -257,6 +294,10 @@
   .search {
     width: 100%;
     min-width: 260px;
+  }
+
+  .logo {
+    font-size: 22px;
   }
 }
 

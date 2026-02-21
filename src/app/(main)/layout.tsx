@@ -17,14 +17,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className={styles.page}>
-      <Sidebar />
+      <MainHeader />
 
-      <div className={styles.contentShell}>
-        <MainHeader />
-
-        <div className={styles.layout}>
-          <main className={styles.main}>{children}</main>
-          <RightSidebar />
+      <div className={styles.layout}>
+        <Sidebar />
+        <div className={styles.contentArea}>
+          <div className={styles.contentCluster}>
+            <main className={styles.main}>
+              <div className={styles.mainInner}>{children}</div>
+            </main>
+            <RightSidebar />
+          </div>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ export const roadmapCourses: RoadmapCourse[] = [
     unitsDone: 29,
     totalUnits: 68,
     xp: 820,
-    imageSrc: "https://picsum.photos/id/180/900/520",
+    imageSrc: "/images/algorithms.png",
     href: "/practice?roadmap=algorithms-zero-to-hero",
   },
   {
@@ -22,11 +22,11 @@ export const roadmapCourses: RoadmapCourse[] = [
     unitsDone: 0,
     totalUnits: 30,
     xp: 540,
-    imageSrc: "https://picsum.photos/id/48/900/520",
+    imageSrc: "/images/javascript.png",
     href: "/practice",
   },
   {
-    title: "React + Next.js",
+    title: "Next.js",
     desc: "Modern UI architecture, routing, and performance basics.",
     level: "Intermediate",
     duration: "6 weeks",
@@ -34,7 +34,7 @@ export const roadmapCourses: RoadmapCourse[] = [
     unitsDone: 31,
     totalUnits: 54,
     xp: 760,
-    imageSrc: "https://picsum.photos/id/0/900/520",
+    imageSrc: "/images/nextjs.webp",
     href: "/practice",
   },
   {
@@ -46,7 +46,7 @@ export const roadmapCourses: RoadmapCourse[] = [
     unitsDone: 15,
     totalUnits: 58,
     xp: 690,
-    imageSrc: "https://picsum.photos/id/119/900/520",
+    imageSrc: "/images/c++.png",
     href: "/practice",
   },
   {
@@ -58,7 +58,7 @@ export const roadmapCourses: RoadmapCourse[] = [
     unitsDone: 27,
     totalUnits: 32,
     xp: 460,
-    imageSrc: "https://picsum.photos/id/20/900/520",
+    imageSrc: "/images/rust.png",
     href: "/practice",
   },
   {
@@ -70,7 +70,7 @@ export const roadmapCourses: RoadmapCourse[] = [
     unitsDone: 9,
     totalUnits: 47,
     xp: 980,
-    imageSrc: "https://picsum.photos/id/160/900/520",
+    imageSrc: "/images/java.jpg",
     href: "/practice",
   },
   {
