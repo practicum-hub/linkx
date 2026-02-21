@@ -96,6 +96,19 @@ export function useRoadmapCamera() {
     dragMovedRef.current = false;
   };
 
+  const centerContent = (contentWidth: number, contentHeight: number) => {
+    const viewport = viewportRef.current;
+    if (!viewport) {
+      return;
+    }
+
+    setCamera((prev) => ({
+      ...prev,
+      x: Math.round((viewport.clientWidth - contentWidth * prev.scale) / 2),
+      y: Math.round((viewport.clientHeight - contentHeight * prev.scale) / 2),
+    }));
+  };
+
   return {
     camera,
     isDragging,
@@ -105,5 +118,6 @@ export function useRoadmapCamera() {
     handlePointerMove,
     handlePointerEnd,
     handleClickCapture,
+    centerContent,
   };
 }

@@ -7,13 +7,44 @@
 
 .layout {
   display: flex;
-  min-height: 0;
   flex: 1;
+  min-height: 0;
+}
+
+.contentArea {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.contentCluster {
+  width: min(100%, 1616px);
+  min-width: 0;
+  display: flex;
 }
 
 .main {
   flex: 1;
   min-width: 0;
+  display: flex;
+}
+
+.mainInner {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 1680px) {
+  .contentCluster {
+    width: min(100%, 1504px);
+  }
+}
+
+@media (max-width: 1360px) {
+  .contentCluster {
+    width: min(100%, 1280px);
+  }
 }
 
 .learnShell {

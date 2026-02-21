@@ -22,33 +22,33 @@
     linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(237, 245, 255, 0.92) 100%),
     repeating-linear-gradient(
       0deg,
-      rgba(146, 169, 205, 0.085) 0,
-      rgba(146, 169, 205, 0.085) 1px,
+      rgba(148, 154, 166, 0.052) 0,
+      rgba(148, 154, 166, 0.052) 1px,
       transparent 1px,
       transparent var(--grid-minor)
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(146, 169, 205, 0.085) 0,
-      rgba(146, 169, 205, 0.085) 1px,
+      rgba(148, 154, 166, 0.052) 0,
+      rgba(148, 154, 166, 0.052) 1px,
       transparent 1px,
       transparent var(--grid-minor)
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(120, 145, 188, 0.14) 0,
-      rgba(120, 145, 188, 0.14) 1px,
+      rgba(130, 138, 150, 0.075) 0,
+      rgba(130, 138, 150, 0.075) 1px,
       transparent 1px,
       transparent var(--grid-major)
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(120, 145, 188, 0.14) 0,
-      rgba(120, 145, 188, 0.14) 1px,
+      rgba(130, 138, 150, 0.075) 0,
+      rgba(130, 138, 150, 0.075) 1px,
       transparent 1px,
       transparent var(--grid-major)
     ),
-    radial-gradient(circle, rgba(120, 145, 188, 0.12) 0.7px, transparent 0.8px);
+    radial-gradient(circle, rgba(136, 145, 158, 0.07) 0.7px, transparent 0.8px);
   background-size:
     auto,
     auto,
@@ -68,6 +68,14 @@
     0 0;
 }
 
+.customCursorViewport,
+.customCursorViewport :global(a),
+.customCursorViewport :global(button),
+.customCursorViewport .unitNode,
+.customCursorViewport .locked {
+  cursor: none !important;
+}
+
 .roadmapViewportDragging {
   cursor: grabbing;
 }
@@ -82,6 +90,67 @@
   position: relative;
 }
 
+.gameCursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0;
+  transition: opacity 0.16s ease;
+}
+
+.gameCursorVisible {
+  opacity: 1;
+}
+
+.cursorCore {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  left: -3px;
+  top: -3px;
+  border-radius: 50%;
+  background: #6aa7d8;
+  box-shadow: 0 0 10px rgba(93, 146, 192, 0.55);
+}
+
+.cursorRing {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: -11px;
+  top: -11px;
+  border-radius: 50%;
+  border: 1px solid rgba(106, 145, 180, 0.8);
+  box-shadow: 0 0 12px rgba(94, 140, 182, 0.35);
+  transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.gameCursorActive .cursorCore {
+  background: #79c2a0;
+  box-shadow: 0 0 12px rgba(93, 177, 141, 0.55);
+}
+
+.gameCursorActive .cursorRing {
+  border-color: rgba(104, 186, 146, 0.85);
+  box-shadow: 0 0 14px rgba(93, 177, 141, 0.45);
+  transform: scale(1.14);
+}
+
+.gameCursorDragging .cursorCore {
+  background: #d7b17b;
+  box-shadow: 0 0 12px rgba(190, 144, 80, 0.52);
+}
+
+.gameCursorDragging .cursorRing {
+  border-color: rgba(188, 150, 95, 0.9);
+  box-shadow: 0 0 14px rgba(188, 150, 95, 0.42);
+  transform: scale(0.92);
+}
+
 .canvasGrid {
   position: absolute;
   inset: -2000px;
@@ -89,29 +158,29 @@
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(116, 141, 183, 0.12) 0,
-      rgba(116, 141, 183, 0.12) 1px,
+      rgba(132, 140, 152, 0.065) 0,
+      rgba(132, 140, 152, 0.065) 1px,
       transparent 1px,
       transparent 44px
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(116, 141, 183, 0.12) 0,
-      rgba(116, 141, 183, 0.12) 1px,
+      rgba(132, 140, 152, 0.065) 0,
+      rgba(132, 140, 152, 0.065) 1px,
       transparent 1px,
       transparent 44px
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(105, 131, 176, 0.18) 0,
-      rgba(105, 131, 176, 0.18) 1px,
+      rgba(120, 128, 140, 0.095) 0,
+      rgba(120, 128, 140, 0.095) 1px,
       transparent 1px,
       transparent 132px
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(105, 131, 176, 0.18) 0,
-      rgba(105, 131, 176, 0.18) 1px,
+      rgba(120, 128, 140, 0.095) 0,
+      rgba(120, 128, 140, 0.095) 1px,
       transparent 1px,
       transparent 132px
     );
@@ -293,29 +362,29 @@
     linear-gradient(180deg, rgba(18, 30, 49, 0.95) 0%, rgba(12, 22, 38, 0.98) 100%),
     repeating-linear-gradient(
       0deg,
-      rgba(91, 123, 171, 0.13) 0,
-      rgba(91, 123, 171, 0.13) 1px,
+      rgba(106, 117, 132, 0.08) 0,
+      rgba(106, 117, 132, 0.08) 1px,
       transparent 1px,
       transparent var(--grid-minor)
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(91, 123, 171, 0.13) 0,
-      rgba(91, 123, 171, 0.13) 1px,
+      rgba(106, 117, 132, 0.08) 0,
+      rgba(106, 117, 132, 0.08) 1px,
       transparent 1px,
       transparent var(--grid-minor)
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(66, 94, 138, 0.22) 0,
-      rgba(66, 94, 138, 0.22) 1px,
+      rgba(88, 99, 114, 0.12) 0,
+      rgba(88, 99, 114, 0.12) 1px,
       transparent 1px,
       transparent var(--grid-major)
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(66, 94, 138, 0.22) 0,
-      rgba(66, 94, 138, 0.22) 1px,
+      rgba(88, 99, 114, 0.12) 0,
+      rgba(88, 99, 114, 0.12) 1px,
       transparent 1px,
       transparent var(--grid-major)
     );

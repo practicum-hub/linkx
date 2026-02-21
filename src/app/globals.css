@@ -107,6 +107,7 @@ h6 {
 
 :root {
   --font-family: var(--font-manrope), sans-serif;
+  --main-header-height: 64px;
   --bg-page: #eef4ff;
   --bg-surface: #ffffff;
   --bg-surface-soft: #f5f9ff;

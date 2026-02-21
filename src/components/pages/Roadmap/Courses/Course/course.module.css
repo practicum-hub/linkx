@@ -13,7 +13,9 @@
   min-height: 420px;
   box-shadow: var(--shadow-soft);
   text-decoration: none;
-  transition: transform 0.14s ease, box-shadow 0.14s ease;
+  transition:
+    transform 0.14s ease,
+    box-shadow 0.14s ease;
 }
 
 .course:hover {
@@ -91,13 +93,14 @@
 .progressBar {
   height: 10px;
   width: 100%;
-  background-color: var(--bg-surface-soft);
+  background: #e0e1e9;
   overflow: hidden;
+  border-radius: 8px;
 }
 
 .progressFill {
   height: 100%;
-  background: linear-gradient(90deg, #4f9fff 0%, #69c0ff 100%);
+  background: #03ef62;
 }
 
 .progressInfo {
