@@ -2,7 +2,6 @@
 
 import { ILesson } from "@/core/interfaces";
 import styles from "./track.module.css";
-import { useRouter } from "next/navigation";
 import Unit from "./Unit/Unit";
 
 type Props = {
@@ -11,12 +10,6 @@ type Props = {
 
 export default function Lesson({ track }: Props) {
   const { name, units } = track;
-
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push("/lesson");
-  };
 
   return (
     <li className={styles.track}>

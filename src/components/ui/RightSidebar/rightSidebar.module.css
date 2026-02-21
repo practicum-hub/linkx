@@ -1,124 +1,125 @@
 .sidebar {
-  --ink: #23314e;
+  --ink: var(--text-primary);
 
-  min-width: 600px;
-  width: 600px;
+  min-width: 320px;
+  width: 340px;
   height: calc(100vh - 74px);
   position: sticky;
   top: 74px;
   align-self: flex-start;
   overflow-y: auto;
-  padding: 12px;
-  border-left: 1px solid #ced9ee;
-  background-color: #f2f7ff;
+  padding: 10px 12px 12px;
+  border-left: 1px solid var(--border-default);
+  background: var(--bg-surface-soft);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 .panel {
-  border: 1px solid #cad7ee;
-  border-radius: 0;
-  background: #ffffff;
+  border: 1px solid var(--border-default);
+  border-radius: 4px;
+  background: var(--bg-surface);
   padding: 12px;
-  box-shadow: 0 8px 18px rgba(37, 58, 96, 0.08);
-}
-
-.bottomPanel {
-  margin-top: auto;
 }
 
 .title {
-  margin: 0 0 10px;
-  font-size: 18px;
+  margin: 0 0 8px;
+  font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--ink);
+  opacity: 0.7;
 }
 
 .statsGrid {
   margin: 0;
   padding: 0;
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .statCard {
-  border: 1px solid #d4dff3;
-  background-color: #f8fbff;
-  padding: 10px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 2px 0;
 }
 
 .statValue {
   margin: 0;
-  font-size: 24px;
+  font-size: 18px;
+  line-height: 1;
   font-weight: 700;
-  color: #21365a;
+  color: var(--text-primary);
 }
 
 .statLabel {
-  margin: 2px 0 0;
-  font-size: 12px;
+  margin: 0;
+  font-size: 11px;
   font-weight: 600;
-  color: #667792;
+  color: var(--text-secondary);
+  text-align: right;
 }
 
 .colorList {
   margin: 0;
   padding: 0;
   list-style: none;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .colorCard {
-  border: 1px solid #d7e2f3;
-  padding: 12px;
-  min-height: 84px;
+  border-bottom: 1px dashed color-mix(in srgb, var(--border-default) 75%, transparent);
+  padding: 2px 0 8px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 3px;
 }
 
 .mint {
-  background: linear-gradient(135deg, #f0fff8 0%, #d7f8ea 100%);
+  background: transparent;
 }
 
 .blue {
-  background: linear-gradient(135deg, #eff5ff 0%, #dce8ff 100%);
+  background: transparent;
 }
 
 .amber {
-  background: linear-gradient(135deg, #fff8ee 0%, #ffe8c9 100%);
+  background: transparent;
 }
 
 .colorTitle {
   margin: 0;
-  font-size: 12px;
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #49658d;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
 }
 
 .colorValue {
-  margin: 4px 0 0;
-  font-size: 30px;
+  margin: 0;
+  font-size: 20px;
   line-height: 1;
-  color: #1f375d;
-  font-weight: 800;
+  color: var(--text-primary);
+  font-weight: 700;
 }
 
 .statusGrid {
-  display: grid;
-  gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .statusItem {
-  border: 1px solid #d5e0f2;
-  background: #f7faff;
-  padding: 10px;
+  border-bottom: 1px dashed color-mix(in srgb, var(--border-default) 75%, transparent);
+  padding: 1px 0 8px;
 }
 
 .statusLabel {
@@ -127,48 +128,33 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #6580a5;
+  color: var(--text-muted);
 }
 
 .statusValue {
-  margin: 6px 0 0;
-  font-size: 13px;
-  line-height: 1.3;
-  color: #233c62;
-  font-weight: 700;
-}
-
-.quickRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.ghostBtn {
-  border: 1px solid #c7d7f1;
-  background: #f5f9ff;
-  padding: 11px 10px;
+  margin: 4px 0 0;
   font-size: 12px;
-  font-weight: 700;
-  color: #2b4a74;
-  cursor: pointer;
+  line-height: 1.3;
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
-.ghostBtn:hover {
-  background: #eaf2ff;
+.socialWrap {
+  margin-top: auto;
+  padding: 2px 0 0;
 }
 
 @media (max-width: 1800px) {
   .sidebar {
-    min-width: 480px;
-    width: 480px;
+    min-width: 300px;
+    width: 320px;
   }
 }
 
 @media (max-width: 1560px) {
   .sidebar {
-    min-width: 390px;
-    width: 390px;
+    min-width: 270px;
+    width: 290px;
   }
 }
 

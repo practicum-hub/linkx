@@ -1,18 +1,8 @@
 import Link from "next/link";
 import styles from "./course.module.css";
+import type { RoadmapCourse } from "@/types/roadmap";
 
-type Props = {
-  title: string;
-  desc: string;
-  level: string;
-  duration: string;
-  progress: number;
-  unitsDone: number;
-  totalUnits: number;
-  xp: number;
-  imageSrc: string;
-  href: string;
-};
+type Props = RoadmapCourse;
 
 export default function Course({
   title,

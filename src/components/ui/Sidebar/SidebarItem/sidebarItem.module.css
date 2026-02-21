@@ -14,7 +14,7 @@
   border-radius: 0;
   font-size: 17px;
   font-weight: 600;
-  color: #1f2a44;
+  color: var(--text-primary);
   text-decoration: none;
   transition: transform 0.14s ease, color 0.14s ease;
 }
@@ -36,7 +36,7 @@
 
 .link:hover {
   transform: translateX(4px);
-  color: #28476e;
+  color: var(--text-primary);
 }
 
 .link:hover .iconWrap {
@@ -45,10 +45,10 @@
 }
 
 .active {
-  background-color: #dff2ea;
-  border-left: 4px solid #3d9674;
+  background-color: color-mix(in srgb, var(--bg-surface-soft) 70%, #69ad8d 30%);
+  border-left: 4px solid #4f8f74;
 }
 
 .active .iconWrap {
-  background: #d0ecd9;
+  background: color-mix(in srgb, var(--bg-surface-soft) 70%, #69ad8d 30%);
 }

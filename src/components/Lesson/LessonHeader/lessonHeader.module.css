@@ -1,13 +1,14 @@
 .header {
   display: flex;
   padding: 16px;
-  border-bottom: 1px solid #e1e3e7;
+  border-bottom: 1px solid var(--border-default);
+  background: var(--bg-surface);
 }
 
 .logo {
   font-size: 30px;
   font-weight: 900;
-  color: #16345d;
+  color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 

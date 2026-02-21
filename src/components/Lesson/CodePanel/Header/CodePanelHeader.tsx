@@ -3,19 +3,20 @@
 import Image from "next/image";
 import styles from "./codePanelHeader.module.css";
 import { useLessonStore } from "@/store";
+import { defaultLessonConfig } from "@/data/mocks/lesson/config";
 
 export default function CodePanelHeader() {
   const { runCode, setUserInput, isExecuting } = useLessonStore();
 
   const handleCheck = () => {
     if (!isExecuting) {
-      runCode("1");
+      runCode(defaultLessonConfig.problemId);
     }
   };
 
   const handleSubmit = () => {
     if (!isExecuting) {
-      runCode("1");
+      runCode(defaultLessonConfig.problemId);
     }
   };
 
@@ -24,12 +25,12 @@ export default function CodePanelHeader() {
       <div className={styles.langBadge}>
         <Image
           className={styles.langIcon}
-          src="/icons/typescript.png"
+          src={defaultLessonConfig.languageIconSrc}
           alt="language"
           width={16}
           height={16}
         />
-        <span className={styles.lang}>TypeScript 5.0</span>
+        <span className={styles.lang}>{defaultLessonConfig.languageLabel}</span>
       </div>
 
       <button className={styles.reloadBtn} onClick={() => setUserInput("")} aria-label="Clear editor">

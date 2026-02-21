@@ -1,6 +1,6 @@
 .editor {
   flex: 1 1 auto;
   min-height: 0;
-  border-bottom: 1px solid #e5eaf3;
+  border-bottom: 1px solid var(--cp-separator);
   min-width: 0;
 }

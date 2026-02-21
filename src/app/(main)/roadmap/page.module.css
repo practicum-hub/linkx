@@ -10,6 +10,10 @@
   gap: 52px;
 }
 
+:global(body[data-theme="dark"]) .page {
+  background: linear-gradient(180deg, #0f1828 0%, #121e31 100%);
+}
+
 @media (max-width: 700px) {
   .content {
     padding: 0 12px 12px;

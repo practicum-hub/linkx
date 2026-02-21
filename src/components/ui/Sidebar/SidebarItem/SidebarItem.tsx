@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { SidebarItemType } from "../Sidebar";
+import type { SidebarItemType } from "@/types/roadmap";
 import styles from "./sidebarItem.module.css";
 import Link from "next/link";
 import Image from "next/image";

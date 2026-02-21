@@ -2,7 +2,7 @@
   position: relative;
   min-height: 380px;
   padding: 30px;
-  border: 1px solid #cdd8ef;
+  border: 1px solid var(--border-default);
   background:
     linear-gradient(110deg, rgba(20, 35, 64, 0.78) 0%, rgba(20, 35, 64, 0.56) 45%, rgba(20, 35, 64, 0.22) 100%),
     url("https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
@@ -11,6 +11,10 @@
   justify-content: space-between;
   overflow: hidden;
   gap: 18px;
+}
+
+:global(body[data-theme="dark"]) .hero {
+  border-color: #2b3f61;
 }
 
 .overlay {

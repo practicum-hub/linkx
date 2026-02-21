@@ -107,12 +107,36 @@ h6 {
 
 :root {
   --font-family: var(--font-manrope), sans-serif;
+  --bg-page: #eef4ff;
+  --bg-surface: #ffffff;
+  --bg-surface-soft: #f5f9ff;
+  --border-default: #d2ddf0;
+  --text-primary: #1f2a44;
+  --text-secondary: #5e6f8b;
+  --text-muted: #7a8ba6;
+  --shadow-soft: 0 10px 22px rgba(33, 52, 84, 0.08);
 }
 
 body {
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+body[data-theme="dark"] {
+  --bg-page: #0d1421;
+  --bg-surface: #141f33;
+  --bg-surface-soft: #1a2740;
+  --border-default: #2d4163;
+  --text-primary: #d7e5ff;
+  --text-secondary: #9bb2d8;
+  --text-muted: #8299be;
+  --shadow-soft: 0 14px 28px rgba(3, 8, 16, 0.5);
 }
 
 /* Для заголовков можно использовать более жирные веса */

@@ -14,11 +14,18 @@ export type ILevel = {
 export type ILesson = {
   id: number;
   name: string;
-  exercises: IExercise[];
+  units: IUnit[];
+  exercises?: IExercise[];
 };
 
 export type IExercise = {
   id: number;
   text: string;
   interactive?: boolean;
+};
+
+export type IUnit = {
+  id: number;
+  name: string;
+  exercises?: IExercise[];
 };

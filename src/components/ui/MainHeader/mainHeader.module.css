@@ -8,8 +8,8 @@
   justify-content: space-between;
   gap: 16px;
   padding: 0 16px;
-  border-bottom: 1px solid #d5dfef;
-  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid var(--border-default);
+  background: color-mix(in srgb, var(--bg-surface) 92%, transparent);
   backdrop-filter: blur(8px);
 }
 
@@ -26,7 +26,7 @@
   align-items: center;
   gap: 0;
   text-decoration: none;
-  color: #1f2a44;
+  color: var(--text-primary);
   font-size: 28px;
   font-weight: 900;
   letter-spacing: -0.02em;
@@ -37,11 +37,14 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  background-color: #efeff5;
+  padding: 4px;
+  border-radius: 15px;
 }
 
 .navItem {
   text-decoration: none;
-  color: #5f6f8c;
+  color: var(--text-secondary);
   font-size: 14px;
   font-weight: 600;
   padding: 8px 10px;
@@ -49,15 +52,17 @@
 }
 
 .navItem:hover {
-  color: #2c3e61;
-  border-color: #d8e2f3;
-  background: #f5f9ff;
+  color: var(--text-primary);
+  border-color: var(--border-default);
+  background: var(--bg-surface-soft);
+  border-radius: 15px;
 }
 
 .navItemActive {
-  color: #1f2a44;
-  border-color: #c8d7f1;
-  background: #ecf3ff;
+  color: var(--text-primary);
+  border-color: var(--border-default);
+  background: var(--bg-surface-soft);
+  border-radius: 15px;
 }
 
 .search {
@@ -67,11 +72,11 @@
 
 .input {
   width: 100%;
-  border: 1px solid #ccd8eb;
-  background: #f8fbff;
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface-soft);
   padding: 10px 38px 10px 12px;
   font-size: 14px;
-  color: #1f2a44;
+  color: var(--text-primary);
 }
 
 .input:focus-visible {
@@ -95,8 +100,8 @@
 }
 
 .upgradeBtn {
-  border: 1px solid #7d54dc;
-  background: linear-gradient(135deg, #7a38ff 0%, #b34dff 100%);
+  border: 1px solid #4f78d1;
+  background: linear-gradient(135deg, #2f5fbf 0%, #4f8df0 100%);
   color: #ffffff;
   padding: 10px 12px;
   font-size: 13px;
@@ -109,9 +114,9 @@
 }
 
 .langBtn {
-  border: 1px solid #c8d7f1;
-  background: #f5f9ff;
-  color: #37537f;
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface-soft);
+  color: var(--text-primary);
   padding: 9px 10px;
   display: inline-flex;
   align-items: center;
@@ -124,8 +129,8 @@
 .iconBtn {
   width: 38px;
   height: 38px;
-  border: 1px solid #c8d7f1;
-  background: #f5f9ff;
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface-soft);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -144,8 +149,8 @@
 }
 
 .profileBtn {
-  border: 1px solid #c8d7f1;
-  background: #ffffff;
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
   padding: 5px 8px;
   display: inline-flex;
   align-items: center;
@@ -153,8 +158,100 @@
   cursor: pointer;
 }
 
+.profileWrap {
+  position: relative;
+}
+
+.profileBtnActive {
+  border-color: #8baee7;
+}
+
 .avatar {
-  border: 1px solid #c8d7f1;
+  border: 1px solid var(--border-default);
+}
+
+.profileMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 248px;
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  box-shadow: 0 14px 34px rgba(8, 18, 31, 0.18);
+  padding: 10px;
+  z-index: 90;
+}
+
+.profileMeta {
+  border-bottom: 1px solid var(--border-default);
+  padding: 2px 2px 10px;
+  margin-bottom: 8px;
+}
+
+.profileName {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.profileEmail {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.menuSection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.menuItem {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-primary);
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  border-color: var(--border-default);
+  background: var(--bg-surface-soft);
+}
+
+.themeLabel {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.themeRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.themeOption {
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface-soft);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.themeOptionActive {
+  border-color: #6d95d7;
+  background: color-mix(in srgb, #77a6f0 24%, var(--bg-surface-soft));
 }
 
 @media (max-width: 1200px) {

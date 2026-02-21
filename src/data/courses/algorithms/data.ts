@@ -1,48 +1,12 @@
-export type UnitType = "Lesson" | "Quiz" | "Practice" | "Checkpoint";
-
-export type ExerciseTheory = {
-  intro: string;
-  sections: { title: string; text: string }[];
-  tips: string[];
-  visualization?: {
-    title: string;
-    nodes: string[];
-  };
-};
-
-export type ExercisePractice = {
-  taskTitle: string;
-  task: string;
-  input: string;
-  output: string;
-  requirements: string[];
-  cases: { input: string; output: string; note?: string }[];
-};
-
-export type UnitExercise = {
-  id: string;
-  title: string;
-  theory: ExerciseTheory;
-  practice: ExercisePractice;
-};
-
-export type AlgorithmsUnit = {
-  id: string;
-  title: string;
-  type: UnitType;
-  level: number;
-  lane: number;
-  requires: string[];
-  exercises: UnitExercise[];
-};
-
-export type AlgorithmsTopic = {
-  id: string;
-  title: string;
-  desc: string;
-  completed: string[];
-  units: AlgorithmsUnit[];
-};
+import type { AlgorithmsTopic } from "@/types/algorithms";
+export type {
+  AlgorithmsTopic,
+  AlgorithmsUnit,
+  ExercisePractice,
+  ExerciseTheory,
+  UnitExercise,
+  UnitType,
+} from "@/types/algorithms";
 
 export const algorithmsRoadmap: AlgorithmsTopic[] = [
   {
@@ -308,6 +272,150 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
               cases: [
                 { input: "n=1e5, q=1e5", output: "Preprocess hash/set strategy" },
                 { input: "n=50, q=2", output: "Simple scan acceptable" },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        id: "f-u4",
+        title: "Constraint Strategy",
+        type: "Lesson",
+        level: 2,
+        lane: 1,
+        requires: ["f-u2", "f-u3"],
+        exercises: [
+          {
+            id: "f-u4-e1",
+            title: "Match Constraints to Pattern",
+            theory: {
+              intro:
+                "Use constraints to choose approach first: brute force, hashing, two pointers, or prefix methods.",
+              sections: [
+                {
+                  title: "Input Size Signal",
+                  text: "Large n often demands O(n) or O(n log n), while small n can tolerate slower methods.",
+                },
+                {
+                  title: "Operation Pattern",
+                  text: "Repeated range queries suggest preprocessing; one-pass tasks suggest window/pointer patterns.",
+                },
+              ],
+              tips: [
+                "Read constraints before coding.",
+                "Write one candidate complexity pair.",
+                "Reject approaches that violate limits.",
+              ],
+            },
+            practice: {
+              taskTitle: "Constraint-to-Plan Drill",
+              task: "Given problem constraints, choose the most suitable algorithmic strategy.",
+              input: "problem summary + bounds",
+              output: "strategy name",
+              requirements: [
+                "Reference time complexity in decision.",
+                "Mention one trade-off.",
+                "Avoid over-engineering for small bounds.",
+              ],
+              cases: [
+                { input: "n=2e5, many updates", output: "Fenwick/segment-style preprocessing" },
+                { input: "n<=200, single query", output: "Simple iterative scan" },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        id: "f-u5",
+        title: "Dead-End Challenge",
+        type: "Practice",
+        level: 2,
+        lane: 0,
+        requires: ["f-u2"],
+        exercises: [
+          {
+            id: "f-u5-e1",
+            title: "Edge Case Gauntlet",
+            theory: {
+              intro:
+                "This branch is a standalone challenge path: no next unit unlocks from here, only problem-solving practice.",
+              sections: [
+                {
+                  title: "Boundary Stress",
+                  text: "Focus on empty input, single element, duplicates, and max values.",
+                },
+                {
+                  title: "Failure Logging",
+                  text: "Track exactly where assumptions break during trace and patch minimally.",
+                },
+              ],
+              tips: [
+                "Start with smallest failing case.",
+                "Write expected vs actual state.",
+                "Fix one bug at a time.",
+              ],
+            },
+            practice: {
+              taskTitle: "Bug Hunt Task",
+              task: "Given a nearly-correct function, find and fix all hidden boundary bugs.",
+              input: "function + failing test set",
+              output: "fixed function",
+              requirements: [
+                "Preserve original complexity target.",
+                "Pass all provided boundary tests.",
+                "Add one extra adversarial test.",
+              ],
+              cases: [
+                { input: "nums=[]", output: "returns neutral value without crash" },
+                { input: "nums=[5]", output: "handles single element correctly" },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        id: "f-u6",
+        title: "Integrated Mini Project",
+        type: "Checkpoint",
+        level: 3,
+        lane: 1,
+        requires: ["f-u3", "f-u4"],
+        exercises: [
+          {
+            id: "f-u6-e1",
+            title: "Design + Implement + Explain",
+            theory: {
+              intro:
+                "Combine decomposition, tracing, and constraint reasoning into one complete solution workflow.",
+              sections: [
+                {
+                  title: "Plan",
+                  text: "Break the task into subproblems and pick data structures explicitly.",
+                },
+                {
+                  title: "Verify",
+                  text: "Run a dry trace and justify complexity trade-offs in plain language.",
+                },
+              ],
+              tips: [
+                "Write plan before code.",
+                "Keep invariant visible while implementing.",
+                "Conclude with complexity summary.",
+              ],
+            },
+            practice: {
+              taskTitle: "Mini Project",
+              task: "Build a complete solution for a medium problem and present concise reasoning.",
+              input: "problem statement + constraints",
+              output: "accepted solution + explanation",
+              requirements: [
+                "Produce correct implementation.",
+                "Demonstrate one dry trace snippet.",
+                "State time/space complexity clearly.",
+              ],
+              cases: [
+                { input: "case A", output: "valid output A" },
+                { input: "case B", output: "valid output B" },
               ],
             },
           },

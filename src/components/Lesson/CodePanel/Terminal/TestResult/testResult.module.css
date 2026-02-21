@@ -4,7 +4,7 @@
 }
 
 .empty {
-  color: #7283a1;
+  color: var(--cp-text-muted);
   padding: 16px;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .runtime {
-  color: #6f819f;
+  color: var(--cp-text-muted);
   font-size: 13px;
   margin: 0;
 }
@@ -43,21 +43,21 @@
   padding: 8px 14px;
   cursor: pointer;
   transition: 0.12s;
-  border: 1px solid #dbe4f3;
+  border: 1px solid var(--cp-card-border);
   border-radius: 9px;
-  color: #5c6f8f;
+  color: var(--cp-text-muted);
   font-size: 13px;
   font-weight: 700;
 }
 
 .case.active {
-  background: #e5eeff;
-  border-color: #c5d7fa;
-  color: #294a79;
+  background: var(--cp-accent-soft);
+  border-color: var(--cp-accent-border);
+  color: var(--cp-accent-text);
 }
 
 .case:hover {
-  background: #eef3ff;
+  background: var(--cp-card-soft);
 }
 
 .blocks {
@@ -75,7 +75,7 @@
 .block .title {
   margin: 0;
   font-size: 13px;
-  color: #6f819f;
+  color: var(--cp-text-muted);
 }
 
 .fields {

@@ -1,0 +1,30 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 0;
+}
+
+.iconLink {
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.14s ease, color 0.14s ease;
+}
+
+.iconLink:hover {
+  transform: translateY(-1px);
+  color: var(--text-primary);
+}
+
+.iconLink svg {
+  width: 18px;
+  height: 18px;
+}

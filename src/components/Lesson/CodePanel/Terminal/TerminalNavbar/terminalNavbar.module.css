@@ -1,6 +1,6 @@
 .nav {
-  background: #f4f7ff;
-  border-top: 1px solid #e5eaf3;
+  background: var(--cp-nav-bg);
+  border-top: 1px solid var(--cp-nav-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,7 +17,7 @@
   padding: 10px 12px;
   border-radius: 9px;
   cursor: pointer;
-  color: #6f7f99;
+  color: var(--cp-text-muted);
   font-size: 13px;
   font-weight: 700;
   transition:
@@ -26,13 +26,13 @@
 }
 
 .tab:hover {
-  color: #223650;
-  background: #e7efff;
+  color: var(--cp-text-main);
+  background: var(--cp-card-soft);
 }
 
 .selected {
-  color: #1f3761;
-  background: #dce8ff;
+  color: var(--cp-accent-text);
+  background: var(--cp-accent-soft);
 }
 
 .selected::after {

@@ -1,9 +1,10 @@
 import Editor from "@monaco-editor/react";
+import { defaultLessonConfig } from "@/data/mocks/lesson/config";
 import { useLessonStore } from "@/store";
 import styles from "./exercise.module.css";
 
 export default function LessonBody() {
-  const { userInput, setUserInput, output, runCode } = useLessonStore();
+  const { userInput, setUserInput, results, runCode } = useLessonStore();
 
   return (
     <div className={styles.rightPane}>
@@ -21,7 +22,7 @@ export default function LessonBody() {
       </div>
 
       <div className={styles.controls}>
-        <button className={styles.runButton} onClick={runCode}>
+        <button className={styles.runButton} onClick={() => runCode(defaultLessonConfig.problemId)}>
           Run Code
         </button>
       </div>
@@ -29,14 +30,13 @@ export default function LessonBody() {
       <div className={styles.terminal}>
         <div className={styles.terminalHeader}>$ output:</div>
         <div className={styles.terminalBody}>
-          {output.map((line, i) => (
-            <div key={i} className={styles.line}>
-              {line}
-            </div>
-          ))}
-          {output.length === 0 && (
-            <div className={styles.placeholder}>Ожидание запуска...</div>
-          )}
+          {results?.status === "success" &&
+            results.testResults.map((item, index) => (
+              <div key={index} className={styles.line}>
+                {item.passed ? "PASS" : "FAIL"} {item.input}
+              </div>
+            ))}
+          {!results && <div className={styles.placeholder}>Waiting for execution...</div>}
         </div>
       </div>
     </div>

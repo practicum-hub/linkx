@@ -4,14 +4,14 @@
 
 .course {
   padding: 12px;
-  border: 1px solid #d3dcef;
+  border: 1px solid var(--border-default);
   border-radius: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  background-color: #ffffff;
+  background-color: var(--bg-surface);
   min-height: 420px;
-  box-shadow: 0 10px 22px rgba(33, 52, 84, 0.08);
+  box-shadow: var(--shadow-soft);
   text-decoration: none;
   transition: transform 0.14s ease, box-shadow 0.14s ease;
 }
@@ -23,8 +23,8 @@
 
 .cover {
   height: 170px;
-  border: 1px solid #d4e4ff;
-  background: #f2f7ff;
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface-soft);
   overflow: hidden;
 }
 
@@ -71,13 +71,13 @@
   margin: 0;
   font-size: 19px;
   font-weight: 700;
-  color: #1f2a44;
+  color: var(--text-primary);
   line-height: 1.2;
 }
 
 .desc {
   margin: 0;
-  color: #5b6983;
+  color: var(--text-secondary);
   font-weight: 500;
   font-size: 14px;
 }
@@ -91,7 +91,7 @@
 .progressBar {
   height: 10px;
   width: 100%;
-  background-color: #e6eefb;
+  background-color: var(--bg-surface-soft);
   overflow: hidden;
 }
 
@@ -105,7 +105,7 @@
   justify-content: space-between;
   gap: 10px;
   font-size: 12px;
-  color: #63708a;
+  color: var(--text-secondary);
   font-weight: 600;
 }
 
@@ -126,12 +126,22 @@
   margin: 0;
   font-size: 14px;
   font-weight: 700;
-  color: #2f5b8f;
+  color: var(--text-primary);
 }
 
 .linkLabel {
   margin: 0;
   font-size: 13px;
   font-weight: 700;
-  color: #3a6aa3;
+  color: var(--text-secondary);
+}
+
+:global(body[data-theme="dark"]) .level {
+  background-color: #1f3a34;
+  color: #9cdcc4;
+}
+
+:global(body[data-theme="dark"]) .duration {
+  background-color: #1d3052;
+  color: #b7d5ff;
 }
