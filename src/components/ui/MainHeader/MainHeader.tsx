@@ -43,10 +43,6 @@ export default function MainHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <Link href="/" className={styles.logo}>
-          <span>EqualLearning</span>
-        </Link>
-
         <nav className={styles.nav}>
           {mainHeaderNavItems.map((item) => {
             const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);

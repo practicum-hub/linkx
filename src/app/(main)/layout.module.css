@@ -1,8 +1,15 @@
 .page {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   background: var(--bg-page);
+}
+
+.contentShell {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .layout {

@@ -7,21 +7,21 @@
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 20px 14px;
+  gap: 9px;
+  padding: 16px 12px;
   border: 0;
   background-color: transparent;
   border-radius: 0;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #d7e5ff;
   text-decoration: none;
   transition: transform 0.14s ease, color 0.14s ease;
 }
 
 .iconWrap {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   background: transparent;
   display: inline-flex;
   align-items: center;
@@ -31,24 +31,27 @@
 }
 
 .icon {
-  opacity: 0.8;
+  width: 18px;
+  height: 18px;
+  opacity: 0.92;
 }
 
 .link:hover {
   transform: translateX(4px);
-  color: var(--text-primary);
+  color: #f4f8ff;
 }
 
 .link:hover .iconWrap {
   transform: translateX(2px);
-  background: rgba(64, 135, 255, 0.08);
+  background: rgba(160, 196, 255, 0.16);
 }
 
 .active {
-  background-color: color-mix(in srgb, var(--bg-surface-soft) 70%, #69ad8d 30%);
-  border-left: 4px solid #4f8f74;
+  background-color: rgba(163, 199, 255, 0.14);
+  border-left: 4px solid #8cc0ff;
+  color: #ffffff;
 }
 
 .active .iconWrap {
-  background: color-mix(in srgb, var(--bg-surface-soft) 70%, #69ad8d 30%);
+  background: rgba(163, 199, 255, 0.18);
 }

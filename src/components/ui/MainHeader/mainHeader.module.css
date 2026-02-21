@@ -11,26 +11,15 @@
   border-bottom: 1px solid var(--border-default);
   background: color-mix(in srgb, var(--bg-surface) 92%, transparent);
   backdrop-filter: blur(8px);
+  box-shadow: 0 8px 22px rgba(7, 18, 36, 0.14);
 }
 
 .left {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   min-width: 0;
   flex: 1;
-}
-
-.logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  text-decoration: none;
-  color: var(--text-primary);
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  text-transform: none;
 }
 
 .nav {
@@ -272,10 +261,6 @@
 }
 
 @media (max-width: 700px) {
-  .logo span {
-    display: none;
-  }
-
   .upgradeBtn span {
     display: none;
   }

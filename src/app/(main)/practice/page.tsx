@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { algorithmsRoadmap } from "@/data/mocks/courses/algorithmsRoadmap";
 import { buildLayouts, edgePath, nodePosition } from "@/lib/practice/roadmapGraph";
 import { useRoadmapCamera } from "@/lib/practice/useRoadmapCamera";
@@ -11,6 +11,12 @@ import styles from "./page.module.css";
 export default function Practice() {
   const { isDark } = useAppTheme();
   const { canvasWidth, canvasHeight, layouts } = useMemo(() => buildLayouts(algorithmsRoadmap), []);
+  const centeredOnceRef = useRef(false);
+  const cursorRef = useRef<HTMLDivElement | null>(null);
+  const cursorModeRef = useRef<"idle" | "active">("idle");
+  const [isFinePointer, setIsFinePointer] = useState(false);
+  const [isCursorVisible, setIsCursorVisible] = useState(false);
+  const [cursorMode, setCursorMode] = useState<"idle" | "active">("idle");
   const {
     camera,
     isDragging,
@@ -20,7 +26,44 @@ export default function Practice() {
     handlePointerMove,
     handlePointerEnd,
     handleClickCapture,
+    centerContent,
   } = useRoadmapCamera();
+
+  const updateCursor = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!isFinePointer || !cursorRef.current) {
+      return;
+    }
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    cursorRef.current.style.transform = `translate(${x}px, ${y}px)`;
+
+    const target = event.target as HTMLElement;
+    const nextMode = target.closest('[data-cursor="active"]') ? "active" : "idle";
+    if (cursorModeRef.current !== nextMode) {
+      cursorModeRef.current = nextMode;
+      setCursorMode(nextMode);
+    }
+  };
+
+  useEffect(() => {
+    if (centeredOnceRef.current) {
+      return;
+    }
+
+    centerContent(canvasWidth, canvasHeight);
+    centeredOnceRef.current = true;
+  }, [canvasWidth, canvasHeight, centerContent]);
+
+  useEffect(() => {
+    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const sync = () => setIsFinePointer(media.matches);
+    sync();
+    media.addEventListener("change", sync);
+
+    return () => media.removeEventListener("change", sync);
+  }, []);
 
   useEffect(() => {
     const prevBodyOverflow = document.body.style.overflow;
@@ -38,15 +81,42 @@ export default function Practice() {
     <div className={styles.page}>
       <section
         ref={viewportRef}
-        className={`${styles.roadmapViewport} ${isDragging ? styles.roadmapViewportDragging : ""}`}
+        className={`${styles.roadmapViewport} ${isDragging ? styles.roadmapViewportDragging : ""} ${isFinePointer ? styles.customCursorViewport : ""}`}
         onWheel={handleWheel}
         onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
+        onPointerMove={(event) => {
+          handlePointerMove(event);
+          updateCursor(event);
+        }}
         onPointerUp={handlePointerEnd}
         onPointerCancel={handlePointerEnd}
         onClickCapture={handleClickCapture}
+        onPointerEnter={(event) => {
+          if (!isFinePointer) {
+            return;
+          }
+
+          setIsCursorVisible(true);
+          updateCursor(event);
+        }}
+        onPointerLeave={() => {
+          setIsCursorVisible(false);
+          cursorModeRef.current = "idle";
+          setCursorMode("idle");
+        }}
         onDragStart={(event) => event.preventDefault()}
       >
+        {isFinePointer ? (
+          <div
+            ref={cursorRef}
+            aria-hidden="true"
+            className={`${styles.gameCursor} ${isCursorVisible ? styles.gameCursorVisible : ""} ${cursorMode === "active" ? styles.gameCursorActive : ""} ${isDragging ? styles.gameCursorDragging : ""}`}
+          >
+            <span className={styles.cursorCore} />
+            <span className={styles.cursorRing} />
+          </div>
+        ) : null}
+
         <div
           className={styles.roadmapCamera}
           style={{ transform: `translate(${camera.x}px, ${camera.y}px) scale(${camera.scale})` }}
@@ -158,6 +228,7 @@ export default function Practice() {
                         <Link
                           key={unit.id}
                           href={href}
+                          data-cursor="active"
                           className={`${styles.unitNode} ${completed ? styles.done : ""}`}
                           style={{ left: pos.x, top: pos.y }}
                         >
