@@ -1,213 +1,178 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useMemo } from "react";
+import { algorithmsRoadmap } from "@/data/mocks/courses/algorithmsRoadmap";
+import { buildLayouts, edgePath, nodePosition } from "@/lib/practice/roadmapGraph";
+import { useRoadmapCamera } from "@/lib/practice/useRoadmapCamera";
+import { useAppTheme } from "@/components/providers/ThemeProvider";
 import styles from "./page.module.css";
-import { algorithmsRoadmap } from "@/data/courses/algorithms/data";
-
-type UnitType = "Lesson" | "Quiz" | "Practice" | "Checkpoint";
-
-type GraphUnit = {
-  id: string;
-  title: string;
-  type: UnitType;
-  level: number;
-  lane: number;
-  requires: string[];
-  exercises: { id: string }[];
-};
-
-type GraphTopic = {
-  id: string;
-  title: string;
-  desc: string;
-  units: GraphUnit[];
-  completed: string[];
-};
-
-const NODE_W = 190;
-const NODE_H = 96;
-const H_GAP = 42;
-const V_GAP = 88;
-const PAD = 24;
-
-const roadmap: GraphTopic[] = algorithmsRoadmap;
-
-function nodePosition(node: GraphUnit) {
-  return {
-    x: PAD + node.lane * (NODE_W + H_GAP),
-    y: PAD + node.level * (NODE_H + V_GAP),
-  };
-}
-
-function edgePath(from: GraphUnit, to: GraphUnit) {
-  const p1 = nodePosition(from);
-  const p2 = nodePosition(to);
-
-  const startX = p1.x + NODE_W / 2;
-  const startY = p1.y + NODE_H;
-  const endX = p2.x + NODE_W / 2;
-  const endY = p2.y;
-  const c1Y = startY + 34;
-  const c2Y = endY - 34;
-
-  return `M ${startX} ${startY} C ${startX} ${c1Y}, ${endX} ${c2Y}, ${endX} ${endY}`;
-}
 
 export default function Practice() {
+  const { isDark } = useAppTheme();
+  const { canvasWidth, canvasHeight, layouts } = useMemo(() => buildLayouts(algorithmsRoadmap), []);
+  const {
+    camera,
+    isDragging,
+    viewportRef,
+    handleWheel,
+    handlePointerDown,
+    handlePointerMove,
+    handlePointerEnd,
+    handleClickCapture,
+  } = useRoadmapCamera();
+
+  useEffect(() => {
+    const prevBodyOverflow = document.body.style.overflow;
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = prevBodyOverflow;
+      document.documentElement.style.overflow = prevHtmlOverflow;
+    };
+  }, []);
+
   return (
     <div className={styles.page}>
-      <section className={styles.courseIntro}>
-        <div className={styles.introTop}>
-          <div className={styles.introText}>
-            <h1 className={styles.title}>Algorithms Zero to Hero Course</h1>
-          </div>
+      <section
+        ref={viewportRef}
+        className={`${styles.roadmapViewport} ${isDragging ? styles.roadmapViewportDragging : ""}`}
+        onWheel={handleWheel}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerEnd}
+        onPointerCancel={handlePointerEnd}
+        onClickCapture={handleClickCapture}
+        onDragStart={(event) => event.preventDefault()}
+      >
+        <div
+          className={styles.roadmapCamera}
+          style={{ transform: `translate(${camera.x}px, ${camera.y}px) scale(${camera.scale})` }}
+        >
+          <div className={styles.roadmapCanvas} style={{ width: canvasWidth, height: canvasHeight }}>
+            <div className={styles.canvasGrid} aria-hidden="true" />
+            {layouts.map((layout) => {
+              const { topic, index, topicLocked, graphWidth, graphHeight, headerTop, graphTop, graphLeft } = layout;
 
-          <div className={styles.controls}>
-            <div className={styles.selectWrap}>
-              <span className={styles.langIcon} aria-hidden="true" />
-              <select
-                id="language"
-                className={styles.select}
-                defaultValue="javascript"
-                suppressHydrationWarning
-              >
-                <option value="javascript">JS - JavaScript</option>
-                <option value="typescript">TS - TypeScript</option>
-                <option value="python">PY - Python</option>
-                <option value="cpp">C++ - C Plus Plus</option>
-                <option value="java">JV - Java</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </section>
+              return (
+                <article key={topic.id} className={styles.topicLayer}>
+                  <div className={styles.topicHeader} style={{ top: headerTop, width: canvasWidth }}>
+                    <p className={styles.topicIndex}>
+                      Topic {index + 1}
+                      {topicLocked ? (
+                        <span className={styles.topicLockedTag}>
+                          <span className={styles.lockIcon} aria-hidden="true">
+                            {"\u{1F512}"}
+                          </span>
+                          Locked
+                        </span>
+                      ) : null}
+                    </p>
+                    <h2 className={`${styles.topicTitle} ${topicLocked ? styles.topicTitleLocked : ""}`}>
+                      {topic.title}
+                    </h2>
+                    <p className={styles.topicDesc}>{topic.desc}</p>
+                  </div>
 
-      <section className={styles.roadmap}>
-        {roadmap.map((topic, index) => {
-          const prevTopic = index > 0 ? roadmap[index - 1] : null;
-          const prevTopicCompleted = prevTopic
-            ? prevTopic.units.every((unit) => prevTopic.completed.includes(unit.id))
-            : true;
-          const topicLocked = !prevTopicCompleted;
-
-          const maxLevel = Math.max(...topic.units.map((u) => u.level));
-          const maxLane = Math.max(...topic.units.map((u) => u.lane));
-          const width = PAD * 2 + (maxLane + 1) * NODE_W + maxLane * H_GAP;
-          const height = PAD * 2 + (maxLevel + 1) * NODE_H + maxLevel * V_GAP;
-
-          const unitMap = new Map(topic.units.map((u) => [u.id, u]));
-          const edges = topic.units.flatMap((u) =>
-            u.requires.map((req) => [req, u.id] as const),
-          );
-
-          return (
-            <article key={topic.id} className={styles.topicBlock}>
-              <p className={styles.topicIndex}>
-                Topic {index + 1}
-                {topicLocked ? (
-                  <span className={styles.topicLockedTag}>
-                    <span className={styles.lockIcon} aria-hidden="true">
-                      {"\u{1F512}"}
-                    </span>
-                    Locked
-                  </span>
-                ) : null}
-              </p>
-              <h2 className={`${styles.topicTitle} ${topicLocked ? styles.topicTitleLocked : ""}`}>
-                {topic.title}
-              </h2>
-              <p className={styles.topicDesc}>{topic.desc}</p>
-
-              <div className={styles.graphScroll}>
-                <div className={styles.graphCanvas} style={{ width, height }}>
-                  <svg
-                    className={styles.edges}
-                    viewBox={`0 0 ${width} ${height}`}
-                    preserveAspectRatio="none"
+                  <div
+                    className={styles.graphCanvas}
+                    style={{ top: graphTop, left: graphLeft, width: graphWidth, height: graphHeight }}
                   >
-                    <defs>
-                      <marker
-                        id={`${topic.id}-arrow`}
-                        markerWidth="8"
-                        markerHeight="8"
-                        refX="4"
-                        refY="7"
-                        orient="auto"
-                      >
-                        <path d="M0,0 L8,0 L4,8 Z" fill="#89a4cd" />
-                      </marker>
-                    </defs>
+                    <svg
+                      className={styles.edges}
+                      viewBox={`0 0 ${graphWidth} ${graphHeight}`}
+                      preserveAspectRatio="none"
+                    >
+                      <defs>
+                        <marker
+                          id={`${topic.id}-arrow`}
+                          markerWidth="10"
+                          markerHeight="10"
+                          refX="8.5"
+                          refY="5"
+                          orient="auto"
+                        >
+                          <path d="M1 1 Q2.4 5 1 9 L9 5 Z" fill={isDark ? "#5f7ba6" : "#9fb5d8"} />
+                        </marker>
+                      </defs>
 
-                    {edges.map(([fromId, toId]) => {
-                      const from = unitMap.get(fromId);
-                      const to = unitMap.get(toId);
-                      if (!from || !to) return null;
+                      {layout.edges.map(([fromId, toId]) => {
+                        const from = layout.unitMap.get(fromId);
+                        const to = layout.unitMap.get(toId);
+                        if (!from || !to) {
+                          return null;
+                        }
 
-                      const active = !topicLocked && topic.completed.includes(fromId);
+                        const active = !topicLocked && topic.completed.includes(fromId);
+
+                        return (
+                          <path
+                            key={`${fromId}-${toId}`}
+                            d={edgePath(from, to)}
+                            stroke={active ? (isDark ? "#69adff" : "#4f8eff") : isDark ? "#4c607f" : "#b8c8df"}
+                            strokeWidth="2"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            markerEnd={`url(#${topic.id}-arrow)`}
+                            opacity={active ? "1" : "0.65"}
+                          />
+                        );
+                      })}
+                    </svg>
+
+                    {topic.units.map((unit) => {
+                      const completed = topic.completed.includes(unit.id);
+                      const unlockedByDeps =
+                        unit.requires.length === 0 ||
+                        unit.requires.every((requiredUnitId) => topic.completed.includes(requiredUnitId));
+                      const unlocked = !topicLocked && unlockedByDeps;
+                      const locked = !completed && !unlocked;
+                      const pos = nodePosition(unit);
+                      const totalSteps = Math.max(2, unit.exercises.length * 2);
+                      const href = `/learn?topic=${topic.id}&unit=${unit.id}&step=1&total=${totalSteps}`;
+
+                      if (locked) {
+                        return (
+                          <button
+                            key={unit.id}
+                            className={`${styles.unitNode} ${styles.locked}`}
+                            style={{ left: pos.x, top: pos.y }}
+                            disabled
+                          >
+                            <span className={styles.unitType}>{unit.type}</span>
+                            <span className={styles.unitTitle}>{unit.title}</span>
+                            <span className={styles.unitStatus}>
+                              <span className={styles.lockIcon} aria-hidden="true">
+                                {"\u{1F512}"}
+                              </span>{" "}
+                              Locked
+                            </span>
+                          </button>
+                        );
+                      }
 
                       return (
-                        <path
-                          key={`${fromId}-${toId}`}
-                          d={edgePath(from, to)}
-                          stroke={active ? "#4f8eff" : "#b8c8df"}
-                          strokeWidth="2"
-                          fill="none"
-                          markerEnd={`url(#${topic.id}-arrow)`}
-                          opacity={active ? "1" : "0.65"}
-                        />
-                      );
-                    })}
-                  </svg>
-
-                  {topic.units.map((unit) => {
-                    const completed = topic.completed.includes(unit.id);
-                    const unlockedByDeps =
-                      unit.requires.length === 0 ||
-                      unit.requires.every((id) => topic.completed.includes(id));
-                    const unlocked = !topicLocked && unlockedByDeps;
-                    const locked = !completed && !unlocked;
-                    const pos = nodePosition(unit);
-                    const totalSteps = Math.max(2, unit.exercises.length * 2);
-                    const href = `/learn?topic=${topic.id}&unit=${unit.id}&step=1&total=${totalSteps}`;
-
-                    if (locked) {
-                      return (
-                        <button
+                        <Link
                           key={unit.id}
-                          className={`${styles.unitNode} ${styles.locked}`}
+                          href={href}
+                          className={`${styles.unitNode} ${completed ? styles.done : ""}`}
                           style={{ left: pos.x, top: pos.y }}
-                          disabled
                         >
                           <span className={styles.unitType}>{unit.type}</span>
                           <span className={styles.unitTitle}>{unit.title}</span>
-                          <span className={styles.unitStatus}>
-                            <span className={styles.lockIcon} aria-hidden="true">
-                              {"\u{1F512}"}
-                            </span>{" "}
-                            Locked
-                          </span>
-                        </button>
+                          <span className={styles.unitStatus}>{completed ? "Completed" : "Start"}</span>
+                        </Link>
                       );
-                    }
-
-                    return (
-                      <Link
-                        key={unit.id}
-                        href={href}
-                        className={`${styles.unitNode} ${completed ? styles.done : ""}`}
-                        style={{ left: pos.x, top: pos.y }}
-                      >
-                        <span className={styles.unitType}>{unit.type}</span>
-                        <span className={styles.unitTitle}>{unit.title}</span>
-                        <span className={styles.unitStatus}>
-                          {completed ? "Completed" : "Start"}
-                        </span>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-            </article>
-          );
-        })}
+                    })}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
       </section>
     </div>
   );

@@ -1,8 +1,8 @@
 .case {
   list-style: none;
-  border: 1px solid #dce4f3;
+  border: 1px solid var(--cp-card-border);
   border-radius: 12px;
-  background: #ffffff;
+  background: var(--cp-card-bg);
   overflow: hidden;
 }
 
@@ -11,9 +11,9 @@
   padding: 10px 12px;
   font-size: 14px;
   font-weight: 800;
-  color: #304a74;
-  border-bottom: 1px solid #e8edf7;
-  background: #f6f9ff;
+  color: var(--cp-text-main);
+  border-bottom: 1px solid var(--cp-separator);
+  background: var(--cp-card-soft);
 }
 
 .inputs {
@@ -30,15 +30,15 @@
 }
 
 .name {
-  color: #70809a;
+  color: var(--cp-text-muted);
   font-size: 12px;
 }
 
 .data {
   padding: 8px 10px;
-  background-color: #f6f9ff;
-  border: 1px solid #e2e9f7;
+  background-color: var(--cp-card-soft);
+  border: 1px solid var(--cp-card-border);
   border-radius: 8px;
-  color: #1e3555;
+  color: var(--cp-text-main);
   font-size: 13px;
 }

@@ -9,13 +9,13 @@
   font-size: 34px;
   line-height: 1.05;
   font-weight: 800;
-  color: #1f2532;
+  color: var(--text-primary);
   letter-spacing: 0.2px;
 }
 
 .desc {
   margin: 0;
-  color: #475164;
+  color: var(--text-secondary);
   font-size: 15px;
   font-weight: 600;
 }

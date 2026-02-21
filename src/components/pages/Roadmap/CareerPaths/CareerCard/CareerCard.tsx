@@ -1,16 +1,8 @@
 import Link from "next/link";
 import styles from "./careerCard.module.css";
+import type { CareerPath } from "@/types/roadmap";
 
-type Props = {
-  title: string;
-  desc: string;
-  duration: string;
-  courses: string;
-  salary: string;
-  demand: string;
-  gradient: string;
-  href: string;
-};
+type Props = CareerPath;
 
 export default function CareerCard({
   title,

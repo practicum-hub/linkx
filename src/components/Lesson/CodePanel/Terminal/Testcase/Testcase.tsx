@@ -10,7 +10,7 @@ export default function Testcase() {
       </div>
 
       <p className={styles.text}>
-        Click "Check" to execute your code against these test cases.
+        Click &quot;Check&quot; to execute your code against these test cases.
       </p>
     </div>
   );

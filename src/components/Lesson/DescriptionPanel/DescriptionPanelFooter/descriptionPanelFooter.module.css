@@ -1,7 +1,7 @@
 .footer {
   margin-top: auto;
-  background-color: #f4f4f4;
-  border-top: 1px solid #e1e3e7;
+  background-color: var(--bg-surface-soft);
+  border-top: 1px solid var(--border-default);
   display: flex;
   align-items: center;
   justify-content: space-between;

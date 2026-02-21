@@ -4,5 +4,5 @@
   flex-direction: column;
   height: 34%;
   flex: 0 0 34%;
-  background: #fcfdff;
+  background: var(--cp-terminal-bg);
 }

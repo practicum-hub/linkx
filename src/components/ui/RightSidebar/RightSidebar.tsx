@@ -3,6 +3,7 @@
 import styles from "./rightSidebar.module.css";
 import { getRoadmapSidebarContent } from "@/core/data/roadmapContext";
 import { usePathname, useSearchParams } from "next/navigation";
+import SocialFooter from "@/components/ui/SocialFooter/SocialFooter";
 
 export default function RightSidebar() {
   const pathname = usePathname();
@@ -14,7 +15,6 @@ export default function RightSidebar() {
     highlights,
     statusTitle,
     statusItems,
-    quickActions,
   } = getRoadmapSidebarContent(pathname, searchParams.get("roadmap"));
 
   return (
@@ -57,12 +57,9 @@ export default function RightSidebar() {
         </div>
       </section>
 
-      <section className={`${styles.panel} ${styles.bottomPanel}`}>
-        <div className={styles.quickRow}>
-          <button className={styles.ghostBtn}>{quickActions[0]}</button>
-          <button className={styles.ghostBtn}>{quickActions[1]}</button>
-        </div>
-      </section>
+      <div className={styles.socialWrap}>
+        <SocialFooter />
+      </div>
     </aside>
   );
 }

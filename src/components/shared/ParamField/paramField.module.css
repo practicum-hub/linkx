@@ -3,18 +3,18 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  background-color: #f6f9ff;
-  border: 1px solid #e1e9f7;
+  background-color: var(--cp-card-soft, #f6f9ff);
+  border: 1px solid var(--cp-card-border, #e1e9f7);
   border-radius: 10px;
 }
 
 .name {
-  color: #71819d;
+  color: var(--cp-text-muted, #71819d);
   font-size: 12px;
 }
 
 .value {
   margin: 0;
-  color: #1f3657;
+  color: var(--cp-text-main, #1f3657);
   font-size: 13px;
 }

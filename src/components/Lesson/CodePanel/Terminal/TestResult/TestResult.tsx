@@ -1,30 +1,17 @@
 import styles from "./testResult.module.css";
 import ParamField from "@/components/shared/ParamField/ParamField";
+import { useLessonStore } from "@/store";
 
 export default function TestResult() {
-  // const { results } = useLessonStore();
+  const { results } = useLessonStore();
 
-  const results = {
-    status: "success",
-    message: "Hi",
-    testResults: [
-      {
-        actual: "4",
-        expected: "4",
-        input: "[[-1,0,3,5,9,12],9]",
-        passed: true,
-      },
-      {
-        actual: "-1",
-        expected: "-1",
-        input: "[[-1,0,3,5,9,12],2]",
-        passed: true,
-      },
-    ],
-  };
+  if (results?.status === "error") {
+    return <div className={styles.empty}>{results.message}</div>;
+  }
 
-  if (results?.status === "error")
-    return <div className="text-red-500">{results?.message}</div>;
+  const firstCase = results?.status === "success" ? results.testResults[0] : null;
+  const accepted =
+    results?.status === "success" && results.testResults.length > 0 && results.testResults.every((caseItem) => caseItem.passed);
 
   return (
     <div className={styles.result}>
@@ -33,35 +20,37 @@ export default function TestResult() {
       ) : (
         <div className={styles.body}>
           <div className={styles.info}>
-            <h3 className={styles.title}>Accepted</h3>
+            <h3 className={styles.title}>{accepted ? "Accepted" : "Wrong Answer"}</h3>
             <p className={styles.runtime}>Runtime: 0 ms</p>
           </div>
 
           <ul className={styles.cases}>
-            <li className={`${styles.case} ${styles.active}`}>Case 1</li>
-            <li className={styles.case}>Case 2</li>
+            {results.testResults.map((_, index) => (
+              <li key={index} className={`${styles.case} ${index === 0 ? styles.active : ""}`}>
+                Case {index + 1}
+              </li>
+            ))}
           </ul>
 
           <div className={styles.blocks}>
             <div className={styles.block}>
               <h4 className={styles.title}>Input</h4>
               <div className={styles.fields}>
-                <ParamField name="nums =" value="[2,7,11,15]" />
-                <ParamField name="target =" value="9" />
+                <ParamField value={firstCase?.input ?? "[]"} />
               </div>
             </div>
 
             <div className={styles.block}>
               <h4 className={styles.title}>Output</h4>
               <div className={styles.fields}>
-                <ParamField value="[0,1]" />
+                <ParamField value={firstCase?.actual ?? "-"} />
               </div>
             </div>
 
             <div className={styles.block}>
               <h4 className={styles.title}>Expected</h4>
               <div className={styles.fields}>
-                <ParamField value="[0,1]" />
+                <ParamField value={firstCase?.expected ?? "-"} />
               </div>
             </div>
           </div>
