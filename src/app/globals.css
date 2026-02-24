@@ -146,3 +146,25 @@ h2,
 h3 {
   font-weight: 700;
 }
+
+html {
+  scrollbar-color: #8b8b8b #fcfcfc;
+  scrollbar-width: auto;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fcfcfc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8b8b8b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8b8b8b;
+}
+
