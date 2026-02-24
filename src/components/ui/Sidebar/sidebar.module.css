@@ -1,13 +1,13 @@
 .sidebar {
-  min-width: 250px;
-  width: 250px;
+  min-width: 232px;
+  width: 232px;
   height: calc(100vh - var(--main-header-height));
   position: sticky;
   top: var(--main-header-height);
   align-self: flex-start;
   padding: 14px 12px 12px;
   border-right: 1px solid #18365c;
-  background-color: #081a30;
+  background-color: #000820;
   display: flex;
   flex-direction: column;
 }
@@ -18,15 +18,33 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
   overflow-y: auto;
-  flex: 1;
+}
+
+.section {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(142, 170, 214, 0.26);
+}
+
+.sectionTitle {
+  margin: 0 0 8px;
+  padding: 0 10px;
+  color: #f2f7ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.socialWrap {
+  margin-top: auto;
 }
 
 @media (max-width: 1200px) {
   .sidebar {
-    width: 270px;
-    min-width: 250px;
+    width: 246px;
+    min-width: 232px;
   }
 }
 

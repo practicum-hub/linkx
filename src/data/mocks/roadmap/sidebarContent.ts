@@ -3,10 +3,9 @@ import type { RoadmapSidebarContent } from "@/types/roadmap";
 export const defaultSidebarContent: RoadmapSidebarContent = {
   sidebarItems: [
     { name: "Roadmap", href: "/roadmap", iconSrc: "/icons/layers.png" },
-    { name: "Practice", href: "/practice", iconSrc: "/icons/run.png" },
-    { name: "Leaderboard", href: "/leaderboard", iconSrc: "/icons/streak.png" },
-    { name: "Library", href: "/library", iconSrc: "/icons/question.png" },
-    { name: "Analytics", href: "/analytics", iconSrc: "/icons/arrowhead-up.png" },
+    { name: "Interviews", href: "/interviews", iconSrc: "/icons/run.png" },
+    { name: "Leaderboards", href: "/leaderboard", iconSrc: "/icons/streak.png" },
+    { name: "Profile", href: "/profile", iconSrc: "/icons/question.png" },
   ],
   goalTitle: "Daily Goal",
   goalText: "Complete 3 lessons to keep your streak alive.",
@@ -33,10 +32,10 @@ export const defaultSidebarContent: RoadmapSidebarContent = {
 
 export const algorithmsSidebarContent: RoadmapSidebarContent = {
   sidebarItems: [
-    { name: "Roadmap", href: "/roadmap?roadmap=algorithms-zero-to-hero", iconSrc: "/icons/layers.png" },
-    { name: "Practice", href: "/practice?roadmap=algorithms-zero-to-hero", iconSrc: "/icons/run.png" },
-    { name: "Interviews", href: "/interviews?roadmap=algorithms-zero-to-hero", iconSrc: "/icons/streak.png" },
-    { name: "Analytics", href: "/analytics?roadmap=algorithms-zero-to-hero", iconSrc: "/icons/arrowhead-up.png" },
+    { name: "Roadmap", href: "/roadmap", iconSrc: "/icons/layers.png" },
+    { name: "Practice", href: "/practice", iconSrc: "/icons/run.png" },
+    { name: "Mistakes", href: "/mistakes", iconSrc: "/icons/streak.png" },
+    { name: "Certificate", href: "/certificate", iconSrc: "/icons/arrowhead-up.png" },
   ],
   goalTitle: "Algorithms Goal",
   goalText: "Solve 2 graph tasks and review one complexity note.",

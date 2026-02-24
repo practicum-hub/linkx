@@ -15,26 +15,30 @@ export default function SidebarItem({ item }: Props) {
   const { name, href } = item;
 
   const pathname = usePathname();
-  const hrefPath = href.split("?")[0];
+  const hrefPath = href.split(/[?#]/)[0];
 
   const isActive = pathname === hrefPath || pathname.startsWith(`${hrefPath}/`);
   const lowerName = name.toLowerCase();
 
   const icon = (() => {
-    if (lowerName.includes("roadmap")) {
-      return <FaRoad className={styles.icon} aria-hidden="true" />;
+    if (lowerName.includes("progress")) {
+      return <FaChartLine className={styles.icon} aria-hidden="true" />;
     }
 
-    if (lowerName.includes("practice")) {
-      return <MdOutlinePlayCircleFilled className={styles.icon} aria-hidden="true" />;
+    if (lowerName.includes("roadmap")) {
+      return <FaRoad className={styles.icon} aria-hidden="true" />;
     }
 
     if (lowerName.includes("interview") || lowerName.includes("leaderboard")) {
       return <FaTrophy className={styles.icon} aria-hidden="true" />;
     }
 
-    if (lowerName.includes("library")) {
+    if (lowerName.includes("library") || lowerName.includes("course")) {
       return <FaBook className={styles.icon} aria-hidden="true" />;
+    }
+
+    if (lowerName.includes("practice")) {
+      return <MdOutlinePlayCircleFilled className={styles.icon} aria-hidden="true" />;
     }
 
     if (lowerName.includes("analytics")) {
@@ -46,7 +50,7 @@ export default function SidebarItem({ item }: Props) {
 
   return (
     <li className={styles.item}>
-      <Link className={`${styles.link} ${isActive && styles.active}`} href={href}>
+      <Link className={`${styles.link} ${isActive ? styles.active : ""}`} href={href}>
         <span className={styles.iconWrap}>{icon}</span>
         <span>{name}</span>
       </Link>

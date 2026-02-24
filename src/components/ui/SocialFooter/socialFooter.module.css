@@ -12,16 +12,21 @@
   border: 0;
   border-radius: 0;
   background: transparent;
-  color: var(--text-secondary);
+  color: currentColor;
+  opacity: 0.84;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.14s ease, color 0.14s ease;
+  transition:
+    transform 0.14s ease,
+    color 0.14s ease,
+    opacity 0.14s ease;
 }
 
 .iconLink:hover {
   transform: translateY(-1px);
-  color: var(--text-primary);
+  color: #ffffff;
+  opacity: 1;
 }
 
 .iconLink svg {

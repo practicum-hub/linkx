@@ -17,15 +17,14 @@ export type TopicLayout = {
 };
 
 export const PRACTICE_GRAPH = {
-  NODE_W: 190,
-  NODE_H: 96,
-  H_GAP: 42,
-  V_GAP: 88,
-  PAD: 24,
-  ARROW_GAP: 10,
-  TOPIC_SIDE_PAD: 80,
-  TOPIC_HEADER_H: 120,
-  TOPIC_GAP: 88,
+  NODE_W: 176,
+  NODE_H: 176,
+  H_GAP: 48,
+  V_GAP: 64,
+  PAD: 34,
+  TOPIC_SIDE_PAD: 104,
+  TOPIC_HEADER_H: 138,
+  TOPIC_GAP: 104,
   MIN_SCALE: 0.55,
   MAX_SCALE: 1.9,
   ZOOM_IN_FACTOR: 1.12,
@@ -56,11 +55,10 @@ export function edgePath(from: GraphUnit, to: GraphUnit) {
   const startX = p1.x + PRACTICE_GRAPH.NODE_W / 2;
   const startY = p1.y + PRACTICE_GRAPH.NODE_H;
   const endX = p2.x + PRACTICE_GRAPH.NODE_W / 2;
-  const endY = p2.y - PRACTICE_GRAPH.ARROW_GAP;
-  const c1Y = startY + 34;
-  const c2Y = endY - 38;
+  const endY = p2.y;
+  const midY = startY + (endY - startY) / 2;
 
-  return `M ${startX} ${startY} C ${startX} ${c1Y}, ${endX} ${c2Y}, ${endX} ${endY}`;
+  return `M ${startX} ${startY} L ${startX} ${midY} L ${endX} ${midY} L ${endX} ${endY}`;
 }
 
 export function buildLayouts(topics: GraphTopic[]) {

@@ -6,7 +6,7 @@ import { careerPaths } from "@/data/mocks/roadmap/careerPaths";
 
 export default function CareerPaths() {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id="careers">
       <TextBlock
         title="Career Paths"
         desc="Structured roadmaps for specific job roles with clear outcomes."

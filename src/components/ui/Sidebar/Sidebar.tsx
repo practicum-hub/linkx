@@ -1,22 +1,42 @@
 "use client";
 
+import SocialFooter from "../SocialFooter/SocialFooter";
 import styles from "./sidebar.module.css";
 import SidebarItem from "./SidebarItem/SidebarItem";
-import { getRoadmapSidebarContent } from "@/core/data/roadmapContext";
-import { usePathname, useSearchParams } from "next/navigation";
+import type { SidebarItemType } from "@/types/roadmap";
 
 export default function Sidebar() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const { sidebarItems } = getRoadmapSidebarContent(pathname, searchParams.get("roadmap"));
+  const topItems: SidebarItemType[] = [
+    { name: "My progress", href: "/roadmap", iconSrc: "" },
+    { name: "My library", href: "/library", iconSrc: "" },
+    { name: "Leaderboard", href: "/leaderboard", iconSrc: "" },
+  ];
+
+  const learnItems: SidebarItemType[] = [
+    { name: "Courses", href: "/learn", iconSrc: "" },
+    { name: "Careers", href: "/roadmap#careers", iconSrc: "" },
+  ];
 
   return (
     <aside className={styles.sidebar}>
       <ul className={styles.items}>
-        {sidebarItems.map((item, i) => (
+        {topItems.map((item, i) => (
           <SidebarItem key={i} item={item} />
         ))}
       </ul>
+
+      <div className={styles.section}>
+        <p className={styles.sectionTitle}>LEARN</p>
+        <ul className={styles.items}>
+          {learnItems.map((item, i) => (
+            <SidebarItem key={item.href + i} item={item} />
+          ))}
+        </ul>
+      </div>
+
+      <div className={styles.socialWrap}>
+        <SocialFooter />
+      </div>
     </aside>
   );
 }

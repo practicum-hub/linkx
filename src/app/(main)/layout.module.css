@@ -19,7 +19,7 @@
 }
 
 .contentCluster {
-  width: min(100%, 1616px);
+  width: min(100%, 1510px);
   min-width: 0;
   display: flex;
 }
@@ -37,13 +37,13 @@
 
 @media (max-width: 1680px) {
   .contentCluster {
-    width: min(100%, 1504px);
+    width: min(100%, 1410px);
   }
 }
 
 @media (max-width: 1360px) {
   .contentCluster {
-    width: min(100%, 1280px);
+    width: min(100%, 1190px);
   }
 }
 

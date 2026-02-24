@@ -1,0 +1,413 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  background: #05192d;
+  overflow: hidden;
+  color: #0b2543;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  opacity: 0.95;
+}
+
+.blobTopLeftA {
+  top: -64px;
+  left: -54px;
+  background: #7933ff;
+}
+
+.blobTopLeftB {
+  top: -20px;
+  left: -6px;
+  background: #60e7ff;
+}
+
+.blobTopRightA {
+  top: -30px;
+  right: -40px;
+  background: #60e7ff;
+}
+
+.blobTopRightB {
+  top: -58px;
+  right: 210px;
+  background: #7933ff;
+}
+
+.blobTopCenterA {
+  top: -72px;
+  right: 48%;
+  background: #7933ff;
+}
+
+.blobTopCenterB {
+  top: -72px;
+  right: 44%;
+  background: #60e7ff;
+}
+
+.blobMidLeftA {
+  top: 290px;
+  left: 170px;
+  background: #7933ff;
+}
+
+.blobMidLeftB {
+  top: 375px;
+  left: 170px;
+  background: #60e7ff;
+}
+
+.blobMidLeftC {
+  top: 220px;
+  left: 72px;
+  background: #60e7ff;
+}
+
+.blobMidRightA {
+  top: 420px;
+  right: 150px;
+  background: #7933ff;
+}
+
+.blobMidRightB {
+  top: 420px;
+  right: 74px;
+  background: #60e7ff;
+}
+
+.blobMidRightC {
+  top: 210px;
+  right: -22px;
+  background: #7933ff;
+}
+
+.blobMidRightD {
+  top: 520px;
+  right: -56px;
+  background: #60e7ff;
+}
+
+.blobBottomLeftA {
+  bottom: -66px;
+  left: -70px;
+  background: #60e7ff;
+}
+
+.blobBottomLeftB {
+  bottom: 112px;
+  left: -48px;
+  background: #7933ff;
+}
+
+.blobBottomRightA {
+  bottom: 74px;
+  right: 280px;
+  background: #60e7ff;
+}
+
+.blobBottomRightB {
+  bottom: 20px;
+  right: 280px;
+  background: #7933ff;
+}
+
+.blobBottomCenterA {
+  bottom: -44px;
+  right: 46%;
+  background: #7933ff;
+}
+
+.blobBottomCenterB {
+  bottom: 42px;
+  right: 43%;
+  background: #60e7ff;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.card {
+  width: min(500px, 100%);
+  border-radius: 8px;
+  background: #f6f6f6;
+  border: 1px solid #d8d8d8;
+  padding: 30px 24px 28px;
+  min-height: 520px;
+}
+
+.card h1 {
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #0d2440;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.card label {
+  margin-top: 18px;
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0e2743;
+  margin-bottom: 8px;
+}
+
+.card input {
+  width: 100%;
+  margin-top: 8px;
+  min-height: 50px;
+  border-radius: 6px;
+  border: 1px solid #d5d5d5;
+  background: #ffffff;
+  padding: 0 14px;
+  font-size: 16px;
+  color: #102945;
+}
+
+.passwordWrap {
+  position: relative;
+}
+
+.passwordWrap input {
+  padding-right: 44px;
+}
+
+.eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  opacity: 0.55;
+}
+
+.submitBtn {
+  margin-top: 24px;
+  width: 100%;
+  min-height: 44px;
+  border: 0;
+  border-radius: 6px;
+  background: #02e767;
+  color: #042c1b;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.socialLabel {
+  margin-top: 22px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #102946;
+}
+
+.socialRow {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.socialBtn {
+  min-height: 36px;
+  border-radius: 6px;
+  border: 1px solid #d6d6d6;
+  background: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+}
+
+.socialIcon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.terms {
+  margin-top: 16px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #7a8594;
+}
+
+.terms a {
+  color: #1e74da;
+}
+
+.signinCard {
+  margin-top: 12px;
+  width: min(500px, 100%);
+  border-radius: 6px;
+  border: 1px solid #d8d8d8;
+  background: #f6f6f6;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: #143253;
+}
+
+.signinCard a {
+  margin-left: 8px;
+  color: #0f76db;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .card {
+    width: min(460px, 100%);
+    padding: 26px 18px 22px;
+    min-height: 500px;
+  }
+
+  .card h1 {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+
+  .card label {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+
+  .card input {
+    min-height: 42px;
+    font-size: 15px;
+  }
+
+  .submitBtn {
+    min-height: 42px;
+    font-size: 15px;
+    margin-top: 20px;
+  }
+
+  .socialLabel {
+    font-size: 15px;
+    margin-top: 16px;
+  }
+
+  .socialBtn {
+    min-height: 34px;
+    font-size: 15px;
+  }
+
+  .terms {
+    font-size: 12px;
+  }
+
+  .signinCard {
+    width: min(460px, 100%);
+    min-height: 50px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 720px) {
+  .content {
+    justify-content: flex-start;
+    padding-top: 34px;
+  }
+
+  .blob {
+    width: 110px;
+    height: 110px;
+  }
+
+  .blobMidLeftA,
+  .blobMidLeftB,
+  .blobMidLeftC,
+  .blobMidRightA,
+  .blobMidRightB,
+  .blobMidRightC,
+  .blobMidRightD,
+  .blobBottomRightA,
+  .blobBottomRightB,
+  .blobBottomCenterA,
+  .blobBottomCenterB,
+  .blobTopCenterA,
+  .blobTopCenterB {
+    display: none;
+  }
+
+  .card h1 {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+
+  .card {
+    min-height: 0;
+  }
+
+  .card label {
+    margin-top: 14px;
+    font-size: 13px;
+  }
+
+  .card input {
+    min-height: 40px;
+    font-size: 14px;
+  }
+
+  .eye {
+    width: 18px;
+    height: 18px;
+  }
+
+  .submitBtn {
+    margin-top: 18px;
+    min-height: 40px;
+    font-size: 14px;
+  }
+
+  .socialLabel {
+    font-size: 14px;
+    margin-top: 14px;
+  }
+
+  .socialBtn {
+    min-height: 34px;
+    font-size: 14px;
+  }
+
+  .terms {
+    font-size: 12px;
+  }
+
+  .signinCard {
+    min-height: 48px;
+    font-size: 14px;
+    padding: 0 12px;
+    text-align: center;
+  }
+}

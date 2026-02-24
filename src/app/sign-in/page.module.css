@@ -1,0 +1,348 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  background: #05192d;
+  overflow: hidden;
+  color: #0b2543;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  opacity: 0.98;
+}
+
+.blobTopLeftA {
+  top: -60px;
+  left: -38px;
+  background: #ffec3c;
+}
+
+.blobTopLeftB {
+  top: 10px;
+  left: -60px;
+  background: #ff782d;
+}
+
+.blobTopRightA {
+  top: -50px;
+  right: 230px;
+  background: #ffec3c;
+}
+
+.blobTopRightB {
+  top: -20px;
+  right: -32px;
+  background: #ff782d;
+}
+
+.blobTopCenterA {
+  top: -72px;
+  right: 46%;
+  background: #ff782d;
+}
+
+.blobTopCenterB {
+  top: -72px;
+  right: 42%;
+  background: #ffec3c;
+}
+
+.blobMidLeftA {
+  top: 320px;
+  left: 170px;
+  background: #ff782d;
+}
+
+.blobMidLeftB {
+  top: 405px;
+  left: 170px;
+  background: #ffec3c;
+}
+
+.blobMidRightA {
+  top: 412px;
+  right: 166px;
+  background: #ff782d;
+}
+
+.blobMidRightB {
+  top: 412px;
+  right: 92px;
+  background: #ffec3c;
+}
+
+.blobMidRightC {
+  top: 250px;
+  right: -30px;
+  background: #ffec3c;
+}
+
+.blobBottomLeftA {
+  bottom: -58px;
+  left: -56px;
+  background: #ffec3c;
+}
+
+.blobBottomLeftB {
+  bottom: -28px;
+  left: -110px;
+  background: #ff782d;
+}
+
+.blobBottomLeftC {
+  bottom: 170px;
+  left: -60px;
+  background: #ffec3c;
+}
+
+.blobBottomRightA {
+  bottom: 72px;
+  right: 282px;
+  background: #ffec3c;
+}
+
+.blobBottomRightB {
+  bottom: 12px;
+  right: 282px;
+  background: #ff782d;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.card {
+  width: min(500px, 100%);
+  border-radius: 8px;
+  background: #f6f6f6;
+  border: 1px solid #d8d8d8;
+  padding: 30px 24px 22px;
+  min-height: 404px;
+}
+
+.card h1 {
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #0d2440;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card label {
+  margin-top: 14px;
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0e2743;
+  margin-bottom: 8px;
+}
+
+.card input[type="email"] {
+  width: 100%;
+  margin-top: 6px;
+  min-height: 50px;
+  border-radius: 6px;
+  border: 1px solid rgb(208, 208, 208);
+  background: #ffffff;
+  padding: 0 14px;
+  font-size: 16px;
+  color: #102945;
+}
+
+.card input[type="email"]:focus {
+  border: 1px solid #2b95d8;
+}
+
+.submitBtn {
+  margin-top: 22px;
+  width: 100%;
+  min-height: 44px;
+  border: 0;
+  border-radius: 6px;
+  background: #02e767;
+  color: #042c1b;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.optionsRow {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.checkboxWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #1a3555;
+  font-size: 14px;
+}
+
+.checkboxWrap input {
+  width: 14px;
+  height: 14px;
+}
+
+.helpLink {
+  color: #1d86d8;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.socialLabel {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #102946;
+}
+
+.socialRow {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.socialBtn {
+  min-height: 36px;
+  border-radius: 6px;
+  border: 1px solid #d6d6d6;
+  background: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialIcon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.terms {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #7a8594;
+}
+
+.terms a {
+  color: #1e74da;
+}
+
+.signupCard {
+  margin-top: 12px;
+  width: min(500px, 100%);
+  border-radius: 6px;
+  border: 1px solid #d8d8d8;
+  background: #f6f6f6;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: #143253;
+}
+
+.signupCard a {
+  margin: 0 4px;
+  color: #0f76db;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .card {
+    width: min(460px, 100%);
+    padding: 24px 18px 18px;
+  }
+
+  .card h1 {
+    font-size: 32px;
+  }
+
+  .signupCard {
+    width: min(460px, 100%);
+  }
+}
+
+@media (max-width: 720px) {
+  .content {
+    justify-content: flex-start;
+    padding-top: 34px;
+  }
+
+  .blob {
+    width: 110px;
+    height: 110px;
+  }
+
+  .blobMidLeftA,
+  .blobMidLeftB,
+  .blobMidRightA,
+  .blobMidRightB,
+  .blobMidRightC,
+  .blobBottomRightA,
+  .blobBottomRightB,
+  .blobTopCenterA,
+  .blobTopCenterB,
+  .blobBottomLeftC {
+    display: none;
+  }
+
+  .card h1 {
+    font-size: 24px;
+  }
+
+  .card label,
+  .socialLabel {
+    font-size: 14px;
+  }
+
+  .card input[type="email"] {
+    min-height: 40px;
+    font-size: 14px;
+  }
+
+  .submitBtn {
+    min-height: 40px;
+    font-size: 14px;
+  }
+
+  .socialBtn {
+    min-height: 34px;
+  }
+
+  .terms {
+    font-size: 12px;
+  }
+
+  .signupCard {
+    min-height: 48px;
+    font-size: 14px;
+    padding: 0 10px;
+    text-align: center;
+  }
+}

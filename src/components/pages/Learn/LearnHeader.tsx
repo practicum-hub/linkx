@@ -10,7 +10,7 @@ type Props = {
 export default function LearnHeader({ progress, safeStep, total }: Props) {
   return (
     <header className={styles.learnHeader}>
-      <Link href="/practice?roadmap=algorithms-zero-to-hero" className={styles.exitBtn}>
+      <Link href="/practice" className={styles.exitBtn}>
         Exit
       </Link>
 

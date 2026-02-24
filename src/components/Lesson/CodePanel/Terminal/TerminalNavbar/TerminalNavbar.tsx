@@ -1,34 +1,24 @@
-"use client";
-
 import Image from "next/image";
 import styles from "./terminalNavbar.module.css";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+type Props = {
+  activeTab: "testcase" | "result";
+  onTabChange: (tab: "testcase" | "result") => void;
+};
 
-export default function TerminalNavbar() {
-  const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams);
-  const pathname = usePathname();
-  const { replace } = useRouter();
-
-  const activeTab = searchParams.get("tab") || "testcase";
-
-  const handleClick = (tab: string) => {
-    params.set("tab", tab);
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
-  };
+export default function TerminalNavbar({ activeTab, onTabChange }: Props) {
 
   return (
     <nav className={styles.nav}>
       <ul className={styles.tabs}>
         <li
           className={`${styles.tab} ${activeTab === "testcase" ? styles.selected : ""}`}
-          onClick={() => handleClick("testcase")}
+          onClick={() => onTabChange("testcase")}
         >
           Testcase
         </li>
         <li
           className={`${styles.tab} ${activeTab === "result" ? styles.selected : ""}`}
-          onClick={() => handleClick("result")}
+          onClick={() => onTabChange("result")}
         >
           Test Result
         </li>

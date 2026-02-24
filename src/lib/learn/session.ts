@@ -18,14 +18,13 @@ export type LearnSession = {
 };
 
 export function getLearnSession(params: {
-  topicFromQuery: string;
-  unitFromQuery: string;
-  stepFromQuery: string;
-  modeFromQuery: string | null;
+  topicId: string;
+  unitId: string;
+  step: string;
 }): LearnSession {
-  const currentStep = Number(params.stepFromQuery ?? "1");
-  const selectedTopic = getTopicById(params.topicFromQuery) ?? algorithmsRoadmap[0];
-  const selectedUnit = getUnitById(selectedTopic.id, params.unitFromQuery) ?? selectedTopic.units[0];
+  const currentStep = Number(params.step ?? "1");
+  const selectedTopic = getTopicById(params.topicId) ?? algorithmsRoadmap[0];
+  const selectedUnit = getUnitById(selectedTopic.id, params.unitId) ?? selectedTopic.units[0];
 
   const exercises = selectedUnit?.exercises ?? [fallbackExercise];
   const total = Math.max(2, exercises.length * 2);
@@ -33,17 +32,13 @@ export function getLearnSession(params: {
   const exerciseIndex = Math.floor((safeStep - 1) / 2);
   const lesson = exercises[exerciseIndex] ?? fallbackExercise;
 
-  const computedMode: LessonMode = safeStep % 2 === 0 ? "practice" : "theory";
-  const mode: LessonMode =
-    params.modeFromQuery === "theory" || params.modeFromQuery === "practice" ? params.modeFromQuery : computedMode;
+  const mode: LessonMode = safeStep % 2 === 0 ? "practice" : "theory";
 
   const progress = Math.min(100, Math.round((safeStep / total) * 100));
   const nextStep = Math.min(total, safeStep + 1);
   const prevStep = Math.max(1, safeStep - 1);
-  const nextMode: LessonMode = nextStep % 2 === 0 ? "practice" : "theory";
-  const prevMode: LessonMode = prevStep % 2 === 0 ? "practice" : "theory";
-  const nextHref = `/learn?topic=${selectedTopic.id}&unit=${selectedUnit.id}&step=${nextStep}&total=${total}&mode=${nextMode}`;
-  const prevHref = `/learn?topic=${selectedTopic.id}&unit=${selectedUnit.id}&step=${prevStep}&total=${total}&mode=${prevMode}`;
+  const nextHref = `/learn/${selectedTopic.id}/${selectedUnit.id}/${nextStep}`;
+  const prevHref = `/learn/${selectedTopic.id}/${selectedUnit.id}/${prevStep}`;
 
   return {
     mode,

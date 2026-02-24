@@ -43,7 +43,7 @@ export default function MainHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <Link href="/" className={styles.logo}>
+        <Link href="/roadmap" className={styles.logo}>
           <span>EqualLearning</span>
         </Link>
 
@@ -64,8 +64,8 @@ export default function MainHeader() {
         </nav>
 
         <div className={styles.search}>
-          <input className={styles.input} placeholder="Search courses, skills, or topics..." />
           <Image src="/icons/search.png" alt="Search" width={18} height={18} className={styles.searchIcon} />
+          <input className={styles.input} placeholder="Search courses, skills, or topics..." />
         </div>
       </div>
 

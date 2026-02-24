@@ -11,7 +11,7 @@ export const roadmapCourses: RoadmapCourse[] = [
     totalUnits: 68,
     xp: 820,
     imageSrc: "/images/algorithms.png",
-    href: "/practice?roadmap=algorithms-zero-to-hero",
+    href: "/practice",
   },
   {
     title: "JavaScript Fundamentals",

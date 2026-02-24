@@ -1,171 +1,118 @@
 .sidebar {
   margin-right: auto;
-  min-width: 280px;
-  width: 296px;
+  min-width: 262px;
+  width: 274px;
   height: calc(100vh - var(--main-header-height));
   position: sticky;
   top: var(--main-header-height);
   align-self: flex-start;
   overflow-y: auto;
   padding: 16px 14px 14px;
-  border-left: 1px solid
-    color-mix(in srgb, var(--border-default) 78%, transparent);
-  background: color-mix(in srgb, var(--bg-surface-soft) 86%, var(--bg-page));
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.welcomeCard,
-.metricCard,
-.featureCard {
+.adCard {
   border: 1px solid color-mix(in srgb, var(--border-default) 74%, transparent);
   border-radius: 12px;
   background: color-mix(in srgb, var(--bg-surface) 92%, white);
+  padding: 12px;
 }
 
-.welcomeCard {
-  padding: 13px;
+.adPrimary {
+  background: linear-gradient(165deg, #f4f8ff 0%, #eaf0ff 100%);
+  border-color: color-mix(in srgb, #5b88e8 45%, var(--border-default));
 }
 
-.welcomeTop {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  color: color-mix(in srgb, var(--text-primary) 85%, #1f4f8a);
-  border: 1px solid color-mix(in srgb, var(--border-default) 68%, transparent);
-  background: color-mix(in srgb, var(--bg-page) 85%, white);
-  flex-shrink: 0;
-}
-
-.avatarIcon {
-  width: 20px;
-  height: 20px;
-}
-
-.hello {
+.adTag {
   margin: 0;
-  font-size: 15px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.adTitle {
+  margin: 8px 0 0;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.adText {
+  margin: 7px 0 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--text-secondary);
+}
+
+.adTitleSmall {
+  margin: 8px 0 0;
+  font-size: 16px;
   line-height: 1.2;
   font-weight: 700;
   color: var(--text-primary);
 }
 
-.subtle {
-  margin: 3px 0 0;
-  font-size: 11px;
+.adTextSmall {
+  margin: 6px 0 0;
+  font-size: 12px;
   color: var(--text-secondary);
 }
 
-.progressHeader {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 7px;
-}
-
-.progressLabel {
-  margin: 0;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-secondary);
-}
-
-.progressValue {
-  margin: 0;
+.adButton,
+.adButtonSecondary,
+.adButtonSmall {
+  border: 1px solid transparent;
+  border-radius: 10px;
   font-size: 12px;
   font-weight: 700;
+  cursor: pointer;
+}
+
+.adButton {
+  margin-top: 11px;
+  padding: 9px 12px;
+  color: #fff;
+  background: #111;
+}
+
+.adButtonSecondary {
+  margin-top: 11px;
+  padding: 9px 12px;
   color: var(--text-primary);
+  border-color: var(--border-default);
+  background: var(--bg-surface-soft);
 }
 
-.progressTrack {
-  width: 100%;
-  height: 6px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--border-default) 55%, transparent);
-  overflow: hidden;
+.adInline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
-.progressFill {
-  display: block;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #2f7cf0 0%, #39b4ff 100%);
-}
-
-.metricsGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.metricCard {
-  padding: 10px 11px;
-}
-
-.metricLabel {
-  margin: 0;
-  font-size: 10px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.metricValue {
-  margin: 7px 0 0;
-  font-size: 20px;
-  line-height: 1;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.featureCard {
-  padding: 11px 12px;
-}
-
-.featureTitle {
-  margin: 0;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-}
-
-.featureValue {
-  margin: 7px 0 0;
-  font-size: 13px;
-  line-height: 1.35;
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-.socialWrap {
-  margin-top: auto;
-  padding-top: 4px;
+.adButtonSmall {
+  padding: 8px 11px;
+  color: #fff;
+  background: #111;
+  align-self: flex-end;
 }
 
 @media (max-width: 1800px) {
   .sidebar {
-    min-width: 268px;
-    width: 284px;
+    min-width: 252px;
+    width: 266px;
   }
 }
 
 @media (max-width: 1560px) {
   .sidebar {
-    min-width: 250px;
-    width: 266px;
+    min-width: 238px;
+    width: 252px;
   }
 }
 
