@@ -13,7 +13,7 @@ export default function Sidebar() {
   ];
 
   const learnItems: SidebarItemType[] = [
-    { name: "Courses", href: "/learn", iconSrc: "" },
+    { name: "Courses", href: "/courses", iconSrc: "" },
     { name: "Careers", href: "/roadmap#careers", iconSrc: "" },
   ];
 
