@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import type { SidebarItemType } from "@/types/roadmap";
 import styles from "./sidebarItem.module.css";
 import Link from "next/link";
-import { FaBook, FaChartLine, FaRoad, FaTrophy } from "react-icons/fa6";
+import { FaBook, FaRoad, FaRocket, FaTrophy } from "react-icons/fa6";
 import { MdOutlinePlayCircleFilled } from "react-icons/md";
 
 type Props = {
@@ -22,7 +22,7 @@ export default function SidebarItem({ item }: Props) {
 
   const icon = (() => {
     if (lowerName.includes("progress")) {
-      return <FaChartLine className={styles.icon} aria-hidden="true" />;
+      return <FaRocket className={styles.icon} aria-hidden="true" />;
     }
 
     if (lowerName.includes("roadmap")) {
@@ -42,7 +42,7 @@ export default function SidebarItem({ item }: Props) {
     }
 
     if (lowerName.includes("analytics")) {
-      return <FaChartLine className={styles.icon} aria-hidden="true" />;
+      return <FaRocket className={styles.icon} aria-hidden="true" />;
     }
 
     return <FaRoad className={styles.icon} aria-hidden="true" />;

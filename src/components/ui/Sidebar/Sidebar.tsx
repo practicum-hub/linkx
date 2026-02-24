@@ -7,7 +7,8 @@ import type { SidebarItemType } from "@/types/roadmap";
 
 export default function Sidebar() {
   const topItems: SidebarItemType[] = [
-    { name: "My progress", href: "/roadmap", iconSrc: "" },
+    { name: "Explore", href: "/roadmap", iconSrc: "" },
+    { name: "My progress", href: "/progress", iconSrc: "" },
     { name: "My library", href: "/library", iconSrc: "" },
     { name: "Leaderboard", href: "/leaderboard", iconSrc: "" },
   ];
