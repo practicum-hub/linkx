@@ -24,20 +24,22 @@ export default function LearnFooterNav({ mode, safeStep, total, isChecked, prevH
         Previous
       </Link>
 
-      {mode === "practice" ? (
-        <button className={styles.checkBtn} onClick={onCheck}>
-          Check
-        </button>
-      ) : null}
+      <div className={styles.footerRightActions}>
+        {mode === "practice" ? (
+          <button className={styles.checkBtn} onClick={onCheck}>
+            Check
+          </button>
+        ) : null}
 
-      <Link
-        href={nextHref}
-        className={`${styles.navBtnPrimary} ${mode === "practice" && !isChecked ? styles.navBtnDisabled : ""}`}
-        aria-disabled={mode === "practice" && !isChecked}
-        tabIndex={mode === "practice" && !isChecked ? -1 : undefined}
-      >
-        {safeStep === total ? "Finish" : "Continue"}
-      </Link>
+        <Link
+          href={nextHref}
+          className={`${styles.navBtnPrimary} ${mode === "practice" && !isChecked ? styles.navBtnDisabled : ""}`}
+          aria-disabled={mode === "practice" && !isChecked}
+          tabIndex={mode === "practice" && !isChecked ? -1 : undefined}
+        >
+          {safeStep === total ? "Finish" : "Continue"}
+        </Link>
+      </div>
     </div>
   );
 }

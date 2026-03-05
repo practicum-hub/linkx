@@ -1,4 +1,4 @@
-import type { AlgorithmsTopic } from "@/types/algorithms";
+﻿import type { AlgorithmsTopic } from "@/types/algorithms";
 export type {
   AlgorithmsTopic,
   AlgorithmsUnit,
@@ -7,367 +7,454 @@ export type {
   UnitExercise,
   UnitType,
 } from "@/types/algorithms";
-
 export const algorithmsRoadmap: AlgorithmsTopic[] = [
   {
     id: "foundations",
     title: "Algorithm Foundations",
-    desc: "Complexity intuition, tracing, and systematic problem solving.",
+    desc: "Core algorithm thinking: what algorithms are, how complexity works, and how to reason about loops.",
     completed: ["f-u1"],
     units: [
       {
         id: "f-u1",
-        title: "Complexity Basics",
+        title: "Introduction to Algorithms",
         type: "Lesson",
         level: 0,
         lane: 1,
         requires: [],
-        exercises: [
+        lessons: [
           {
-            id: "f-u1-e1",
-            title: "Read Time Complexity",
+            id: "f-u1-e1-t",
+            type: "theory",
+            title: "What Is an Algorithm?",
             theory: {
               intro:
-                "Start by recognizing how often each operation executes. Focus on loops and nested loops first.",
+                "In fancy words, an algorithm is a finite, well-defined sequence of steps that transforms input into output. Or just simply a mechanism which recieves input, does some steps with it, and then returns output.",
               sections: [
                 {
-                  title: "Single Loop",
-                  text: "If a loop runs from 0 to n-1 once, it is O(n).",
+                  title: "Every algorithm has:",
+                  text: `
+Input вЂ” data it receives
+\n
+Process вЂ” steps it performs
+\n
+Output вЂ” result it produces`,
                 },
-                {
-                  title: "Nested Loop",
-                  text: "Two dependent loops often form O(n^2).",
-                },
               ],
-              tips: [
-                "Ignore constants in Big O.",
-                "Track the fastest-growing term.",
-                "Write complexity next to each loop.",
-              ],
-              visualization: {
-                title: "Complexity Workflow",
-                nodes: ["Scan Code", "Count Repeats", "Pick Dominant Term", "Simplify"],
-              },
-            },
-            practice: {
-              taskTitle: "Loop Complexity Drill",
-              task: "Determine the complexity class for each code snippet.",
-              input: "Code snippet A/B/C",
-              output: "O(1), O(log n), O(n), O(n^2), ...",
-              requirements: [
-                "Explain the dominant operation.",
-                "Ignore language-specific optimizations.",
-                "Return one final Big O per snippet.",
-              ],
-              cases: [
-                { input: "for i in 0..n", output: "O(n)" },
-                { input: "for i in 0..n; for j in 0..n", output: "O(n^2)" },
-              ],
+              tips: [],
             },
           },
           {
-            id: "f-u1-e2",
-            title: "Space Complexity Intuition",
-            theory: {
-              intro:
-                "Space complexity measures additional memory, not counting the input itself unless specified.",
-              sections: [
-                {
-                  title: "In-place Updates",
-                  text: "Reusing the same array usually keeps extra space at O(1).",
-                },
-                {
-                  title: "Auxiliary Structures",
-                  text: "Hash maps, stacks, and arrays add memory overhead proportional to size.",
-                },
-              ],
-              tips: [
-                "Track only extra memory.",
-                "Check recursion stack depth.",
-                "Mention both time and space in final answer.",
-              ],
-            },
+            id: "f-u1-e1-p",
+            type: "practice",
+            title: "What Is an Algorithm?",
             practice: {
-              taskTitle: "Choose Better Memory Strategy",
-              task: "Pick the implementation with lower extra memory usage.",
-              input: "Two algorithm variants",
-              output: "Variant name + expected space complexity",
-              requirements: [
-                "Prefer lower asymptotic memory.",
-                "Keep correctness unchanged.",
-                "Provide one-line rationale.",
-              ],
+              taskTitle: "",
+              task: "While it seems that it is logical anyway, it is still one of the most important steps when implementing algorithms: understanding which data you can recieve, and what data you should return: Here is a small practice: given a function which recieves two numbers, summarizes them and returns result:",
+              input: "a: number, b: number",
+              output: "sum",
+              starterCode:
+                "function sumTwoNumbers(a: number, b: number): number {\n  return a + b;\n}\n",
+              requirements: ["The result should be correct :)"],
               cases: [
-                { input: "Variant A: copy array, Variant B: two pointers", output: "Variant B, O(1)" },
-                { input: "Variant A: recursive DFS, Variant B: iterative stack", output: "Depends on depth, both O(h)" },
+                { input: "a = 2, b = 2", output: "4" },
+                { input: "a = -47, b = 1018", output: "971" },
               ],
+              terminal: {
+                cases: [
+                  {
+                    title: "Case 1",
+                    fields: [
+                      { name: "a", value: "2" },
+                      { name: "b", value: "2" },
+                    ],
+                  },
+                  {
+                    title: "Case 2",
+                    fields: [
+                      { name: "a", value: "-47" },
+                      { name: "b", value: "1018" },
+                    ],
+                  },
+                ],
+                note: 'Click "Check" to execute your code against these test cases.',
+              },
+            },
+          },
+          {
+            id: "2-t",
+            type: "theory",
+            title: "Properties of a Good Algorithm",
+            theory: {
+              intro: `An algorithm must be: ${`1. Finite
+
+It must terminate.
+
+2. Deterministic
+
+Same input в†’ same output.
+
+3. Unambiguous
+
+Each step must be clearly defined.
+
+4. General
+
+It should work for all valid inputs, not just one example.`}`,
+              sections: [],
+              tips: [],
             },
           },
         ],
       },
       {
         id: "f-u2",
-        title: "Dry Runs & Tracing",
-        type: "Practice",
+        title: "Time Complexity",
+        type: "Lesson",
         level: 1,
         lane: 0,
         requires: ["f-u1"],
-        exercises: [
+        lessons: [
           {
-            id: "f-u2-e1",
-            title: "Pointer Trace",
+            id: "f-u2-e1-t",
+            type: "theory",
+            title: "What Is Time Complexity?",
             theory: {
-              intro:
-                "Tracing step-by-step prevents logic bugs and exposes invariant violations early.",
-              sections: [
-                {
-                  title: "State Table",
-                  text: "Track variable values after each iteration in a compact table.",
-                },
-                {
-                  title: "Invariant Check",
-                  text: "Verify what must remain true after every operation.",
-                },
-              ],
-              tips: [
-                "Trace with a short sample.",
-                "Include edge values and boundaries.",
-                "Stop when invariant breaks.",
-              ],
-            },
-            practice: {
-              taskTitle: "Two Pointers Trace",
-              task: "Trace pointers to find if a sorted array contains a target sum.",
-              input: "nums: number[] (sorted), target: number",
-              output: "boolean",
-              requirements: [
-                "Move left/right pointers correctly.",
-                "Use O(1) extra memory.",
-                "Stop early when pair is found.",
-              ],
-              cases: [
-                { input: "nums=[1,2,4,8], target=10", output: "true" },
-                { input: "nums=[1,2,4,8], target=7", output: "false" },
-              ],
+              intro: `Time complexity measures:
+
+How the runtime grows as the input size increases.
+
+Important:
+We donвЂ™t measure seconds.
+We measure how performance scales.`,
+              sections: [],
+              tips: [],
             },
           },
           {
-            id: "f-u2-e2",
-            title: "Debug Through Invariants",
-            theory: {
-              intro:
-                "Most bugs come from invalid assumptions. Invariants make assumptions explicit and testable.",
-              sections: [
-                {
-                  title: "Define Invariant",
-                  text: "Example: left pointer always points to smallest unchecked value.",
-                },
-                {
-                  title: "Assert During Trace",
-                  text: "Check the invariant on each update to localize failure quickly.",
-                },
-              ],
-              tips: [
-                "Write invariant as one sentence.",
-                "Keep it true at init, loop, and exit.",
-                "Use failing test to challenge the invariant.",
-              ],
-            },
+            id: "f-u2-e1-p",
+            type: "practice",
+            title: "Count Operations and Memory",
             practice: {
-              taskTitle: "Fix Broken Binary Search",
-              task: "Correct boundary updates in a buggy binary search implementation.",
-              input: "sorted nums, target",
-              output: "target index or -1",
+              taskTitle: "Complexity Classification",
+              task: "Classify time and extra space complexity for each snippet.",
+              input: "3 short code snippets",
+              output: "pair for each snippet: time + space",
               requirements: [
-                "Maintain low <= high invariant.",
-                "Use mid without overflow issues.",
-                "Return exact index when found.",
+                "Identify dominant operation.",
+                "Ignore constants and lower-order terms.",
+                "Return one final class per snippet.",
               ],
               cases: [
-                { input: "nums=[1,3,5,7], target=5", output: "2" },
-                { input: "nums=[1,3,5,7], target=2", output: "-1" },
+                {
+                  input: "single for-loop over n",
+                  output: "time O(n), space O(1)",
+                },
+                {
+                  input: "nested loops n*n + array of n",
+                  output: "time O(n^2), space O(n)",
+                },
               ],
+            },
+          },
+        ],
+      },
+
+      {
+        id: "f-u4",
+        title: "Space complexity",
+        type: "Practice",
+        level: 2,
+        lane: 0,
+        requires: ["f-u1"],
+        lessons: [
+          {
+            id: "f-u4-e1-t",
+            type: "theory",
+            title: "What Is Space Complexity?",
+            theory: {
+              intro: `Space complexity measures:
+
+How much additional memory an algorithm uses.
+
+Memory can come from:
+
+Arrays
+
+Data structures
+
+Recursion stack
+
+Variables`,
+              sections: [],
+              tips: [],
             },
           },
         ],
       },
       {
         id: "f-u3",
-        title: "Problem Decomposition",
-        type: "Checkpoint",
+        title: "Big O Notation",
+        type: "Practice",
         level: 1,
         lane: 2,
         requires: ["f-u1"],
-        exercises: [
+        lessons: [
           {
-            id: "f-u3-e1",
-            title: "From Statement to Steps",
+            id: "f-u3-e1-t",
+            type: "theory",
+            title: "What Is Big O?",
             theory: {
               intro:
-                "Convert problem text into deterministic steps: parse input, transform state, produce output.",
+                "Big O notation describes how runtime or memory grows when input size n increases. It helps compare algorithms by growth trend, not raw milliseconds.",
               sections: [
                 {
-                  title: "Define Subproblems",
-                  text: "Split logic into reusable parts that can be validated independently.",
+                  title: "What Big O captures",
+                  text: "Big O models asymptotic growth: how fast cost grows for large n. It is most useful when inputs become big enough that scaling dominates constant-time differences.",
                 },
                 {
-                  title: "Choose Data Model",
-                  text: "Pick structures that naturally represent each subproblem.",
+                  title: "What we usually ignore",
+                  text: "Drop constant factors and lower-order terms. Example: O(3n + 20) simplifies to O(n), and O(n^2 + n) simplifies to O(n^2).",
+                },
+                {
+                  title: "Why worst-case is common",
+                  text: "Worst-case gives a safe upper bound. It answers: how bad can this get when input distribution is unknown?",
+                },
+                {
+                  title: "How to read common classes",
+                  text: "O(1): constant lookup, O(log n): halving search space, O(n): single pass, O(n log n): efficient sorting, O(n^2): nested scans, O(2^n)/O(n!): combinatorial explosion.",
                 },
               ],
               tips: [
-                "Map each requirement to one step.",
-                "Separate parsing from core logic.",
-                "Validate each subproblem with one test.",
+                "First identify the dominant operation inside loops/recursion.",
+                "For nested loops, multiply dimensions; for sequential blocks, add then keep dominant term.",
+                "A loop that halves the problem size each iteration is typically O(log n).",
+                "Two separate loops over n are O(n), not O(n^2).",
+                "State both time and extra space when comparing solutions.",
               ],
+              visualization: {
+                title: "Growth Order (Best -> Worst Scaling)",
+                nodes: [
+                  "O(1)",
+                  "O(log n)",
+                  "O(n)",
+                  "O(n log n)",
+                  "O(n^2)",
+                  "O(2^n)",
+                  "O(n!)",
+                ],
+              },
             },
+          },
+          {
+            id: "f-u3-e1-p",
+            type: "practice",
+            title: "Simplify Growth Functions",
             practice: {
-              taskTitle: "Subarray Maximum Sum Plan",
-              task: "Describe and implement a step-by-step solution for maximum subarray sum.",
-              input: "nums: number[]",
-              output: "number",
+              taskTitle: "Big O Ranking",
+              task: "Sort candidate solutions from most scalable to least scalable.",
+              input: "list of complexity expressions",
+              output: "ordered list",
               requirements: [
-                "Use linear scan strategy.",
-                "Track best-so-far and current window.",
-                "Handle all-negative arrays.",
+                "Simplify each expression first.",
+                "Resolve ties correctly.",
+                "Explain one ordering decision in plain language.",
               ],
               cases: [
-                { input: "nums=[-2,1,-3,4,-1,2,1,-5,4]", output: "6" },
-                { input: "nums=[-3,-2,-7]", output: "-2" },
+                {
+                  input: "O(n), O(log n), O(n^2)",
+                  output: "O(log n), O(n), O(n^2)",
+                },
+                {
+                  input: "O(5n+1), O(n log n), O(n)",
+                  output: "O(n), O(n), O(n log n)",
+                },
+                {
+                  input: "O(n^2 + n), O(1000), O(sqrt(n))",
+                  output: "O(1), O(sqrt(n)), O(n^2)",
+                },
+                {
+                  input: "O(2^n), O(n^3), O(n log n)",
+                  output: "O(n log n), O(n^3), O(2^n)",
+                },
               ],
             },
           },
           {
-            id: "f-u3-e2",
-            title: "Trade-off Notes",
+            id: "f-u3-e2-t",
+            type: "theory",
+            title: "How To Derive Big O From Code",
             theory: {
               intro:
-                "For interview settings, explaining trade-offs clearly is as important as writing the final code.",
+                "You can derive Big O mechanically by counting how often the dominant operation executes.",
               sections: [
                 {
-                  title: "Time vs Space",
-                  text: "Sometimes O(n) memory buys significant speed improvements.",
+                  title: "Single loop",
+                  text: "If a loop runs from 0 to n-1 and body work is constant, complexity is O(n).",
                 },
                 {
-                  title: "Readability vs Micro-Optimization",
-                  text: "Prefer maintainable code unless constraints force low-level tweaks.",
+                  title: "Nested loops",
+                  text: "If inner loop also runs n times for each outer iteration, total work is n*n = O(n^2).",
+                },
+                {
+                  title: "Shrinking or doubling",
+                  text: "When index changes multiplicatively (i *= 2 or n /= 2), number of steps is O(log n).",
+                },
+                {
+                  title: "Recursion rule of thumb",
+                  text: "For recursion, estimate number of calls multiplied by work per call. Merge sort: O(log n) levels * O(n) merge work per level = O(n log n).",
                 },
               ],
               tips: [
-                "State baseline then optimized approach.",
-                "Quantify gain with complexity.",
-                "Mention at least one drawback.",
-              ],
-            },
-            practice: {
-              taskTitle: "Pick Best Approach",
-              task: "Select between brute force and optimized solution for pair sum queries.",
-              input: "nums array + many query targets",
-              output: "Approach recommendation",
-              requirements: [
-                "Consider repeated queries.",
-                "Compare preprocessing cost.",
-                "Report final complexity pair.",
-              ],
-              cases: [
-                { input: "n=1e5, q=1e5", output: "Preprocess hash/set strategy" },
-                { input: "n=50, q=2", output: "Simple scan acceptable" },
+                "Count iterations, not syntax lines.",
+                "Average, best, and worst case can differ; specify which one you report.",
+                "When unsure, test n=10, 100, 1000 and compare growth of operation count.",
               ],
             },
           },
-        ],
-      },
-      {
-        id: "f-u4",
-        title: "Constraint Strategy",
-        type: "Lesson",
-        level: 2,
-        lane: 1,
-        requires: ["f-u2", "f-u3"],
-        exercises: [
           {
-            id: "f-u4-e1",
-            title: "Match Constraints to Pattern",
-            theory: {
-              intro:
-                "Use constraints to choose approach first: brute force, hashing, two pointers, or prefix methods.",
-              sections: [
-                {
-                  title: "Input Size Signal",
-                  text: "Large n often demands O(n) or O(n log n), while small n can tolerate slower methods.",
-                },
-                {
-                  title: "Operation Pattern",
-                  text: "Repeated range queries suggest preprocessing; one-pass tasks suggest window/pointer patterns.",
-                },
-              ],
-              tips: [
-                "Read constraints before coding.",
-                "Write one candidate complexity pair.",
-                "Reject approaches that violate limits.",
-              ],
-            },
+            id: "f-u3-e2-p",
+            type: "practice",
+            title: "Classify Snippets by Complexity",
             practice: {
-              taskTitle: "Constraint-to-Plan Drill",
-              task: "Given problem constraints, choose the most suitable algorithmic strategy.",
-              input: "problem summary + bounds",
-              output: "strategy name",
+              taskTitle: "Complexity Detective",
+              task: "For each code snippet, return its time complexity and one short reason.",
+              input: "4 snippets with loops or recursion",
+              output: "4 complexity labels + 4 one-line explanations",
               requirements: [
-                "Reference time complexity in decision.",
-                "Mention one trade-off.",
-                "Avoid over-engineering for small bounds.",
+                "Ignore constants and lower-order terms.",
+                "Use tightest common class (for example O(n log n), not O(n^2) if not required).",
+                "Mention the dominant operation in each explanation.",
               ],
               cases: [
-                { input: "n=2e5, many updates", output: "Fenwick/segment-style preprocessing" },
-                { input: "n<=200, single query", output: "Simple iterative scan" },
+                {
+                  input: "for i in 0..n-1: print(i)",
+                  output: "O(n) - one pass with constant work per iteration",
+                },
+                {
+                  input: "for i in 0..n-1: for j in 0..n-1: sum += 1",
+                  output: "O(n^2) - inner loop runs n times for each outer iteration",
+                },
+                {
+                  input: "while n > 1: n = n / 2",
+                  output: "O(log n) - problem size halves each step",
+                },
+                {
+                  input: "binary search on sorted array",
+                  output: "O(log n) - search interval is halved each comparison",
+                },
               ],
+            },
+          },
+          {
+            id: "f-u3-e3-p",
+            type: "practice",
+            title: "Refactor to Better Complexity",
+            practice: {
+              taskTitle: "From O(n^2) to O(n)",
+              task: "Implement `hasPairWithSum` that returns true if any two numbers sum to target. Start from a brute-force idea, then optimize using a Set.",
+              input: "nums: number[], target: number",
+              output: "boolean",
+              starterCode:
+                "export function hasPairWithSum(nums: number[], target: number): boolean {\n  // TODO: target complexity O(n) time, O(n) space\n  return false;\n}\n",
+              requirements: [
+                "Do not use nested loops in final solution.",
+                "Return true immediately once a valid pair is found.",
+                "Target complexity: O(n) time and O(n) extra space.",
+              ],
+              cases: [
+                {
+                  input: "nums=[2,7,11,15], target=9",
+                  output: "true",
+                },
+                {
+                  input: "nums=[1,2,3,4], target=8",
+                  output: "false",
+                },
+                {
+                  input: "nums=[3,3], target=6",
+                  output: "true",
+                  note: "Equal values are allowed if indices are different.",
+                },
+              ],
+              terminal: {
+                cases: [
+                  {
+                    title: "Case 1",
+                    fields: [
+                      { name: "nums", value: "[2,7,11,15]" },
+                      { name: "target", value: "9" },
+                    ],
+                  },
+                  {
+                    title: "Case 2",
+                    fields: [
+                      { name: "nums", value: "[1,2,3,4]" },
+                      { name: "target", value: "8" },
+                    ],
+                  },
+                  {
+                    title: "Case 3",
+                    fields: [
+                      { name: "nums", value: "[3,3]" },
+                      { name: "target", value: "6" },
+                    ],
+                  },
+                ],
+                note: 'Run "Check" to validate correctness on all pair-sum scenarios.',
+              },
             },
           },
         ],
       },
       {
         id: "f-u5",
-        title: "Dead-End Challenge",
-        type: "Practice",
+        title: "Recursion and Basic Search",
+        type: "Lesson",
         level: 2,
-        lane: 0,
-        requires: ["f-u2"],
-        exercises: [
+        lane: 2,
+        requires: ["f-u2", "f-u3"],
+        lessons: [
           {
-            id: "f-u5-e1",
-            title: "Edge Case Gauntlet",
+            id: "f-u5-e1-t",
+            type: "theory",
+            title: "Linear vs Binary Search",
             theory: {
               intro:
-                "This branch is a standalone challenge path: no next unit unlocks from here, only problem-solving practice.",
+                "Search is a core algorithmic task: pick linear search for unsorted data and binary search for sorted data.",
               sections: [
                 {
-                  title: "Boundary Stress",
-                  text: "Focus on empty input, single element, duplicates, and max values.",
+                  title: "Binary Search Condition",
+                  text: "Binary search needs monotonic order and shrinks the search interval each step.",
                 },
                 {
-                  title: "Failure Logging",
-                  text: "Track exactly where assumptions break during trace and patch minimally.",
+                  title: "Recursion Base Case",
+                  text: "Every recursive function must define when to stop and what to return.",
                 },
               ],
               tips: [
-                "Start with smallest failing case.",
-                "Write expected vs actual state.",
-                "Fix one bug at a time.",
+                "Validate preconditions before using binary search.",
+                "Use low + (high - low) / 2 for mid.",
+                "In recursion, define base case before recursive call.",
               ],
             },
+          },
+          {
+            id: "f-u5-e1-p",
+            type: "practice",
+            title: "Linear vs Binary Search",
             practice: {
-              taskTitle: "Bug Hunt Task",
-              task: "Given a nearly-correct function, find and fix all hidden boundary bugs.",
-              input: "function + failing test set",
-              output: "fixed function",
+              taskTitle: "Search Strategy Drill",
+              task: "Implement binary search on a sorted array and compare complexity with linear search.",
+              input: "sorted nums: number[], target: number",
+              output: "index or -1",
               requirements: [
-                "Preserve original complexity target.",
-                "Pass all provided boundary tests.",
-                "Add one extra adversarial test.",
+                "Return exact index if found, else -1.",
+                "Keep loop invariant low <= high.",
+                "Provide complexity comparison in one sentence.",
               ],
               cases: [
-                { input: "nums=[]", output: "returns neutral value without crash" },
-                { input: "nums=[5]", output: "handles single element correctly" },
+                { input: "nums=[1,3,5,7,9], target=7", output: "3" },
+                { input: "nums=[1,3,5,7,9], target=4", output: "-1" },
               ],
             },
           },
@@ -375,47 +462,53 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
       },
       {
         id: "f-u6",
-        title: "Integrated Mini Project",
+        title: "Foundation Challenge: Two Sum",
         type: "Checkpoint",
         level: 3,
         lane: 1,
-        requires: ["f-u3", "f-u4"],
-        exercises: [
+        requires: ["f-u4", "f-u5"],
+        lessons: [
           {
-            id: "f-u6-e1",
-            title: "Design + Implement + Explain",
+            id: "f-u6-e1-t",
+            type: "theory",
+            title: "End-to-End Intro Challenge",
             theory: {
               intro:
-                "Combine decomposition, tracing, and constraint reasoning into one complete solution workflow.",
+                "Combine core skills: understand the task, choose data structure, design loop logic, and justify complexity.",
               sections: [
                 {
-                  title: "Plan",
-                  text: "Break the task into subproblems and pick data structures explicitly.",
+                  title: "Plan First",
+                  text: "Start with brute force, then optimize to hash map in one pass.",
                 },
                 {
-                  title: "Verify",
-                  text: "Run a dry trace and justify complexity trade-offs in plain language.",
+                  title: "Explain Trade-off",
+                  text: "The optimized approach improves time while using extra memory.",
                 },
               ],
               tips: [
-                "Write plan before code.",
-                "Keep invariant visible while implementing.",
-                "Conclude with complexity summary.",
+                "State assumptions clearly.",
+                "Test with minimal and edge cases.",
+                "Finish with time and space analysis.",
               ],
             },
+          },
+          {
+            id: "f-u6-e1-p",
+            type: "practice",
+            title: "End-to-End Intro Challenge",
             practice: {
-              taskTitle: "Mini Project",
-              task: "Build a complete solution for a medium problem and present concise reasoning.",
-              input: "problem statement + constraints",
-              output: "accepted solution + explanation",
+              taskTitle: "Solve Two Sum",
+              task: "Given an array and target, return indices of two numbers that add up to target.",
+              input: "nums: number[], target: number",
+              output: "pair of indices",
               requirements: [
-                "Produce correct implementation.",
-                "Demonstrate one dry trace snippet.",
-                "State time/space complexity clearly.",
+                "Do not reuse the same element twice.",
+                "Return any valid pair of indices.",
+                "Target solution complexity: O(n) time with hash map.",
               ],
               cases: [
-                { input: "case A", output: "valid output A" },
-                { input: "case B", output: "valid output B" },
+                { input: "nums=[2,7,11,15], target=9", output: "[0,1]" },
+                { input: "nums=[3,2,4], target=6", output: "[1,2]" },
               ],
             },
           },
@@ -436,9 +529,10 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
         level: 0,
         lane: 1,
         requires: [],
-        exercises: [
+        lessons: [
           {
-            id: "as-u1-e1",
+            id: "as-u1-e1-t",
+            type: "theory",
             title: "Opposite Direction Pointers",
             theory: {
               intro:
@@ -459,6 +553,11 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
                 "Avoid re-checking processed pairs.",
               ],
             },
+          },
+          {
+            id: "as-u1-e1-p",
+            type: "practice",
+            title: "Opposite Direction Pointers",
             practice: {
               taskTitle: "Container With Most Water",
               task: "Use two pointers to compute max area between vertical lines.",
@@ -476,7 +575,8 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
             },
           },
           {
-            id: "as-u1-e2",
+            id: "as-u1-e2-t",
+            type: "theory",
             title: "Dedup on Sorted Array",
             theory: {
               intro:
@@ -497,6 +597,11 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
                 "Return new logical length.",
               ],
             },
+          },
+          {
+            id: "as-u1-e2-p",
+            type: "practice",
+            title: "Dedup on Sorted Array",
             practice: {
               taskTitle: "Remove Duplicates",
               task: "Remove duplicates from sorted array in-place and return new length.",
@@ -522,9 +627,10 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
         level: 1,
         lane: 0,
         requires: ["as-u1"],
-        exercises: [
+        lessons: [
           {
-            id: "as-u2-e1",
+            id: "as-u2-e1-t",
+            type: "theory",
             title: "Fixed Window Sum",
             theory: {
               intro:
@@ -545,6 +651,11 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
                 "Track answer incrementally.",
               ],
             },
+          },
+          {
+            id: "as-u2-e1-p",
+            type: "practice",
+            title: "Fixed Window Sum",
             practice: {
               taskTitle: "Max Sum Subarray of Size K",
               task: "Find the maximum sum of any contiguous subarray of size k.",
@@ -562,7 +673,8 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
             },
           },
           {
-            id: "as-u2-e2",
+            id: "as-u2-e2-t",
+            type: "theory",
             title: "Variable Window Constraints",
             theory: {
               intro:
@@ -583,6 +695,11 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
                 "Track exact invalid condition.",
               ],
             },
+          },
+          {
+            id: "as-u2-e2-p",
+            type: "practice",
+            title: "Variable Window Constraints",
             practice: {
               taskTitle: "Longest Substring Without Repeating",
               task: "Return the length of the longest substring without duplicate characters.",
@@ -608,9 +725,10 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
         level: 1,
         lane: 2,
         requires: ["as-u1"],
-        exercises: [
+        lessons: [
           {
-            id: "as-u3-e1",
+            id: "as-u3-e1-t",
+            type: "theory",
             title: "Range Sum Query",
             theory: {
               intro:
@@ -631,6 +749,11 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
                 "Precompute once for many queries.",
               ],
             },
+          },
+          {
+            id: "as-u3-e1-p",
+            type: "practice",
+            title: "Range Sum Query",
             practice: {
               taskTitle: "Range Sum",
               task: "Answer multiple sum queries on immutable array.",
@@ -648,7 +771,8 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
             },
           },
           {
-            id: "as-u3-e2",
+            id: "as-u3-e2-t",
+            type: "theory",
             title: "Prefix + Hash Map",
             theory: {
               intro:
@@ -669,6 +793,11 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
                 "Use map for negative values support.",
               ],
             },
+          },
+          {
+            id: "as-u3-e2-p",
+            type: "practice",
+            title: "Prefix + Hash Map",
             practice: {
               taskTitle: "Count Subarrays Equal to K",
               task: "Count number of contiguous subarrays whose sum equals k.",
@@ -690,11 +819,10 @@ export const algorithmsRoadmap: AlgorithmsTopic[] = [
     ],
   },
 ];
-
 export function getTopicById(topicId: string) {
   return algorithmsRoadmap.find((topic) => topic.id === topicId);
 }
-
 export function getUnitById(topicId: string, unitId: string) {
   return getTopicById(topicId)?.units.find((unit) => unit.id === unitId);
 }
+

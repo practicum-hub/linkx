@@ -3,4 +3,86 @@
   min-height: 0;
   border-bottom: 1px solid var(--cp-separator);
   min-width: 0;
+  position: relative;
+}
+
+.editorSurface {
+  width: 100%;
+  height: 100%;
+}
+
+.actionsBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 5;
+}
+
+.undoBtn,
+.runBtn,
+.submitBtn {
+  height: 40px;
+  border-radius: 7px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease,
+    opacity 0.2s ease;
+}
+
+.undoBtn:disabled,
+.runBtn:disabled,
+.submitBtn:disabled {
+  opacity: 0.62;
+  cursor: not-allowed;
+}
+
+.undoBtn {
+  width: 40px;
+  background: #0f2a4d;
+  border-color: #2b4668;
+  color: #ffffff;
+}
+
+.runBtn {
+  padding: 0 22px;
+  background: #0f2a4d;
+  border-color: #2b4668;
+  color: #ffffff;
+}
+
+.submitBtn {
+  padding: 0 24px;
+  background: #14e56d;
+  border-color: #14e56d;
+  color: #00280f;
+}
+
+.undoBtn:hover:not(:disabled),
+.runBtn:hover:not(:disabled),
+.submitBtn:hover:not(:disabled) {
+  filter: brightness(0.96);
+}
+
+@media (max-width: 980px) {
+  .actionsBar {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .runBtn,
+  .submitBtn {
+    padding: 0 18px;
+  }
 }

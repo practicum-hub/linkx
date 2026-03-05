@@ -1,10 +1,9 @@
 .panel {
   --cp-bg: #ffffff;
   --cp-border: #d8e1f1;
-  --cp-shadow: 0 24px 44px rgba(18, 35, 58, 0.1);
   --cp-separator: #e5eaf3;
-  --cp-header-bg: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
-  --cp-header-border: #e5eaf3;
+  --cp-header-bg: #ffffff;
+  --cp-header-border: #d9e0ec;
   --cp-terminal-bg: #fcfdff;
   --cp-nav-bg: #f4f7ff;
   --cp-nav-border: #e5eaf3;
@@ -20,20 +19,20 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
   border-radius: 18px;
   overflow: hidden;
   background: var(--cp-bg);
   border: 1px solid var(--cp-border);
-  box-shadow: var(--cp-shadow);
   min-height: 0;
+  height: 100%;
 }
 
 .panelDark {
   --cp-bg: #111a2b;
   --cp-border: #2a3d5f;
-  --cp-shadow: 0 26px 48px rgba(3, 7, 14, 0.54);
   --cp-separator: #2a3c5e;
-  --cp-header-bg: linear-gradient(180deg, #141f34 0%, #111a2a 100%);
+  --cp-header-bg: #141f34;
   --cp-header-border: #293d60;
   --cp-terminal-bg: #0f1727;
   --cp-nav-bg: #152239;

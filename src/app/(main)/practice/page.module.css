@@ -1,412 +1,731 @@
-.page {
-  height: 100%;
-  overflow: hidden;
-  background: linear-gradient(180deg, #edf4ff 0%, #e6eeff 100%);
+.practicePage {
+  min-height: 100%;
+  padding: 30px 30px 42px;
+  background: #f7f7fc;
 }
 
-.roadmapViewport {
-  --grid-minor: 30px;
-  --grid-major: 120px;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  overscroll-behavior: none;
-  position: relative;
-  touch-action: none;
-  cursor: default;
-  user-select: none;
-  -webkit-user-select: none;
-  background:
-    radial-gradient(circle at 14% 9%, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0) 42%),
-    radial-gradient(circle at 84% 19%, rgba(255, 255, 255, 0.44) 0%, rgba(255, 255, 255, 0) 40%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(237, 245, 255, 0.92) 100%),
-    repeating-linear-gradient(
-      0deg,
-      rgba(148, 154, 166, 0.052) 0,
-      rgba(148, 154, 166, 0.052) 1px,
-      transparent 1px,
-      transparent var(--grid-minor)
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(148, 154, 166, 0.052) 0,
-      rgba(148, 154, 166, 0.052) 1px,
-      transparent 1px,
-      transparent var(--grid-minor)
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(130, 138, 150, 0.075) 0,
-      rgba(130, 138, 150, 0.075) 1px,
-      transparent 1px,
-      transparent var(--grid-major)
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(130, 138, 150, 0.075) 0,
-      rgba(130, 138, 150, 0.075) 1px,
-      transparent 1px,
-      transparent var(--grid-major)
-    ),
-    radial-gradient(circle, rgba(136, 145, 158, 0.07) 0.7px, transparent 0.8px);
-  background-size:
-    auto,
-    auto,
-    auto,
-    var(--grid-minor) var(--grid-minor),
-    var(--grid-minor) var(--grid-minor),
-    var(--grid-major) var(--grid-major),
-    var(--grid-major) var(--grid-major),
-    var(--grid-major) var(--grid-major);
-  background-position:
-    0 0,
-    0 0,
-    0 0,
-    0 0,
-    0 0,
-    0 0,
-    0 0;
-}
-
-.roadmapCamera {
-  transform-origin: 0 0;
-  width: max-content;
-  will-change: transform;
-}
-
-.roadmapCanvas {
-  position: relative;
-}
-
-.canvasGrid {
-  position: absolute;
-  inset: -2000px;
-  pointer-events: none;
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(132, 140, 152, 0.065) 0,
-      rgba(132, 140, 152, 0.065) 1px,
-      transparent 1px,
-      transparent 44px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(132, 140, 152, 0.065) 0,
-      rgba(132, 140, 152, 0.065) 1px,
-      transparent 1px,
-      transparent 44px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(120, 128, 140, 0.095) 0,
-      rgba(120, 128, 140, 0.095) 1px,
-      transparent 1px,
-      transparent 132px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(120, 128, 140, 0.095) 0,
-      rgba(120, 128, 140, 0.095) 1px,
-      transparent 1px,
-      transparent 132px
-    );
-}
-
-.topicLayer {
-  position: static;
-}
-
-.topicHeader {
-  position: absolute;
-  left: 0;
+.shell {
+  width: min(1120px, 100%);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  pointer-events: none;
+  gap: 18px;
 }
 
-.topicIndex {
+.hero {
+  border-radius: 6px;
+  border: 1px solid #05192d;
+  padding: 26px 28px;
+  color: #f3f8ff;
+  background: #05192d;
+  box-shadow: none;
+}
+
+.heroLabel {
   margin: 0;
-  color: var(--text-secondary);
+  color: #7f8ea4;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.heroTitle {
+  margin: 10px 0 0;
+  color: #ffffff;
+  font-size: clamp(21px, 1.9vw, 30px);
+  line-height: 1.12;
+  font-weight: 650;
+  max-width: 920px;
+}
+
+.heroMeta {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #d0def5;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.heroActions {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.primaryAction,
+.secondaryAction,
+.iconAction {
+  height: 36px;
+  border-radius: 4px;
+  padding: 0 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-}
-
-.topicLockedTag {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  border: 1px solid #cfd6e6;
-  background: #eef2f8;
-  color: #65748e;
-  padding: 3px 8px;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 0.07em;
-}
-
-.topicTitle {
-  margin: 0;
-  color: var(--text-primary);
-  font-size: 30px;
-  line-height: 1.1;
-  font-weight: 800;
-  text-align: center;
-}
-
-.topicTitleLocked {
-  color: var(--text-muted);
-}
-
-.roadmapViewport :global(a),
-.roadmapViewport :global(button) {
-  -webkit-user-drag: none;
-}
-
-.topicDesc {
-  margin: 0;
-  color: var(--text-secondary);
-  max-width: 680px;
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-}
-
-.graphCanvas {
-  position: absolute;
-}
-
-.edges {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.edge {
-  fill: none;
-  stroke-width: 3;
-  stroke-linecap: square;
-  stroke-linejoin: miter;
-}
-
-.edgeInactive {
-  stroke: #6fa2ff;
-}
-
-.edgeActive {
-  stroke: #0f5fff;
-}
-
-.edgeLocked {
-  stroke: #8d98a9;
-}
-
-.unitNode {
-  position: absolute;
-  width: 184px;
-  min-height: 184px;
-  border: 2px solid #0f5fff;
-  border-right-width: 5px;
-  border-bottom-width: 5px;
-  border-radius: 16px;
-  background: #0b63ff;
-  box-shadow: none;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-  cursor: pointer;
-  transform: translateY(0);
-  transition:
-    transform 120ms ease,
-    border-bottom-width 120ms ease;
-  text-align: left;
   text-decoration: none;
 }
 
-.unitNode:not(.locked):hover {
-  transform: translateY(2px);
-  border-right-width: 4px;
-  border-bottom-width: 4px;
+.primaryAction {
+  border: 1px solid #17da74;
+  background: #12e067;
+  color: #032f1a;
 }
 
-.unitNode:not(.locked):active {
-  transform: translateY(4px);
-  border-right-width: 3px;
-  border-bottom-width: 3px;
+.secondaryAction,
+.iconAction {
+  border: 1px solid #415879;
+  background: rgba(5, 25, 45, 0.62);
+  color: #dfeafb;
 }
 
-.available {
-  border-color: #0f5fff;
-  border-right-color: #0846b9;
-  border-bottom-color: #0846b9;
-  background: #0b63ff;
+.iconAction {
+  width: 36px;
+  padding: 0;
 }
 
-.done {
-  border-color: #00a748;
-  border-right-color: #047536;
-  border-bottom-color: #047536;
-  background: #00cc5b;
-  box-shadow: none;
+.primaryAction:disabled {
+  opacity: 0.6;
 }
 
-.locked {
-  border-color: #7d8899;
-  border-right-color: #616d7f;
-  border-bottom-color: #616d7f;
-  background: #aab3c2;
-  color: #4a5567;
-  cursor: not-allowed;
-  box-shadow: none;
+.statRow {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.unitTitle {
-  margin: 0;
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.28;
-}
-
-.locked .unitTitle {
-  color: #27303c;
-}
-
-.unitTopic {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.25;
-}
-
-.locked .unitTopic {
-  color: #3f4a5c;
-}
-
-.unitStatus {
-  margin: 0;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+.statChip,
+.xpChip {
+  min-height: 28px;
+  border-radius: 4px;
+  border: 0;
+  padding: 4px 9px;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 6px 11px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  background: rgba(255, 255, 255, 0.18);
-}
-
-:global(body:not([data-theme="dark"])) .done .unitStatus {
-  background: #038f40;
-  border-color: #00a748;
-}
-
-:global(body:not([data-theme="dark"])) .locked .unitStatus {
-  color: #313949;
-  border-color: #848e9f;
-  background: #b8bfcb;
-}
-
-:global(body[data-theme="dark"]) .done .unitStatus {
-  background: #038f40;
-  border-color: #00a748;
-}
-
-:global(body[data-theme="dark"]) .locked .unitStatus {
-  color: #313949;
-  border-color: #848e9f;
-  background: #b8bfcb;
-}
-
-:global(body[data-theme="dark"]) .page {
-  background: linear-gradient(180deg, #0c1524 0%, #0f1c2e 100%);
-}
-
-:global(body[data-theme="dark"]) .roadmapViewport {
-  background:
-    radial-gradient(circle at 14% 9%, rgba(126, 161, 215, 0.2) 0%, rgba(126, 161, 215, 0) 42%),
-    radial-gradient(circle at 84% 19%, rgba(95, 129, 183, 0.2) 0%, rgba(95, 129, 183, 0) 40%),
-    linear-gradient(180deg, rgba(18, 30, 49, 0.95) 0%, rgba(12, 22, 38, 0.98) 100%),
-    repeating-linear-gradient(
-      0deg,
-      rgba(106, 117, 132, 0.08) 0,
-      rgba(106, 117, 132, 0.08) 1px,
-      transparent 1px,
-      transparent var(--grid-minor)
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(106, 117, 132, 0.08) 0,
-      rgba(106, 117, 132, 0.08) 1px,
-      transparent 1px,
-      transparent var(--grid-minor)
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(88, 99, 114, 0.12) 0,
-      rgba(88, 99, 114, 0.12) 1px,
-      transparent 1px,
-      transparent var(--grid-major)
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(88, 99, 114, 0.12) 0,
-      rgba(88, 99, 114, 0.12) 1px,
-      transparent 1px,
-      transparent var(--grid-major)
-    );
-}
-
-:global(body[data-theme="dark"]) .unitNode {
-  border-color: #0f5fff;
-  background: #0b63ff;
-  box-shadow: none;
-}
-
-:global(body[data-theme="dark"]) .done {
-  border-color: #00a748;
-  background: #00cc5b;
-}
-
-:global(body[data-theme="dark"]) .locked {
-  border-color: #7d8899;
-  background: #aab3c2;
-}
-
-:global(body[data-theme="dark"]) .topicLockedTag {
-  border-color: #3a4f73;
-  background: #1b2940;
-  color: #a7bbda;
-}
-
-.lockIcon {
+  color: #edf5ff;
   font-size: 12px;
-  line-height: 1;
+  font-weight: 700;
+  background: rgba(210, 220, 232, 0.12);
 }
 
-@media (max-width: 900px) {
-  .topicTitle {
-    font-size: 24px;
+.xpChip {
+  border-color: #e3b900;
+  color: #10120d;
+  background: #ffd513;
+}
+
+.contentLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.65fr) minmax(240px, 0.82fr);
+  gap: 18px;
+}
+
+.mainColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.learnCard,
+.chapterCard,
+.sideCard {
+  border: 1px solid #d6dde8;
+  border-radius: 6px;
+  background: #f7f9fd;
+}
+
+.learnCard {
+  padding: 0 18px;
+}
+
+.learnCardHead {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.learnCardHead h2 {
+  margin: 0;
+  color: #112a4d;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.learnCardHead span {
+  color: #2b4060;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.descriptionCard {
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.descriptionCard h3 {
+  margin: 0;
+  color: #102847;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.descriptionCard p {
+  margin: 0;
+  color: #324968;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.descriptionToggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.descriptionTextWrap {
+  margin-top: 10px;
+  position: relative;
+  max-height: 82px;
+  overflow: hidden;
+}
+
+.descriptionTextWrap::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 48px;
+  background: linear-gradient(180deg, rgba(247, 247, 252, 0) 0%, #f7f7fc 92%);
+  pointer-events: none;
+}
+
+.descriptionToggle:checked ~ .descriptionTextWrap {
+  max-height: none;
+}
+
+.descriptionToggle:checked ~ .descriptionTextWrap::after {
+  display: none;
+}
+
+.readMoreBtn {
+  margin: 12px auto 0;
+  border: 0;
+  background: transparent;
+  color: #1553b7;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  display: block;
+  width: fit-content;
+  text-align: center;
+}
+
+.readMoreBtn::before {
+  content: "Read more";
+}
+
+.descriptionToggle:checked ~ .readMoreBtn {
+  margin-top: 10px;
+}
+
+.descriptionToggle:checked ~ .readMoreBtn::before {
+  content: "Read less";
+}
+
+.chapterList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chapterCard {
+  padding: 16px 16px 14px;
+  border-color: #d0d6df;
+  background: #f3f4f7;
+}
+
+.chapterHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.chapterHeadLeft {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chapterIndex {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #d4d9e1;
+  background: #e9ebf1;
+  color: #152947;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chapterHeadLeft h3 {
+  margin: 0;
+  color: #061b39;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.chapterStatus {
+  border-radius: 4px;
+  border: 1px solid #d3d8e1;
+  padding: 3px 10px 4px;
+  color: #1b314f;
+  background: #e6eaf1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.chapterProgressWrap {
+  width: min(270px, 100%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.chapterProgressBar {
+  flex: 1;
+  height: 12px;
+  border-radius: 999px;
+  background: #d5d9e1;
+  overflow: hidden;
+}
+
+.chapterProgressBar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #19d762;
+}
+
+.chapterProgressWrap strong {
+  color: #4f617c;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.chapterSummary {
+  margin: 14px 0 0;
+  color: #051b39;
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+}
+
+.chapterDetailsToggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chapterFooter {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #d2d8e3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.chapterAction {
+  min-width: 200px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 0;
+  background: #10df63;
+  color: #021b0d;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chapterDetailsBtn {
+  border: 0;
+  background: transparent;
+  color: #0a5cc8;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.chapterDetailsBtn::before {
+  content: "View Chapter Details";
+}
+
+.chapterDetailsBtn::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+}
+
+.chapterDetailsToggle:checked ~ .chapterFooter .chapterDetailsBtn::before {
+  content: "Hide Chapter Details";
+}
+
+.chapterDetailsToggle:checked ~ .chapterFooter .chapterDetailsBtn::after {
+  transform: rotate(225deg) translateY(2px);
+}
+
+.chapterLockedLabel {
+  color: #687b98;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.lessonList {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: none;
+  gap: 8px;
+}
+
+.chapterDetailsToggle:checked ~ .lessonList {
+  display: grid;
+}
+
+.lessonList li {
+  min-height: 34px;
+}
+
+.lessonRowLink {
+  padding: 0 2px;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+  text-decoration: none;
+}
+
+.lessonRowLink:hover {
+  background: #e9edf3;
+}
+
+.lessonIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #071f3f;
+  position: relative;
+}
+
+.lessonIcon::before {
+  content: ">";
+  position: absolute;
+  inset: 0;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lessonIcon[data-kind="practice"]::before {
+  content: "{}";
+  font-size: 9px;
+}
+
+.lessonTitle {
+  color: #142840;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.lessonMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lessonCheck {
+  width: 12px;
+  height: 8px;
+  border-left: 2px solid #17c75a;
+  border-bottom: 2px solid #17c75a;
+  transform: rotate(-45deg);
+}
+
+.lessonXp {
+  color: #243a58;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sideCard {
+  padding: 16px;
+}
+
+.sideCard h3 {
+  margin: 0;
+  color: #112b50;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sideCard p,
+.trackList li {
+  margin: 12px 0 0;
+  color: #215292;
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+.linkedInBtn,
+.sideGhostBtn {
+  width: 100%;
+  min-height: 38px;
+  border-radius: 4px;
+  border: 1px solid #0f66c3;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.linkedInBtn {
+  margin-top: 14px;
+  background: #0e6ccf;
+  color: #f4f8fe;
+}
+
+.shareRow {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.sideGhostBtn {
+  background: #f3f6fb;
+  color: #184684;
+  border-color: #becae0;
+}
+
+.resourceLink {
+  margin-top: 12px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d9e8;
+  color: #183f73;
+  background: #f8fafd;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+}
+
+.trackList {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 1580px) {
+  .heroMeta,
+  .primaryAction,
+  .secondaryAction,
+  .iconAction,
+  .statChip,
+  .learnCardHead h2,
+  .descriptionCard h3,
+  .descriptionCard p,
+  .readMoreBtn,
+  .chapterLockedLabel,
+  .lessonTitle,
+  .lessonXp,
+  .sideCard h3,
+  .sideCard p,
+  .trackList li,
+  .linkedInBtn,
+  .sideGhostBtn,
+  .resourceLink {
+    font-size: clamp(12px, 0.95vw, 16px);
+  }
+}
+
+@media (max-width: 1120px) {
+  .practicePage {
+    padding: 16px 12px 24px;
   }
 
-  .topicDesc {
-    max-width: 540px;
-    font-size: 13px;
+  .hero {
+    padding: 20px;
   }
+
+  .heroTitle {
+    font-size: 32px;
+  }
+
+  .contentLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .chapterHead {
+    flex-direction: column;
+  }
+
+  .chapterProgressWrap {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .chapterFooter {
+    justify-content: space-between;
+  }
+
+  .chapterAction {
+    width: auto;
+  }
+
+  .shareRow {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 720px) {
+  .heroActions {
+    width: 100%;
+  }
+
+  .primaryAction,
+  .secondaryAction,
+  .iconAction {
+    width: 100%;
+  }
+
+  .chapterCard,
+  .descriptionCard,
+  .sideCard {
+    padding: 14px;
+  }
+
+  .chapterHeadLeft h3 {
+    font-size: 18px;
+  }
+
+  .chapterStatus {
+    font-size: 16px;
+  }
+
+  .chapterSummary {
+    font-size: 15px;
+  }
+
+  .chapterProgressWrap strong {
+    font-size: 14px;
+  }
+
+  .chapterFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chapterAction {
+    width: 100%;
+  }
+
+  .lessonList li {
+    min-height: 34px;
+  }
+
+  .lessonRowLink {
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .lessonMeta {
+    grid-column: 2 / 3;
+  }
+}
+
+:global(body[data-theme="dark"]) .practicePage {
+  background: #0f1724;
+}
+
+:global(body[data-theme="dark"]) .learnCard,
+:global(body[data-theme="dark"]) .chapterCard,
+:global(body[data-theme="dark"]) .sideCard {
+  border-color: #263852;
+  background: #142238;
+}
+
+:global(body[data-theme="dark"]) .learnCardHead h2,
+:global(body[data-theme="dark"]) .descriptionCard h3,
+:global(body[data-theme="dark"]) .chapterHeadLeft h3,
+:global(body[data-theme="dark"]) .lessonTitle,
+:global(body[data-theme="dark"]) .sideCard h3 {
+  color: #ebf2ff;
+}
+
+:global(body[data-theme="dark"]) .descriptionCard p,
+:global(body[data-theme="dark"]) .chapterSummary,
+:global(body[data-theme="dark"]) .chapterLockedLabel,
+:global(body[data-theme="dark"]) .sideCard p,
+:global(body[data-theme="dark"]) .trackList li,
+:global(body[data-theme="dark"]) .resourceLink {
+  color: #afc1dc;
+}
+
+:global(body[data-theme="dark"]) .descriptionTextWrap::after {
+  background: linear-gradient(180deg, rgba(15, 23, 36, 0) 0%, #0f1724 92%);
+}
+
+:global(body[data-theme="dark"]) .chapterStatus,
+:global(body[data-theme="dark"]) .chapterIndex,
+:global(body[data-theme="dark"]) .sideGhostBtn {
+  border-color: #40536f;
+  background: #1c2e46;
+  color: #c8d6eb;
+}
+
+:global(body[data-theme="dark"]) .chapterFooter {
+  border-color: #2a3d59;
 }

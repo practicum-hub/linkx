@@ -10,23 +10,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   const isLearnPage = pathname.startsWith("/learn");
+  const isPracticePage = pathname.startsWith("/practice");
 
   if (isLearnPage) {
     return <div className={styles.learnShell}>{children}</div>;
   }
 
   return (
-    <div className={styles.page}>
+    <div className={`${styles.page} ${isPracticePage ? styles.pagePractice : ""}`}>
       <MainHeader />
 
       <div className={styles.layout}>
         <Sidebar />
-        <div className={styles.contentArea}>
+        <div className={`${styles.contentArea} ${isPracticePage ? styles.contentAreaPractice : ""}`}>
           <div className={styles.contentCluster}>
-            <main className={styles.main}>
+            <main className={`${styles.main} ${isPracticePage ? styles.mainPractice : ""}`}>
               <div className={styles.mainInner}>{children}</div>
             </main>
-            <RightSidebar />
+            {!isPracticePage ? <RightSidebar /> : null}
           </div>
         </div>
       </div>

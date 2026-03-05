@@ -1,9 +1,6 @@
 .page {
   height: 100%;
-  background:
-    radial-gradient(circle at 10% 0%, #e9f2ff 0%, rgba(233, 242, 255, 0) 46%),
-    radial-gradient(circle at 90% 20%, #f3ecff 0%, rgba(243, 236, 255, 0) 42%),
-    #f5f8fd;
+  background: #f7f7fc;
   color: #142033;
   display: flex;
   flex-direction: column;
@@ -17,41 +14,322 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 16px;
-  padding: 14px 24px;
-  background: rgba(248, 250, 255, 0.96);
-  border-bottom: 1px solid #dde3ef;
-  backdrop-filter: blur(8px);
+  gap: 14px;
+  padding: 10px 18px;
+  background: transparent;
+  border-bottom: 1px solid #d2d8e6;
 }
 
-.exitBtn {
-  color: #213656;
+.headerPath {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.pathLink {
   text-decoration: none;
+  color: #425472;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pathDivider {
+  color: #7f8da8;
+  font-size: 15px;
+}
+
+.pathCurrent {
+  color: #142033;
+  font-size: 15px;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.outlineNav {
+  display: inline-flex;
+  align-items: center;
+  justify-self: center;
+}
+
+.outlineArrow,
+.outlineBtn {
+  border: 1px solid #9ea9c0;
+  background: #f7f8fc;
+  color: #1e2f49;
+  height: 36px;
   font-size: 14px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.outlineArrow {
+  width: 36px;
+}
+
+.outlineBtn {
+  padding: 0 16px;
+  gap: 10px;
+  border-left: 0;
+  border-right: 0;
+}
+
+.outlineOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+}
+
+.outlineBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 20, 36, 0.44);
+}
+
+.outlineModal {
+  position: relative;
+  width: min(980px, calc(100vw - 28px));
+  max-height: calc(100vh - 36px);
+  margin: 18px auto;
+  border: 1px solid #d7e0ee;
+  border-radius: 14px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.outlineModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  border-bottom: 1px solid #e4eaf5;
+}
+
+.outlineModalHeader h2 {
+  margin: 0;
+  font-size: 38px;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.outlineCloseBtn {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #2a3f61;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.outlineCloseBtn:hover {
+  background: #f2f6fd;
+}
+
+.outlineModalBody {
+  overflow: auto;
+  padding: 14px 18px 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.outlineChapter {
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  background: #fbfcff;
+  overflow: hidden;
+}
+
+.outlineChapterHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 14px 10px;
+}
+
+.outlineChapterTitleWrap {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.outlineChapterIndex {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: #0f2a4d;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.outlineChapterTitleWrap h3 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.outlineChapterProgress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 200px;
+}
+
+.outlineChapterProgressBar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: #e9eef6;
+  overflow: hidden;
+}
+
+.outlineChapterProgressBar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #22c55e;
+}
+
+.outlineChapterProgress strong {
+  color: #657b9c;
+  font-size: 14px;
+}
+
+.outlineLessonList {
+  margin: 0;
+  padding: 2px 0 8px;
+  list-style: none;
+  display: grid;
+}
+
+.outlineLessonRow {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  color: #1a2c47;
+  text-decoration: none;
+  border-top: 1px solid #edf2f8;
+}
+
+.outlineLessonRow:hover {
+  background: #eef4ff;
+}
+
+.outlineLessonRowCurrent {
+  background: #e9eef8;
+  color: #0f2745;
   font-weight: 700;
 }
 
-.progressBar {
-  flex: 1;
-  height: 8px;
-  background: #e3eaf7;
+.outlineLessonRowLocked {
+  opacity: 0.52;
+  cursor: not-allowed;
+}
+
+.outlineLessonIcon {
+  width: 20px;
+  height: 20px;
   border-radius: 999px;
-  overflow: hidden;
-  box-shadow: inset 0 0 0 1px #d5deee;
+  border: 1px solid #c5d2e6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
 }
 
-.progressFill {
-  height: 100%;
-  border-radius: inherit;
-  background: #03ef62;
+.outlineLessonIcon[data-kind="practice"] {
+  background: #0f2745;
+  border-color: #0f2745;
 }
 
-.counter {
-  color: #314a71;
+.outlineLessonTitle {
+  min-width: 0;
+}
+
+.outlineLessonMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #223a5d;
+  font-weight: 700;
+}
+
+.outlineLessonCheck {
+  color: #22c55e;
+}
+
+.outlineLessonXp {
+  white-space: nowrap;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.xp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #1a2c47;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.localeBtn,
+.iconBtn {
+  border: 0;
+  background: transparent;
+  color: #1a2c47;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.iconBtn {
+  width: 28px;
+}
+
+.exitBtn {
+  color: #3c4c67;
+  text-decoration: none;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
+  padding: 6px 10px;
+  border: 1px solid #c8d0df;
+  border-radius: 8px;
+  background: #f7f9fd;
 }
 
 .themeBtn {
@@ -86,6 +364,35 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+
+.topicProgressWrap {
+  width: min(100%, 1420px);
+  margin: 0 auto 34px;
+  padding: 0 24px;
+}
+
+.topicProgressRail {
+  width: min(100%, 420px);
+  margin: 0 auto;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 8px;
+}
+
+.topicProgressSegment {
+  height: 9px;
+  border-radius: 999px;
+  background: #cfd6e2;
+}
+
+.topicProgressSegmentDone {
+  background: #77b4f0;
+}
+
+.topicProgressSegmentCurrent {
+  background: #58a3eb;
 }
 
 .lessonHeading {
@@ -133,6 +440,11 @@
   flex: 1;
 }
 
+.theoryLayoutSingle {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+}
+
 .theoryText,
 .visualCard,
 .practiceTask,
@@ -140,11 +452,18 @@
   border: 1px solid #d8e0ed;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 18px 42px rgba(20, 34, 56, 0.08);
 }
 
 .theoryText {
+  border: 0;
+  background: transparent;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
 }
 
 .theoryIntro {
@@ -152,12 +471,13 @@
   color: #3a4f70;
   font-size: 19px;
   line-height: 1.7;
+  max-width: 640px;
 }
 
 .theorySections {
-  margin-top: 20px;
   display: grid;
   gap: 18px;
+  width: min(100%, 640px);
 }
 
 .sectionBlock {
@@ -183,11 +503,13 @@
 }
 
 .tipBlock {
-  margin-top: 24px;
+  margin-top: 4px;
   padding: 14px 16px;
   border-radius: 12px;
   background: #f5f8ff;
   border: 1px solid #dae4f4;
+  width: min(100%, 760px);
+  text-align: center;
 }
 
 .tipTitle {
@@ -198,7 +520,8 @@
 
 .tipList {
   margin: 10px 0 0;
-  padding-left: 20px;
+  padding-left: 0;
+  list-style-position: inside;
   color: #3f5a7f;
   line-height: 1.55;
 }
@@ -350,20 +673,30 @@
 .codePanelWrap {
   min-height: 0;
   overflow: hidden;
+  display: flex;
 }
 
 .embeddedCodePanel {
   width: 100%;
   min-width: 0;
+  height: 100%;
+  flex: 1 1 auto;
 }
 
 .footerNav {
   margin: 0 auto;
   width: min(100%, 1420px);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   gap: 10px;
   flex: 0 0 auto;
+}
+
+.footerRightActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .navBtn,
@@ -379,7 +712,6 @@
   text-decoration: none;
   transition:
     transform 0.18s ease,
-    box-shadow 0.2s ease,
     filter 0.2s ease;
 }
 
@@ -398,8 +730,7 @@
 .navBtnPrimary {
   border-color: #7933ff;
   color: #ffffff;
-  background: linear-gradient(135deg, #7933ff 0%, #bf3072 100%);
-  box-shadow: 0 10px 18px rgba(121, 51, 255, 0.3);
+  background: #7933ff;
 }
 
 .navBtnDisabled {
@@ -459,40 +790,121 @@
 }
 
 .pageDark {
-  background:
-    radial-gradient(
-      circle at 10% 0%,
-      rgba(57, 89, 140, 0.35) 0%,
-      rgba(57, 89, 140, 0) 44%
-    ),
-    radial-gradient(
-      circle at 90% 18%,
-      rgba(89, 67, 141, 0.34) 0%,
-      rgba(89, 67, 141, 0) 42%
-    ),
-    #0c111d;
+  background: #f7f7fc;
   color: #dce7ff;
 }
 
 .pageDark .learnHeader {
-  background: rgba(15, 22, 36, 0.92);
+  background: transparent;
   border-bottom-color: #27344f;
 }
 
+.pageDark .pathLink {
+  color: #9db2d8;
+}
+
+.pageDark .pathDivider {
+  color: #5f7499;
+}
+
+.pageDark .pathCurrent {
+  color: #d4e4ff;
+}
+
+.pageDark .outlineArrow,
+.pageDark .outlineBtn {
+  background: #162136;
+  border-color: #425577;
+  color: #d4e4ff;
+}
+
+.pageDark .outlineBackdrop {
+  background: rgba(3, 8, 18, 0.62);
+}
+
+.pageDark .outlineModal {
+  border-color: #314564;
+  background: #0f1a2b;
+}
+
+.pageDark .outlineModalHeader {
+  border-bottom-color: #263a58;
+}
+
+.pageDark .outlineModalHeader h2 {
+  color: #d6e4ff;
+}
+
+.pageDark .outlineCloseBtn {
+  color: #b9cef2;
+}
+
+.pageDark .outlineCloseBtn:hover {
+  background: #1a2a44;
+}
+
+.pageDark .outlineChapter {
+  border-color: #2a3f5f;
+  background: #111f33;
+}
+
+.pageDark .outlineChapterIndex {
+  background: #d4e3ff;
+  color: #112746;
+}
+
+.pageDark .outlineChapterTitleWrap h3 {
+  color: #d3e2ff;
+}
+
+.pageDark .outlineChapterProgressBar {
+  background: #223551;
+}
+
+.pageDark .outlineChapterProgress strong {
+  color: #9ab2d8;
+}
+
+.pageDark .outlineLessonRow {
+  border-top-color: #223651;
+  color: #bfd3f6;
+}
+
+.pageDark .outlineLessonRow:hover {
+  background: #182a45;
+}
+
+.pageDark .outlineLessonRowCurrent {
+  background: #223552;
+  color: #d6e4ff;
+}
+
+.pageDark .outlineLessonIcon {
+  border-color: #4f668a;
+}
+
+.pageDark .outlineLessonIcon[data-kind="practice"] {
+  border-color: #d4e3ff;
+  background: #d4e3ff;
+}
+
+.pageDark .outlineLessonMeta {
+  color: #c5d8fb;
+}
+
+.pageDark .xp,
 .pageDark .exitBtn {
   color: #c5d8ff;
 }
 
-.pageDark .progressBar {
-  background: #1b2a42;
+.pageDark .localeBtn,
+.pageDark .iconBtn {
+  color: #bfd3fa;
 }
 
-.pageDark .progressFill {
-  background: linear-gradient(90deg, #1ff27a 0%, #63f5b0 70%, #49e2c4 100%);
-}
-
-.pageDark .counter {
-  color: #9db6e3;
+.pageDark .exitBtn {
+  background: #162136;
+  border-color: #3c5275;
 }
 
 .pageDark .themeBtn {
@@ -515,13 +927,16 @@
   color: #bad2ff;
 }
 
-.pageDark .theoryText,
 .pageDark .visualCard,
 .pageDark .practiceTask,
 .pageDark .codePanelWrap {
   border-color: #2a3958;
   background: rgba(18, 27, 44, 0.9);
-  box-shadow: 0 22px 40px rgba(4, 8, 16, 0.45);
+}
+
+.pageDark .theoryText {
+  border-color: transparent;
+  background: transparent;
 }
 
 .pageDark .theoryIntro {
@@ -599,8 +1014,7 @@
 
 .pageDark .navBtnPrimary {
   border-color: #8b5bff;
-  background: linear-gradient(135deg, #7b41ff 0%, #c74687 100%);
-  box-shadow: 0 10px 18px rgba(23, 10, 40, 0.62);
+  background: #7b41ff;
 }
 
 .pageDark .exerciseDot {
@@ -617,6 +1031,18 @@
 
 .pageDark .checkStatus {
   color: #87b3ff;
+}
+
+.pageDark .topicProgressSegment {
+  background: #334764;
+}
+
+.pageDark .topicProgressSegmentDone {
+  background: #4f8fd0;
+}
+
+.pageDark .topicProgressSegmentCurrent {
+  background: #7bb9ff;
 }
 
 @media (max-width: 1080px) {
@@ -639,16 +1065,77 @@
 
 @media (max-width: 760px) {
   .learnHeader {
-    padding: 12px 14px;
-    gap: 12px;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    padding: 10px 12px;
   }
 
-  .themeBtn {
-    margin-left: auto;
+  .headerPath {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+
+  .pathCurrent {
+    max-width: 100%;
+  }
+
+  .headerActions {
+    gap: 8px;
+  }
+
+  .outlineBtn span,
+  .xp,
+  .exitBtn {
+    display: none;
+  }
+
+  .outlineBtn {
+    width: 40px;
+    padding: 0;
+  }
+
+  .outlineModal {
+    width: calc(100vw - 12px);
+    max-height: calc(100vh - 12px);
+    margin: 6px auto;
+  }
+
+  .outlineModalHeader {
+    padding: 12px 14px;
+  }
+
+  .outlineModalHeader h2 {
+    font-size: 23px;
+  }
+
+  .outlineModalBody {
+    padding: 10px;
+  }
+
+  .outlineChapterHead {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .outlineChapterProgress {
+    min-width: 0;
+  }
+
+  .outlineChapterTitleWrap h3 {
+    font-size: 18px;
+  }
+
+  .localeBtn span {
+    display: none;
   }
 
   .content {
     padding: 14px 14px;
+  }
+
+  .topicProgressWrap {
+    padding: 0 14px;
+    margin-bottom: 22px;
   }
 
   .title {

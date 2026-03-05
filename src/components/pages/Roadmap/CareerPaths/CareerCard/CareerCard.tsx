@@ -11,12 +11,11 @@ export default function CareerCard({
   courses,
   salary,
   demand,
-  gradient,
   href,
 }: Props) {
   return (
     <li className={styles.cardItem}>
-      <Link className={styles.card} href={href} style={{ backgroundImage: gradient }}>
+      <Link className={styles.card} href={href}>
         <div className={styles.chips}>
           <p className={styles.chip}>{courses}</p>
           <p className={styles.chip}>{duration}</p>

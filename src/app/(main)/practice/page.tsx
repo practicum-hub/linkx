@@ -1,172 +1,230 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useMemo, useRef } from "react";
 import { algorithmsRoadmap } from "@/data/mocks/courses/algorithmsRoadmap";
-import { buildLayouts, edgePath, nodePosition } from "@/lib/practice/roadmapGraph";
-import { useRoadmapCamera } from "@/lib/practice/useRoadmapCamera";
+import { getUnitLessons } from "@/lib/learn/lessons";
 import styles from "./page.module.css";
 
-export default function Practice() {
-  const { canvasWidth, canvasHeight, layouts } = useMemo(() => buildLayouts(algorithmsRoadmap), []);
-  const centeredOnceRef = useRef(false);
-  const {
-    camera,
-    viewportRef,
-    handleWheel,
-    handlePointerDown,
-    handlePointerMove,
-    handlePointerEnd,
-    handleClickCapture,
-    centerContent,
-  } = useRoadmapCamera();
+type ChapterView = {
+  id: string;
+  order: number;
+  title: string;
+  summary: string;
+  progress: number;
+  status: "Locked" | "Available" | "Completed";
+  href?: string;
+  lessons: {
+    id: string;
+    title: string;
+    xp: number;
+    kind: "theory" | "practice";
+  }[];
+};
 
-  useEffect(() => {
-    if (centeredOnceRef.current) {
-      return;
-    }
+function buildChapterView() {
+  const activeTopic = algorithmsRoadmap[0];
+  const completedSet = new Set(activeTopic.completed);
 
-    centerContent(canvasWidth, canvasHeight);
-    centeredOnceRef.current = true;
-  }, [canvasWidth, canvasHeight, centerContent]);
+  const chapters: ChapterView[] = activeTopic.units.map((unit, index) => {
+    const completed = completedSet.has(unit.id);
+    const unlockedByDeps = unit.requires.every((requiredId) => completedSet.has(requiredId));
+    const available = !completed && unlockedByDeps;
 
-  useEffect(() => {
-    const prevBodyOverflow = document.body.style.overflow;
-    const prevHtmlOverflow = document.documentElement.style.overflow;
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
+    const unitLessons = getUnitLessons(unit);
+    const lessons = unitLessons.map((exercise) => ({
+      id: exercise.id,
+      title: exercise.title,
+      xp: exercise.type === "practice" ? 100 : 50,
+      kind: exercise.type,
+    }));
 
-    return () => {
-      document.body.style.overflow = prevBodyOverflow;
-      document.documentElement.style.overflow = prevHtmlOverflow;
+    return {
+      id: unit.id,
+      order: index + 1,
+      title: unit.title,
+      summary:
+        unitLessons[0]?.type === "theory"
+          ? unitLessons[0].theory.intro
+          : unitLessons[0]?.practice.task ?? "",
+      progress: completed ? 100 : available ? 66 : 0,
+      status: completed ? "Completed" : available ? "Available" : "Locked",
+      href: available || completed ? `/learn/${activeTopic.id}/${unit.id}/1` : undefined,
+      lessons,
     };
-  }, []);
+  });
+
+  return { activeTopic, chapters };
+}
+
+export default function Practice() {
+  const { activeTopic, chapters } = buildChapterView();
+
+  const totalUnits = algorithmsRoadmap.reduce((sum, topic) => sum + topic.units.length, 0);
+  const totalExercises = algorithmsRoadmap.reduce(
+    (sum, topic) => sum + topic.units.reduce((inner, unit) => inner + getUnitLessons(unit).length, 0),
+    0,
+  );
+  const completedUnits = algorithmsRoadmap.reduce((sum, topic) => sum + topic.completed.length, 0);
+  const overallProgress = Math.round((completedUnits / totalUnits) * 100);
+  const estimatedHours = Math.max(1, Math.round(totalExercises * 0.2));
+  const firstActionChapter =
+    chapters.find((chapter) => chapter.status === "Available") ??
+    chapters.find((chapter) => chapter.status === "Completed");
 
   return (
-    <div className={styles.page}>
-      <section
-        ref={viewportRef}
-        className={styles.roadmapViewport}
-        onWheel={handleWheel}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerEnd}
-        onPointerCancel={handlePointerEnd}
-        onClickCapture={handleClickCapture}
-        onDragStart={(event) => event.preventDefault()}
-      >
-        <div
-          className={styles.roadmapCamera}
-          style={{ transform: `translate(${camera.x}px, ${camera.y}px) scale(${camera.scale})` }}
-        >
-          <div className={styles.roadmapCanvas} style={{ width: canvasWidth, height: canvasHeight }}>
-            <div className={styles.canvasGrid} aria-hidden="true" />
-            {layouts.map((layout) => {
-              const { topic, index, topicLocked, graphWidth, graphHeight, headerTop, graphTop, graphLeft } = layout;
+    <div className={styles.practicePage}>
+      <div className={styles.shell}>
+        <section className={styles.hero}>
+          <p className={styles.heroLabel}>Interactive Course</p>
+          <h1 className={styles.heroTitle}>Algorithms Practice Roadmap</h1>
+          <div className={styles.heroMeta}>
+            <span>Updated: March 2026</span>
+          </div>
 
-              return (
-                <article key={topic.id} className={styles.topicLayer}>
-                  <div className={styles.topicHeader} style={{ top: headerTop, width: canvasWidth }}>
-                    <p className={styles.topicIndex}>
-                      Topic {index + 1}
-                      {topicLocked ? (
-                        <span className={styles.topicLockedTag}>
-                          <span className={styles.lockIcon} aria-hidden="true">
-                            {"\u{1F512}"}
-                          </span>
-                          Locked
-                        </span>
-                      ) : null}
-                    </p>
-                    <h2 className={`${styles.topicTitle} ${topicLocked ? styles.topicTitleLocked : ""}`}>
-                      {topic.title}
-                    </h2>
-                    <p className={styles.topicDesc}>{topic.desc}</p>
+          <div className={styles.heroActions}>
+            {firstActionChapter?.href ? (
+              <Link href={firstActionChapter.href} className={styles.primaryAction}>
+                Continue
+              </Link>
+            ) : (
+              <button type="button" className={styles.primaryAction} disabled>
+                Continue
+              </button>
+            )}
+            <button type="button" className={styles.secondaryAction}>
+              Bookmark
+            </button>
+            <button type="button" className={styles.iconAction} aria-label="More options">
+              ...
+            </button>
+          </div>
+
+          <div className={styles.statRow}>
+            <span className={styles.statChip}>{estimatedHours} hr</span>
+            <span className={styles.statChip}>{totalExercises} lessons</span>
+            <span className={styles.statChip}>{totalUnits} chapters</span>
+            <span className={styles.statChip}>{overallProgress}% complete</span>
+          </div>
+        </section>
+
+        <div className={styles.contentLayout}>
+          <section className={styles.mainColumn}>
+            <article className={styles.descriptionCard}>
+              <h3>Description</h3>
+              <input id="practice-description-toggle" type="checkbox" className={styles.descriptionToggle} />
+              <div className={styles.descriptionTextWrap}>
+                <p>
+                  {activeTopic.desc} This practice track combines short theory steps with coding
+                  drills so you can apply complexity analysis, data structures, and algorithmic
+                  patterns in real tasks. You will progressively move from simple loop-based
+                  problems to structured tasks that require decomposition, edge-case handling, and
+                  asymptotic tradeoff decisions. By the end, you should be comfortable reading
+                  unfamiliar problem statements, selecting an approach, validating correctness, and
+                  writing clean TypeScript solutions under realistic constraints.
+                </p>
+              </div>
+              <label htmlFor="practice-description-toggle" className={styles.readMoreBtn} />
+            </article>
+
+            <section className={styles.chapterList}>
+              {chapters.map((chapter) => (
+                <article className={styles.chapterCard} key={chapter.id}>
+                  <div className={styles.chapterHead}>
+                    <div className={styles.chapterHeadLeft}>
+                      <span className={styles.chapterIndex}>{chapter.order}</span>
+                      <h3>{chapter.title}</h3>
+                      <span className={styles.chapterStatus}>{chapter.status}</span>
+                    </div>
+
+                    <div className={styles.chapterProgressWrap}>
+                      <div className={styles.chapterProgressBar}>
+                        <span style={{ width: `${chapter.progress}%` }} />
+                      </div>
+                      <strong>{chapter.progress}%</strong>
+                    </div>
                   </div>
 
-                  <div
-                    className={styles.graphCanvas}
-                    style={{ top: graphTop, left: graphLeft, width: graphWidth, height: graphHeight }}
-                  >
-                    <svg
-                      className={styles.edges}
-                      viewBox={`0 0 ${graphWidth} ${graphHeight}`}
-                      preserveAspectRatio="none"
-                    >
-                      {layout.edges.map(([fromId, toId]) => {
-                        const from = layout.unitMap.get(fromId);
-                        const to = layout.unitMap.get(toId);
-                        if (!from || !to) {
-                          return null;
-                        }
+                  <p className={styles.chapterSummary}>{chapter.summary}</p>
 
-                        const active = !topicLocked && topic.completed.includes(fromId);
-                        const edgeClass = topicLocked
-                          ? styles.edgeLocked
-                          : active
-                            ? styles.edgeActive
-                            : styles.edgeInactive;
+                  <input
+                    id={`chapter-details-${chapter.id}`}
+                    type="checkbox"
+                    className={styles.chapterDetailsToggle}
+                  />
 
-                        return (
-                          <path
-                            key={`${fromId}-${toId}`}
-                            d={edgePath(from, to)}
-                            className={`${styles.edge} ${edgeClass}`}
-                          />
-                        );
-                      })}
-                    </svg>
+                  <div className={styles.chapterFooter}>
+                    <label htmlFor={`chapter-details-${chapter.id}`} className={styles.chapterDetailsBtn} />
+                    {chapter.href ? (
+                      <Link href={chapter.href} className={styles.chapterAction}>
+                        Continue Chapter
+                      </Link>
+                    ) : (
+                      <span className={styles.chapterLockedLabel}>Finish previous chapters to unlock</span>
+                    )}
+                  </div>
 
-                    {topic.units.map((unit) => {
-                      const completed = topic.completed.includes(unit.id);
-                      const unlockedByDeps =
-                        unit.requires.length === 0 ||
-                        unit.requires.every((requiredUnitId) => topic.completed.includes(requiredUnitId));
-                      const unlocked = !topicLocked && unlockedByDeps;
-                      const locked = !completed && !unlocked;
-                      const pos = nodePosition(unit);
-                      const href = `/learn/${topic.id}/${unit.id}/1`;
-
-                      if (locked) {
-                        return (
-                          <button
-                            key={unit.id}
-                            className={`${styles.unitNode} ${styles.locked}`}
-                            style={{ left: pos.x, top: pos.y }}
-                            disabled
-                          >
-                            <span className={styles.unitTitle}>{unit.title}</span>
-                            <span className={styles.unitTopic}>Theme: {topic.title}</span>
-                            <span className={styles.unitStatus}>
-                              <span className={styles.lockIcon} aria-hidden="true">
-                                {"\u{1F512}"}
-                              </span>{" "}
-                              Locked
-                            </span>
-                          </button>
-                        );
-                      }
+                  <ul className={styles.lessonList}>
+                    {chapter.lessons.map((lesson, lessonIndex) => {
+                      const completedLessons = Math.round((chapter.progress / 100) * chapter.lessons.length);
+                      const isDone = lessonIndex < completedLessons;
+                      const lessonHref = `/learn/${activeTopic.id}/${chapter.id}/${lessonIndex + 1}`;
 
                       return (
-                        <Link
-                          key={unit.id}
-                          href={href}
-                          className={`${styles.unitNode} ${completed ? styles.done : styles.available}`}
-                          style={{ left: pos.x, top: pos.y }}
-                        >
-                          <span className={styles.unitTitle}>{unit.title}</span>
-                          <span className={styles.unitTopic}>Theme: {topic.title}</span>
-                          <span className={styles.unitStatus}>{completed ? "Completed" : "Available"}</span>
-                        </Link>
+                        <li key={lesson.id}>
+                          <Link href={lessonHref} className={styles.lessonRowLink}>
+                            <span className={styles.lessonIcon} data-kind={lesson.kind} aria-hidden="true" />
+                            <span className={styles.lessonTitle}>{lesson.title}</span>
+                            <span className={styles.lessonMeta}>
+                              {isDone ? <span className={styles.lessonCheck} aria-hidden="true" /> : null}
+                              <span className={styles.lessonXp}>{lesson.xp} XP</span>
+                            </span>
+                          </Link>
+                        </li>
                       );
                     })}
-                  </div>
+                  </ul>
                 </article>
-              );
-            })}
-          </div>
+              ))}
+            </section>
+          </section>
+
+          <aside className={styles.sideColumn}>
+            <section className={styles.sideCard}>
+              <h3>Share</h3>
+              <button type="button" className={styles.linkedInBtn}>
+                Share on LinkedIn
+              </button>
+              <div className={styles.shareRow}>
+                <button type="button" className={styles.sideGhostBtn}>
+                  Copy Link
+                </button>
+                <button type="button" className={styles.sideGhostBtn}>
+                  X
+                </button>
+              </div>
+            </section>
+
+            <section className={styles.sideCard}>
+              <h3>Prerequisites</h3>
+              <p>Working with TypeScript basics and function syntax.</p>
+            </section>
+
+            <section className={styles.sideCard}>
+              <h3>Resources</h3>
+              <span className={styles.resourceLink}>
+                Course Glossary
+              </span>
+            </section>
+
+            <section className={styles.sideCard}>
+              <h3>Part of these tracks</h3>
+              <ul className={styles.trackList}>
+                <li>Associate AI Engineer for Developers</li>
+                <li>Developing AI Applications</li>
+                <li>OpenAI Fundamentals</li>
+              </ul>
+            </section>
+          </aside>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

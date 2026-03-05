@@ -2,58 +2,102 @@
 
 import { useParams } from "next/navigation";
 import { useState } from "react";
-import ExerciseRail from "@/components/pages/Learn/ExerciseRail";
-import LearnFooterNav from "@/components/pages/Learn/LearnFooterNav";
+import CourseOutlineModal from "@/components/pages/Learn/CourseOutlineModal";
 import LearnHeader from "@/components/pages/Learn/LearnHeader";
 import PracticeView from "@/components/pages/Learn/PracticeView";
 import TheoryView from "@/components/pages/Learn/TheoryView";
+import { getUnitLessons } from "@/lib/learn/lessons";
 import { getLearnSession } from "@/lib/learn/session";
 import { useAppTheme } from "@/components/providers/ThemeProvider";
 import styles from "../../../page.module.css";
 
 export default function LearnStepPage() {
   const params = useParams<{ topicId: string; unitId: string; step: string }>();
-  const [isChecked, setIsChecked] = useState(false);
+  const [isOutlineOpen, setIsOutlineOpen] = useState(false);
   const { isDark } = useAppTheme();
 
-  const { mode, safeStep, total, progress, exerciseIndex, lesson, selectedTopic, selectedUnit, nextHref, prevHref } =
+  const { safeStep, total, lesson, selectedTopic, selectedUnit, nextHref, prevHref } =
     getLearnSession({
       topicId: params.topicId ?? "foundations",
       unitId: params.unitId ?? "f-u1",
       step: params.step ?? "1",
     });
 
+  const completedSet = new Set(selectedTopic.completed);
+  const currentUnitIndex = selectedTopic.units.findIndex((unit) => unit.id === selectedUnit.id);
+  const outlineChapters = selectedTopic.units.map((unit, unitIndex) => {
+    const unitLessons = getUnitLessons(unit);
+    const isCompleted = completedSet.has(unit.id);
+    const isUnlocked = isCompleted || unit.requires.every((requiredId) => completedSet.has(requiredId));
+
+    const progress = isCompleted
+      ? 100
+      : unit.id === selectedUnit.id
+      ? Math.round((safeStep / Math.max(1, total)) * 100)
+      : 0;
+
+    return {
+      id: unit.id,
+      order: unitIndex + 1,
+      title: unit.title,
+      progress,
+      lessons: unitLessons.map((unitLesson, lessonIndex) => ({
+        id: unitLesson.id,
+        title: unitLesson.title,
+        href: `/learn/${selectedTopic.id}/${unit.id}/${lessonIndex + 1}`,
+        xp: unitLesson.type === "practice" ? 100 : 50,
+        kind: unitLesson.type,
+        isCurrent: unit.id === selectedUnit.id && lessonIndex === safeStep - 1,
+        isDone: isCompleted || (unit.id === selectedUnit.id && lessonIndex < safeStep - 1),
+        isLocked: !isUnlocked,
+      })),
+    };
+  });
+
   return (
     <div className={`${styles.page} ${isDark ? styles.pageDark : ""}`}>
-      <LearnHeader progress={progress} safeStep={safeStep} total={total} />
+      <LearnHeader
+        courseTitle={selectedTopic.title}
+        prevHref={prevHref}
+        nextHref={nextHref}
+        canGoPrev={safeStep > 1}
+        canGoNext={safeStep < total}
+        isOutlineOpen={isOutlineOpen}
+        onOpenOutline={() => setIsOutlineOpen(true)}
+      />
 
       <main className={styles.content}>
-        <div className={styles.lessonHeading}>
-          <p className={styles.meta}>
-            {selectedTopic.title} / {selectedUnit.title} / Exercise {exerciseIndex + 1}
-          </p>
+        <section className={styles.lessonHeading}>
           <h1 className={styles.title}>{lesson.title}</h1>
-          <p className={styles.modeTag}>{mode === "theory" ? "Theory Exercise" : "Practice Exercise"}</p>
-        </div>
+        </section>
 
-        {mode === "theory" ? <TheoryView lesson={lesson} /> : <PracticeView lesson={lesson} isDark={isDark} />}
-
-        <LearnFooterNav
-          mode={mode}
-          safeStep={safeStep}
-          total={total}
-          isChecked={isChecked}
-          prevHref={prevHref}
-          nextHref={nextHref}
-          onCheck={() => setIsChecked(true)}
-        />
-
-        <ExerciseRail total={total} safeStep={safeStep} />
-
-        {mode === "practice" && isChecked ? (
-          <p className={styles.checkStatus}>Checks passed. You can continue to the next exercise.</p>
-        ) : null}
+        {lesson.type === "theory" ? <TheoryView lesson={lesson} /> : <PracticeView lesson={lesson} isDark={isDark} />}
       </main>
+
+      <div className={styles.topicProgressWrap} aria-label="Topic progress">
+        <div className={styles.topicProgressRail}>
+          {selectedTopic.units.map((unit, index) => {
+            const isDone = completedSet.has(unit.id);
+            const isCurrent = index === currentUnitIndex;
+
+            return (
+              <span
+                key={unit.id}
+                className={`${styles.topicProgressSegment} ${isDone ? styles.topicProgressSegmentDone : ""} ${
+                  isCurrent ? styles.topicProgressSegmentCurrent : ""
+                }`}
+              />
+            );
+          })}
+        </div>
+      </div>
+
+      <CourseOutlineModal
+        isOpen={isOutlineOpen}
+        title={selectedTopic.title}
+        chapters={outlineChapters}
+        onClose={() => setIsOutlineOpen(false)}
+      />
     </div>
   );
 }

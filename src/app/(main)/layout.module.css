@@ -5,6 +5,10 @@
   background: var(--bg-page);
 }
 
+.pagePractice {
+  background: #f7f7fc;
+}
+
 .layout {
   display: flex;
   flex: 1;
@@ -18,6 +22,10 @@
   justify-content: center;
 }
 
+.contentAreaPractice {
+  background: #f7f7fc;
+}
+
 .contentCluster {
   width: min(100%, 1510px);
   min-width: 0;
@@ -28,6 +36,10 @@
   flex: 1;
   min-width: 0;
   display: flex;
+}
+
+.mainPractice {
+  background: #f7f7fc;
 }
 
 .mainInner {

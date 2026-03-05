@@ -1,5 +1,6 @@
 import { algorithmsRoadmap, getTopicById, getUnitById } from "@/data/mocks/courses/algorithmsRoadmap";
 import { fallbackExercise } from "@/data/mocks/learn/fallbackExercise";
+import { getUnitLessons } from "@/lib/learn/lessons";
 import type { UnitExercise } from "@/types/algorithms";
 
 export type LessonMode = "theory" | "practice";
@@ -26,13 +27,13 @@ export function getLearnSession(params: {
   const selectedTopic = getTopicById(params.topicId) ?? algorithmsRoadmap[0];
   const selectedUnit = getUnitById(selectedTopic.id, params.unitId) ?? selectedTopic.units[0];
 
-  const exercises = selectedUnit?.exercises ?? [fallbackExercise];
-  const total = Math.max(2, exercises.length * 2);
+  const lessons = getUnitLessons(selectedUnit);
+  const total = Math.max(1, lessons.length);
   const safeStep = Number.isFinite(currentStep) ? Math.min(Math.max(currentStep, 1), total) : 1;
-  const exerciseIndex = Math.floor((safeStep - 1) / 2);
-  const lesson = exercises[exerciseIndex] ?? fallbackExercise;
+  const exerciseIndex = safeStep - 1;
+  const lesson = lessons[exerciseIndex] ?? fallbackExercise;
 
-  const mode: LessonMode = safeStep % 2 === 0 ? "practice" : "theory";
+  const mode: LessonMode = lesson.type;
 
   const progress = Math.min(100, Math.round((safeStep / total) * 100));
   const nextStep = Math.min(total, safeStep + 1);

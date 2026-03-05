@@ -1,9 +1,9 @@
 import CodePanel from "@/components/Lesson/CodePanel/CodePanel";
-import type { UnitExercise } from "@/types/algorithms";
+import type { PracticeExercise } from "@/types/algorithms";
 import styles from "@/app/(main)/learn/page.module.css";
 
 type Props = {
-  lesson: UnitExercise;
+  lesson: PracticeExercise;
   isDark: boolean;
 };
 
@@ -49,7 +49,15 @@ export default function PracticeView({ lesson, isDark }: Props) {
       </article>
 
       <div className={styles.codePanelWrap}>
-        <CodePanel className={styles.embeddedCodePanel} style={{ width: "100%" }} isDark={isDark} />
+        <CodePanel
+          className={styles.embeddedCodePanel}
+          style={{ width: "100%" }}
+          isDark={isDark}
+          lessonId={lesson.id}
+          starterCode={lesson.practice.starterCode}
+          terminalCases={lesson.practice.terminal?.cases}
+          terminalNote={lesson.practice.terminal?.note}
+        />
       </div>
     </section>
   );

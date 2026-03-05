@@ -1,4 +1,5 @@
 export type UnitType = "Lesson" | "Quiz" | "Practice" | "Checkpoint";
+export type ExerciseType = "theory" | "practice";
 
 export type ExerciseTheory = {
   intro: string;
@@ -15,16 +16,38 @@ export type ExercisePractice = {
   task: string;
   input: string;
   output: string;
+  starterCode?: string;
   requirements: string[];
   cases: { input: string; output: string; note?: string }[];
+  terminal?: {
+    cases: ExerciseTerminalCase[];
+    note?: string;
+  };
 };
 
-export type UnitExercise = {
+export type ExerciseTerminalCase = {
+  title: string;
+  fields: {
+    name: string;
+    value: string;
+  }[];
+};
+
+export type TheoryExercise = {
   id: string;
   title: string;
+  type: "theory";
   theory: ExerciseTheory;
+};
+
+export type PracticeExercise = {
+  id: string;
+  title: string;
+  type: "practice";
   practice: ExercisePractice;
 };
+
+export type UnitExercise = TheoryExercise | PracticeExercise;
 
 export type AlgorithmsUnit = {
   id: string;
@@ -33,7 +56,8 @@ export type AlgorithmsUnit = {
   level: number;
   lane: number;
   requires: string[];
-  exercises: UnitExercise[];
+  lessons?: UnitExercise[];
+  exercises?: UnitExercise[];
 };
 
 export type AlgorithmsTopic = {
