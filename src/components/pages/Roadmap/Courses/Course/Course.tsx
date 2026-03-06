@@ -1,14 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./course.module.css";
 import type { RoadmapCourse } from "@/types/roadmap";
 
 type Props = RoadmapCourse;
 
+const fallbackCover = "/images/algorithms.png";
+
 export default function Course({
   title,
   desc,
-  level,
-  duration,
   progress,
   unitsDone,
   totalUnits,
@@ -20,12 +21,19 @@ export default function Course({
     <li className={styles.courseItem}>
       <Link className={styles.course} href={href}>
         <div className={styles.cover}>
-          <img className={styles.coverImage} src={imageSrc} alt={title} />
-        </div>
-
-        <div className={styles.topRow}>
-          <p className={styles.level}>{level}</p>
-          <p className={styles.duration}>{duration}</p>
+          <Image
+            className={styles.coverImage}
+            src={imageSrc}
+            alt={title}
+            width={640}
+            height={360}
+            unoptimized
+            onError={(event) => {
+              const target = event.currentTarget as HTMLImageElement;
+              target.onerror = null;
+              target.src = fallbackCover;
+            }}
+          />
         </div>
 
         <div className={styles.info}>
@@ -48,7 +56,6 @@ export default function Course({
 
         <div className={styles.bottomRow}>
           <p className={styles.xp}>+{xp} XP</p>
-          <p className={styles.linkLabel}>Open Course</p>
         </div>
       </Link>
     </li>

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
 
@@ -17,15 +20,24 @@ const tags = [
   "R",
   "Power BI",
   "Tableau",
+  "Alteryx",
   "Excel",
   "Google Sheets",
   "ChatGPT",
+  "Gemini",
+  "PyTorch",
   "OpenAI",
   "AWS",
   "Azure",
+  "Snowflake",
   "Databricks",
   "Git",
   "Docker",
+  "Shell",
+  "Kubernetes",
+  "Airflow",
+  "Spark",
+  "+20",
 ];
 
 const courses: CourseItem[] = [
@@ -86,6 +98,10 @@ const courses: CourseItem[] = [
 ];
 
 export default function CoursesPage() {
+  const [visibleCount, setVisibleCount] = useState(12);
+  const visibleCourses = courses.slice(0, visibleCount);
+  const hasMoreCourses = visibleCount < courses.length;
+
   return (
     <div className={styles.page}>
       <div className={styles.content}>
@@ -97,44 +113,49 @@ export default function CoursesPage() {
               theory with hands-on exercises.
             </p>
           </div>
-          <div className={styles.heroBadge}>Hands-on learning</div>
         </section>
 
-        <div className={styles.tagList}>
-          {tags.map((tag, index) => (
-            <button
-              key={tag}
-              type="button"
-              className={`${styles.tag} ${index === 0 ? styles.tagActive : ""}`}
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
-
-        <div className={styles.toolbar}>
-          <p className={styles.toolbarTitle}>Courses</p>
-          <div className={styles.controls}>
-            <label className={styles.searchWrap}>
-              <span className={styles.searchIcon} aria-hidden="true">
-                ⌕
-              </span>
-              <input className={styles.search} placeholder="Search courses..." />
-            </label>
-            <button type="button" className={styles.filterBtn}>
-              Topic
-            </button>
+        <section className={styles.discoveryPanel}>
+          <div className={styles.tagList}>
+            {tags.map((tag, index) => (
+              <button
+                key={tag}
+                type="button"
+                className={`${styles.tag} ${index === 0 ? styles.tagActive : ""} ${
+                  tag.startsWith("+") ? styles.tagMore : ""
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
           </div>
-        </div>
+
+          <div className={styles.toolbar}>
+            <p className={styles.toolbarTitle}>
+              <strong>589</strong> Courses
+            </p>
+            <div className={styles.controls}>
+              <label className={styles.searchWrap}>
+                <span className={styles.searchIcon} aria-hidden="true" />
+                <input className={styles.search} placeholder="Search courses..." />
+              </label>
+
+              <button type="button" className={styles.moreFiltersBtn}>
+                <span className={styles.moreFiltersIcon} aria-hidden="true" />
+                <span>More filters</span>
+              </button>
+            </div>
+          </div>
+        </section>
 
         <section className={styles.grid}>
-          {courses.map((course) => (
+          {visibleCourses.map((course) => (
             <article className={styles.card} key={course.title}>
               <p className={styles.cardLabel}>Course</p>
               <h2 className={styles.cardTitle}>{course.title}</h2>
               <p className={styles.cardLevel}>{course.level}</p>
               <p className={styles.cardDesc}>{course.description}</p>
-              <p className={styles.authors}>{course.authors.join(" · ")}</p>
+              <p className={styles.authors}>{course.authors.join(" / ")}</p>
 
               <div className={styles.cardBottom}>
                 <div className={styles.progressTrack}>
@@ -150,6 +171,18 @@ export default function CoursesPage() {
             </article>
           ))}
         </section>
+
+        {hasMoreCourses ? (
+          <div className={styles.loadMoreWrap}>
+            <button
+              type="button"
+              className={styles.loadMoreBtn}
+              onClick={() => setVisibleCount((count) => count + 4)}
+            >
+              Load more
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );

@@ -1,15 +1,15 @@
 .page {
   min-height: 100%;
   background: #f3f5fb;
-  padding: 24px 22px 38px;
+  padding: 18px 20px 32px;
 }
 
 .content {
-  max-width: 920px;
+  width: min(1120px, 100%);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   color: #0b1f40;
 }
 
@@ -17,29 +17,29 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 12px;
+  gap: 10px;
 }
 
 .userBlock {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   align-items: flex-start;
 }
 
 .avatar {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: #0e9ca8;
   color: #f7fcff;
   display: grid;
   place-items: center;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 700;
 }
 
 .title {
-  font-size: 35px;
+  font-size: 28px;
   font-weight: 800;
   line-height: 1.1;
 }
@@ -47,7 +47,7 @@
 .subtitle {
   margin-top: 3px;
   color: #2d4165;
-  font-size: 15px;
+  font-size: 13px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -55,8 +55,8 @@
 
 .subtitleProgress {
   margin-top: 6px;
-  width: 116px;
-  height: 5px;
+  width: 104px;
+  height: 4px;
   border-radius: 999px;
   background: #d8e1ef;
   overflow: hidden;
@@ -71,27 +71,27 @@
 
 .stats {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
 .statPill {
-  height: 40px;
+  height: 34px;
   border-radius: 999px;
   border: 1px solid #d3dae6;
   background: #f7f8fb;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 12px 0 8px;
-  font-size: 13px;
+  gap: 7px;
+  padding: 0 10px 0 7px;
+  font-size: 12px;
   font-weight: 800;
   color: #10284e;
 }
 
 .statIconReview,
 .statIconStreak {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -108,19 +108,19 @@
 }
 
 .statBadge {
-  min-width: 18px;
-  height: 18px;
+  min-width: 16px;
+  height: 16px;
   border-radius: 5px;
   background: #f3a133;
   color: #10223f;
   display: grid;
   place-items: center;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
 }
 
 .enrolled {
-  font-size: 15px;
+  font-size: 14px;
   color: #172c4e;
 }
 
@@ -138,11 +138,11 @@
 
 .mainTop,
 .mainBottom {
-  padding: 18px 22px;
+  padding: 16px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: 12px;
 }
 
 .mainBottom {
@@ -152,18 +152,18 @@
 .mainLesson {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .lessonIcon {
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: #14eb67;
   color: #0f2a23;
   display: grid;
   place-items: center;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .kicker {
@@ -175,9 +175,9 @@
 }
 
 .lessonTitle {
-  margin-top: 6px;
+  margin-top: 4px;
   color: #051d45;
-  font-size: 34px;
+  font-size: 24px;
   font-weight: 800;
   display: inline-flex;
   align-items: center;
@@ -185,8 +185,8 @@
 }
 
 .lessonMeta {
-  margin-top: 10px;
-  font-size: 15px;
+  margin-top: 8px;
+  font-size: 13px;
   color: #1e355a;
   display: inline-flex;
   align-items: center;
@@ -194,35 +194,35 @@
 }
 
 .primaryBtn {
-  min-width: 220px;
-  height: 42px;
+  min-width: 184px;
+  height: 36px;
   border-radius: 5px;
   border: 1px solid #12ce5b;
   background: #11e461;
   color: #04271a;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 800;
 }
 
 .know {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 .metaText {
   margin-top: 5px;
-  font-size: 15px;
+  font-size: 13px;
   color: #173257;
 }
 
 .ghostBtn {
-  height: 32px;
+  height: 30px;
   border-radius: 5px;
   border: 1px solid #8f9fb8;
-  padding: 0 12px;
+  padding: 0 10px;
   background: #ffffff;
   color: #163152;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -233,28 +233,28 @@
 .twoCol {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 
 .smallCard {
-  min-height: 94px;
+  min-height: 82px;
   border-radius: 6px;
   border: 1px solid #d9dfeb;
   background: #ffffff;
-  padding: 14px 16px;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .smallIconOrange,
 .smallIconPink {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .smallIconOrange {
@@ -273,7 +273,7 @@
 
 .smallBody h3 {
   margin-top: 6px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
   line-height: 1.25;
 }
@@ -285,8 +285,8 @@
 .banner {
   margin-top: 4px;
   border-radius: 6px;
-  padding: 24px 18px;
-  min-height: 154px;
+  padding: 18px 16px;
+  min-height: 126px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -298,27 +298,27 @@
 }
 
 .bannerLabel {
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: #9ad1ff;
 }
 
 .bannerText {
-  margin-top: 34px;
-  font-size: 43px;
+  margin-top: 20px;
+  font-size: 28px;
   font-weight: 800;
   line-height: 1.1;
 }
 
 .bannerBtn {
-  min-width: 230px;
-  height: 52px;
+  min-width: 170px;
+  height: 40px;
   border-radius: 5px;
   border: 1px solid #0fd25b;
   background: #11e461;
   color: #032514;
-  font-size: 34px;
+  font-size: 18px;
   font-weight: 800;
 }
 
@@ -329,12 +329,12 @@
   border: 0;
   color: #f4f7ff;
   background: transparent;
-  font-size: 30px;
+  font-size: 22px;
   line-height: 1;
 }
 
 .pickup {
-  margin-top: 10px;
+  margin-top: 6px;
 }
 
 .pickupHeader {
@@ -345,7 +345,7 @@
 }
 
 .pickupHeader h2 {
-  font-size: 39px;
+  font-size: 28px;
   font-weight: 800;
   display: inline-flex;
   align-items: center;
@@ -354,12 +354,12 @@
 
 .pickupHeader a {
   color: #1360bc;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
 }
 
 .courseList {
-  margin-top: 12px;
+  margin-top: 10px;
   border: 1px solid #d9dfeb;
   border-radius: 6px;
   overflow: hidden;
@@ -367,13 +367,13 @@
 }
 
 .courseRow {
-  min-height: 98px;
+  min-height: 86px;
   border-top: 1px solid #e7ecf4;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 14px;
-  padding: 16px 14px;
+  gap: 12px;
+  padding: 14px 12px;
 }
 
 .courseRow:first-child {
@@ -383,18 +383,18 @@
 .courseInfo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .courseIcon {
-  width: 43px;
-  height: 43px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: #061f42;
   color: #f2f7ff;
   display: grid;
   place-items: center;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
 }
 
@@ -402,7 +402,7 @@
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: #8c98ad;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -421,12 +421,12 @@
 
 .courseBody h3 {
   margin-top: 5px;
-  font-size: 35px;
+  font-size: 22px;
   font-weight: 800;
 }
 
 .progressWrap {
-  margin-top: 10px;
+  margin-top: 8px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -434,12 +434,12 @@
 
 .progressWrap span {
   color: #657691;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
 }
 
 .progressTrack {
-  width: 136px;
+  width: 120px;
   height: 7px;
   border-radius: 999px;
   background: #dae2ee;
@@ -453,28 +453,28 @@
 }
 
 .complete {
-  margin-top: 8px;
+  margin-top: 6px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   color: #203656;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .practiceBtn {
-  height: 40px;
+  height: 34px;
   border-radius: 5px;
   border: 1px solid #8f9fb8;
   background: #ffffff;
-  padding: 0 12px;
+  padding: 0 10px;
   color: #1b3458;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -482,45 +482,45 @@
 }
 
 .continueBtn {
-  min-width: 112px;
-  height: 40px;
+  min-width: 98px;
+  height: 34px;
   border-radius: 5px;
   border: 1px solid #10cc58;
   background: #10e15f;
   color: #032816;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 800;
 }
 
 @media (max-width: 1600px) {
   .title {
-    font-size: 29px;
+    font-size: 27px;
   }
 
   .lessonTitle {
-    font-size: 28px;
+    font-size: 22px;
   }
 
   .bannerText {
-    font-size: 34px;
-    margin-top: 20px;
+    font-size: 26px;
+    margin-top: 18px;
   }
 
   .bannerBtn {
-    font-size: 26px;
-    min-width: 190px;
+    font-size: 17px;
+    min-width: 164px;
   }
 
   .pickupHeader h2 {
-    font-size: 31px;
+    font-size: 26px;
   }
 
   .courseBody h3 {
-    font-size: 28px;
+    font-size: 21px;
   }
 
   .complete {
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 
@@ -580,12 +580,12 @@
   }
 
   .lessonTitle {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .metaText,
   .enrolled {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .pickupHeader {
@@ -594,11 +594,11 @@
   }
 
   .pickupHeader h2 {
-    font-size: 25px;
+    font-size: 22px;
   }
 
   .courseBody h3 {
-    font-size: 21px;
+    font-size: 19px;
   }
 
   .actions {

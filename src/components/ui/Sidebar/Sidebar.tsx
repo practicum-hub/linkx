@@ -7,7 +7,7 @@ import type { SidebarItemType } from "@/types/roadmap";
 
 export default function Sidebar() {
   const topItems: SidebarItemType[] = [
-    { name: "Explore", href: "/roadmap", iconSrc: "" },
+    { name: "Explore", href: "/explore", iconSrc: "" },
     { name: "My progress", href: "/progress", iconSrc: "" },
     { name: "My library", href: "/library", iconSrc: "" },
     { name: "Leaderboard", href: "/leaderboard", iconSrc: "" },
@@ -15,7 +15,7 @@ export default function Sidebar() {
 
   const learnItems: SidebarItemType[] = [
     { name: "Courses", href: "/courses", iconSrc: "" },
-    { name: "Careers", href: "/roadmap#careers", iconSrc: "" },
+    { name: "Careers", href: "/careers", iconSrc: "" },
   ];
 
   return (

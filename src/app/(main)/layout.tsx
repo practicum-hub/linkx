@@ -11,6 +11,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const isLearnPage = pathname.startsWith("/learn");
   const isPracticePage = pathname.startsWith("/practice");
+  const isExplorePage = pathname.startsWith("/explore");
+  const isCoursesPage = pathname.startsWith("/courses");
+  const isCareersPage = pathname.startsWith("/careers");
+  const isProgressPage = pathname.startsWith("/progress");
+  const hasCenteredMainOnly =
+    isPracticePage || isExplorePage || isCoursesPage || isCareersPage || isProgressPage;
 
   if (isLearnPage) {
     return <div className={styles.learnShell}>{children}</div>;
@@ -27,7 +33,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <main className={`${styles.main} ${isPracticePage ? styles.mainPractice : ""}`}>
               <div className={styles.mainInner}>{children}</div>
             </main>
-            {!isPracticePage ? <RightSidebar /> : null}
+            {!hasCenteredMainOnly ? <RightSidebar /> : null}
           </div>
         </div>
       </div>

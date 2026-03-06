@@ -43,7 +43,7 @@ export default function MainHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <Link href="/roadmap" className={styles.logo}>
+        <Link href="/explore" className={styles.logo}>
           <span>EqualLearning</span>
         </Link>
 

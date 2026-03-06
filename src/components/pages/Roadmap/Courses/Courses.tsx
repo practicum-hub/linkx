@@ -7,7 +7,21 @@ import Course from "./Course/Course";
 import styles from "./courses.module.css";
 import { roadmapCourses } from "@/data/mocks/roadmap/courses";
 
-export default function Courses() {
+type Props = {
+  maxItems?: number;
+  title?: string;
+  desc?: string;
+  showAllHref?: string;
+  showAllLabel?: string;
+};
+
+export default function Courses({
+  maxItems,
+  title = "Pick a Course",
+  desc = "Start your journey from zero to hero with curated, practical tracks.",
+  showAllHref,
+  showAllLabel = "See all",
+}: Props) {
   const [columns, setColumns] = useState(4);
 
   useEffect(() => {
@@ -35,7 +49,7 @@ export default function Courses() {
     return () => window.removeEventListener("resize", updateColumns);
   }, []);
 
-  const maxVisibleCourses = columns * 2;
+  const maxVisibleCourses = maxItems ?? columns * 2;
   const hasHiddenCourses = roadmapCourses.length > maxVisibleCourses;
   const visibleCourses = useMemo(() => {
     if (!hasHiddenCourses) {
@@ -47,10 +61,14 @@ export default function Courses() {
 
   return (
     <div className={styles.wrapper}>
-      <TextBlock
-        title="Pick a Course"
-        desc="Start your journey from zero to hero with curated, practical tracks."
-      />
+      <div className={styles.header}>
+        <TextBlock title={title} desc={desc} />
+        {showAllHref ? (
+          <Link className={styles.showAll} href={showAllHref}>
+            {showAllLabel}
+          </Link>
+        ) : null}
+      </div>
 
       <div className={`${styles.coursesViewport} ${hasHiddenCourses ? styles.coursesViewportFaded : ""}`}>
         <ul className={styles.courses}>
@@ -59,12 +77,6 @@ export default function Courses() {
           ))}
         </ul>
       </div>
-
-      {hasHiddenCourses ? (
-        <Link className={styles.showAll} href="/courses">
-          Show all
-        </Link>
-      ) : null}
     </div>
   );
 }

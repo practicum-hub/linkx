@@ -8,7 +8,21 @@ import TextBlock from "../TextBlock/TextBlock";
 import CareerCard from "./CareerCard/CareerCard";
 import { careerPaths } from "@/data/mocks/roadmap/careerPaths";
 
-export default function CareerPaths() {
+type Props = {
+  maxItems?: number;
+  title?: string;
+  desc?: string;
+  showAllHref?: string;
+  showAllLabel?: string;
+};
+
+export default function CareerPaths({
+  maxItems,
+  title = "Career Paths",
+  desc = "Structured roadmaps for specific job roles with clear outcomes.",
+  showAllHref,
+  showAllLabel = "See all",
+}: Props) {
   const [columns, setColumns] = useState(4);
 
   useEffect(() => {
@@ -36,7 +50,7 @@ export default function CareerPaths() {
     return () => window.removeEventListener("resize", updateColumns);
   }, []);
 
-  const maxVisibleCareers = columns * 2;
+  const maxVisibleCareers = maxItems ?? columns * 2;
   const hasHiddenCareers = careerPaths.length > maxVisibleCareers;
   const visibleCareers = useMemo(() => {
     if (!hasHiddenCareers) {
@@ -48,10 +62,14 @@ export default function CareerPaths() {
 
   return (
     <div className={styles.wrapper} id="careers">
-      <TextBlock
-        title="Career Paths"
-        desc="Structured roadmaps for specific job roles with clear outcomes."
-      />
+      <div className={styles.header}>
+        <TextBlock title={title} desc={desc} />
+        {showAllHref ? (
+          <Link className={styles.showAll} href={showAllHref}>
+            {showAllLabel}
+          </Link>
+        ) : null}
+      </div>
 
       <div className={`${styles.cardsViewport} ${hasHiddenCareers ? styles.cardsViewportFaded : ""}`}>
         <ul className={styles.cards}>
@@ -60,12 +78,6 @@ export default function CareerPaths() {
           ))}
         </ul>
       </div>
-
-      {hasHiddenCareers ? (
-        <Link className={styles.showAll} href="/career-paths">
-          Show all
-        </Link>
-      ) : null}
     </div>
   );
 }

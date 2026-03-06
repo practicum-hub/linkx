@@ -3,6 +3,10 @@
   min-height: 100vh;
 }
 
+.explorePage {
+  padding: 0 8px 10px;
+}
+
 .content {
   padding: 20px 20px 20px;
   display: flex;
@@ -10,31 +14,219 @@
   gap: 52px;
 }
 
+.exploreContent {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  gap: 42px;
+}
+
+.exploreHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.9fr);
+  gap: 16px;
+}
+
+.exploreHeroPrimary,
+.exploreHeroAside {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-default);
+  border-radius: 26px;
+}
+
+.exploreHeroPrimary {
+  min-height: 228px;
+  padding: 22px 24px;
+  background: #0f2a52;
+  color: #f7fbff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.exploreHeroPrimary::after {
+  content: "";
+  position: absolute;
+  top: -18px;
+  right: 6px;
+  width: 210px;
+  height: 300px;
+  border: 1px solid rgba(178, 205, 255, 0.14);
+  border-radius: 46% 54% 60% 40% / 38% 45% 55% 62%;
+  transform: rotate(11deg);
+}
+
+.exploreHeroPrimary::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 42px;
+  width: 154px;
+  height: 286px;
+  border: 1px solid rgba(178, 205, 255, 0.1);
+  border-radius: 46% 54% 60% 40% / 38% 45% 55% 62%;
+  transform: rotate(11deg);
+}
+
+.exploreHeroEyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+  font-weight: 700;
+  color: #9db3d6;
+}
+
+.exploreHeroTitle {
+  position: relative;
+  z-index: 1;
+  max-width: 460px;
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.exploreHeroProgressRow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.exploreHeroProgressTrack {
+  width: 154px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(214, 228, 255, 0.16);
+  overflow: hidden;
+}
+
+.exploreHeroProgressFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #19d96f 0%, #13f06a 100%);
+}
+
+.exploreHeroProgressValue,
+.exploreHeroMeta {
+  font-size: 12px;
+  font-weight: 700;
+  color: #f7fbff;
+}
+
+.exploreHeroMeta {
+  color: #c4d6f5;
+}
+
+.exploreHeroActions {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.exploreHeroPractice,
+.exploreHeroContinue {
+  border: 0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.exploreHeroPractice {
+  min-width: 122px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.09);
+  color: #f3f8ff;
+  box-shadow: inset 0 0 0 1px rgba(187, 208, 245, 0.12);
+}
+
+.exploreHeroContinue {
+  min-width: 104px;
+  height: 38px;
+  background: #15ee6d;
+  color: #082315;
+  padding: 0 16px;
+}
+
+.exploreHeroAside {
+  min-height: 228px;
+  padding: 22px 24px;
+  background: #dbe4f3;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.exploreHeroAside::after {
+  content: "";
+  position: absolute;
+  right: -56px;
+  bottom: -58px;
+  width: 250px;
+  height: 250px;
+  border: 1px solid rgba(102, 128, 168, 0.2);
+  border-radius: 50%;
+}
+
+.exploreHeroAsideTitle {
+  position: relative;
+  z-index: 1;
+  margin: auto 0 0;
+  max-width: 280px;
+  font-size: 20px;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  color: #183457;
+}
+
+.exploreHeroAsideLink {
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  color: #0e4fb6;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.exploreCoursesBlock {
+  margin-top: -22px;
+}
+
 .addSection {
   width: 100%;
-  padding: 24px 28px;
+  padding: 20px 22px;
   border: 1px solid var(--border-default);
-  border-radius: 30px;
+  border-radius: 24px;
   background: var(--bg-surface);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 14px;
 }
 
 .addTitle {
   margin: 0;
-  font-size: 39px;
+  font-size: 32px;
   line-height: 1.15;
   letter-spacing: -0.4px;
   color: var(--text-primary);
-  max-width: 520px;
+  max-width: 420px;
 }
 
 .addGoals {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
   justify-content: flex-end;
 }
 
@@ -42,12 +234,12 @@
   border: 1px solid var(--border-default);
   background: var(--bg-surface);
   color: var(--text-primary);
-  border-radius: 20px;
-  padding: 10px 14px 10px 10px;
+  border-radius: 16px;
+  padding: 8px 12px 8px 8px;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  font-size: 16px;
+  gap: 10px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   transition: box-shadow 0.14s ease, border-color 0.14s ease;
@@ -59,15 +251,15 @@
 }
 
 .addGoalIcon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: #1f67df;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1;
 }
 
@@ -75,18 +267,244 @@
   white-space: nowrap;
 }
 
+.bottomHero {
+  position: relative;
+  overflow: hidden;
+  padding: 24px 24px;
+  border: 1px solid var(--border-default);
+  border-radius: 24px;
+  background: linear-gradient(120deg, #0f2a52 0%, #14376a 58%, #0c2648 100%);
+  color: #f7fbff;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.82fr);
+  gap: 18px;
+}
+
+.bottomHero::after {
+  content: "";
+  position: absolute;
+  top: -24px;
+  right: 10px;
+  width: 220px;
+  height: 300px;
+  border: 1px solid rgba(178, 205, 255, 0.14);
+  border-radius: 46% 54% 60% 40% / 38% 45% 55% 62%;
+  transform: rotate(11deg);
+}
+
+.bottomHero::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 46px;
+  width: 164px;
+  height: 286px;
+  border: 1px solid rgba(178, 205, 255, 0.1);
+  border-radius: 46% 54% 60% 40% / 38% 45% 55% 62%;
+  transform: rotate(11deg);
+}
+
+.bottomHeroPrimary,
+.bottomHeroAside {
+  position: relative;
+  z-index: 1;
+}
+
+.bottomHeroEyebrow {
+  margin: 0 0 12px;
+  color: #9db3d6;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.bottomHeroTitle {
+  margin: 0;
+  max-width: 500px;
+  font-size: 28px;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #f7fbff;
+}
+
+.bottomHeroDesc {
+  margin: 12px 0 0;
+  max-width: 460px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #c4d6f5;
+}
+
+.bottomHeroActions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.bottomHeroGhostBtn,
+.bottomHeroPrimaryBtn {
+  height: 38px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.bottomHeroGhostBtn {
+  min-width: 124px;
+  padding: 0 16px;
+  color: #f3f8ff;
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(187, 208, 245, 0.12);
+}
+
+.bottomHeroPrimaryBtn {
+  min-width: 132px;
+  padding: 0 18px;
+  background: #15ee6d;
+  color: #082315;
+}
+
+.bottomHeroAside {
+  min-height: 228px;
+  padding: 22px 24px;
+  border: 1px solid rgba(124, 154, 199, 0.26);
+  border-radius: 24px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottomHeroMetric {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bottomHeroMetric strong {
+  font-size: 24px;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #f7fbff;
+}
+
+.bottomHeroMetric span {
+  font-size: 14px;
+  line-height: 1.45;
+  color: #c4d6f5;
+}
+
+.bottomHeroAsideLink {
+  margin-top: 18px;
+  width: fit-content;
+  color: #f7fbff;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
 :global(body[data-theme="dark"]) .page {
   background: linear-gradient(180deg, #0f1828 0%, #121e31 100%);
+}
+
+:global(body[data-theme="dark"]) .exploreHeroPrimary {
+  border-color: #2b3f61;
+}
+
+:global(body[data-theme="dark"]) .exploreHeroAside {
+  border-color: #2b3f61;
+  background: #162235;
+}
+
+:global(body[data-theme="dark"]) .exploreHeroAsideTitle {
+  color: #edf4ff;
+}
+
+:global(body[data-theme="dark"]) .exploreHeroAsideLink {
+  color: #7ab3ff;
 }
 
 :global(body[data-theme="dark"]) .addGoal {
   background: rgba(17, 28, 46, 0.92);
 }
 
+:global(body[data-theme="dark"]) .bottomHero {
+  border-color: #2b3f61;
+  background: linear-gradient(120deg, #0f274a 0%, #17345d 58%, #10233f 100%);
+}
+
+:global(body[data-theme="dark"]) .bottomHeroEyebrow {
+  color: #8ea8cf;
+}
+
+:global(body[data-theme="dark"]) .bottomHeroTitle {
+  color: #eef5ff;
+}
+
+:global(body[data-theme="dark"]) .bottomHeroDesc {
+  color: #9bb0d0;
+}
+
+:global(body[data-theme="dark"]) .bottomHeroAside {
+  border-color: rgba(70, 99, 142, 0.55);
+  background: transparent;
+}
+
+:global(body[data-theme="dark"]) .bottomHeroMetric strong {
+  color: #eef5ff;
+}
+
+:global(body[data-theme="dark"]) .bottomHeroMetric span {
+  color: #94abca;
+}
+
+:global(body[data-theme="dark"]) .bottomHeroAsideLink {
+  color: #7ab3ff;
+}
+
 @media (max-width: 700px) {
   .content {
     padding: 16px 12px 12px;
     gap: 32px;
+  }
+
+  .explorePage {
+    padding: 0;
+  }
+
+  .exploreContent {
+    width: 100%;
+    gap: 32px;
+  }
+
+  .exploreHero {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .exploreHeroPrimary,
+  .exploreHeroAside {
+    min-height: unset;
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .exploreHeroTitle {
+    font-size: 24px;
+  }
+
+  .exploreHeroActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .exploreHeroPractice,
+  .exploreHeroContinue {
+    width: 100%;
   }
 
   .addSection {
@@ -103,5 +521,39 @@
 
   .addGoals {
     justify-content: flex-start;
+  }
+
+  .exploreCoursesBlock {
+    margin-top: -10px;
+  }
+
+  .bottomHero {
+    padding: 20px;
+    border-radius: 24px;
+    grid-template-columns: 1fr;
+  }
+
+  .bottomHeroTitle {
+    font-size: 24px;
+  }
+
+  .bottomHeroDesc,
+  .bottomHeroMetric span {
+    font-size: 15px;
+  }
+
+  .bottomHeroAside {
+    min-height: unset;
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .bottomHeroActions {
+    flex-direction: column;
+  }
+
+  .bottomHeroGhostBtn,
+  .bottomHeroPrimaryBtn {
+    width: 100%;
   }
 }
