@@ -1,15 +1,16 @@
+import Link from "next/link";
+import { FaMobileScreenButton } from "react-icons/fa6";
 import type { TheoryExercise } from "@/types/algorithms";
 import styles from "@/app/(main)/learn/page.module.css";
 
 type Props = {
   lesson: TheoryExercise;
+  nextHref: string;
 };
 
-export default function TheoryView({ lesson }: Props) {
-  const hasVisualization = Boolean(lesson.theory.visualization);
-
+export default function TheoryView({ lesson, nextHref }: Props) {
   return (
-    <section className={`${styles.theoryLayout} ${!hasVisualization ? styles.theoryLayoutSingle : ""}`}>
+    <section className={styles.theoryLayout}>
       <article className={styles.theoryText}>
         <p className={styles.theoryIntro}>{lesson.theory.intro}</p>
         <div className={styles.theorySections}>
@@ -22,19 +23,22 @@ export default function TheoryView({ lesson }: Props) {
         </div>
       </article>
 
-      {hasVisualization ? (
-        <aside className={styles.visualCard}>
-          <h2 className={styles.visualTitle}>{lesson.theory.visualization.title}</h2>
-          <div className={styles.visualFlow}>
-            {lesson.theory.visualization.nodes.map((node, index) => (
-              <div key={node} className={styles.visualRow}>
-                <span className={styles.visualIndex}>0{index + 1}</span>
-                <span className={styles.visualNode}>{node}</span>
-              </div>
-            ))}
-          </div>
-        </aside>
-      ) : null}
+      <aside className={styles.visualCard}>
+        <div className={styles.videoFrame} aria-hidden="true">
+          <span className={styles.videoPlayIcon} />
+        </div>
+        <div className={styles.videoFooter}>
+          <p className={styles.videoFooterNote}>
+            <FaMobileScreenButton aria-hidden="true" />
+            <span>
+              This course is also available on the mobile app. <a href="#">Continue learning on mobile.</a>
+            </span>
+          </p>
+          <Link href={nextHref} className={styles.videoFooterBtn}>
+            Got It!
+          </Link>
+        </div>
+      </aside>
     </section>
   );
 }

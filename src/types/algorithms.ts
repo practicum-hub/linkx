@@ -23,6 +23,18 @@ export type ExercisePractice = {
     cases: ExerciseTerminalCase[];
     note?: string;
   };
+  quiz?: {
+    prompt: string;
+    question: string;
+    options: {
+      id: string;
+      text: string;
+      hotkey?: string;
+    }[];
+    correctOptionId: string;
+    xp?: number;
+    hint?: string;
+  };
 };
 
 export type ExerciseTerminalCase = {

@@ -494,78 +494,151 @@
 .sideColumn {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 18px;
 }
 
 .sideCard {
-  padding: 16px;
+  padding: 18px 20px;
+  border-radius: 6px;
+  background: #f8f9fc;
 }
 
-.sideCard h3 {
+.sideCardTitle {
   margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: #112b50;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
 }
 
 .sideCard p,
 .trackList li {
   margin: 12px 0 0;
   color: #215292;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.45;
   font-weight: 700;
 }
 
 .linkedInBtn,
-.sideGhostBtn {
+.sideShareBtn {
   width: 100%;
-  min-height: 38px;
+  min-height: 40px;
   border-radius: 4px;
   border: 1px solid #0f66c3;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 800;
 }
 
 .linkedInBtn {
   margin-top: 14px;
-  background: #0e6ccf;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #1d6ec9;
   color: #f4f8fe;
 }
 
 .shareRow {
-  margin-top: 10px;
-  display: flex;
-  gap: 8px;
-}
-
-.sideGhostBtn {
-  background: #f3f6fb;
-  color: #184684;
-  border-color: #becae0;
-}
-
-.resourceLink {
   margin-top: 12px;
-  min-height: 40px;
-  padding: 0 12px;
-  border-radius: 4px;
-  border: 1px solid #d1d9e8;
-  color: #183f73;
-  background: #f8fafd;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 700;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.sideShareBtn {
+  padding: 0;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: #18263d;
+  border-color: #8d9ab0;
+}
+
+.sideShareBtn svg {
+  font-size: 17px;
+}
+
+.sideShareBtnPrimary {
+  background: #2877e6;
+  border-color: #2877e6;
+  color: #ffffff;
+}
+
+.sideShareBtnDark {
+  background: #000000;
+  border-color: #000000;
+  color: #ffffff;
 }
 
 .trackList {
-  margin: 4px 0 0;
+  margin: 14px 0 0;
   padding: 0;
   list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.trackList li {
+  margin: 0;
+}
+
+.prerequisiteRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #0d223d;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.prerequisiteRow svg {
+  width: 22px;
+  height: 22px;
+  padding: 4px;
+  border-radius: 50%;
+  background: #13c953;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.trackLink {
+  color: #0b5ed7;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+.trackLink:hover {
+  text-decoration: underline;
+}
+
+.showMoreTracksBtn {
+  margin: 22px auto 0;
+  border: 0;
+  background: transparent;
+  color: #0b5ed7;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.showMoreTracksIcon {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
 }
 
 @media (max-width: 1580px) {
@@ -581,12 +654,12 @@
   .chapterLockedLabel,
   .lessonTitle,
   .lessonXp,
-  .sideCard h3,
+  .sideCardTitle,
   .sideCard p,
   .trackList li,
   .linkedInBtn,
-  .sideGhostBtn,
-  .resourceLink {
+  .sideShareBtn,
+  .trackLink {
     font-size: clamp(12px, 0.95vw, 16px);
   }
 }
@@ -625,9 +698,6 @@
     width: auto;
   }
 
-  .shareRow {
-    flex-direction: column;
-  }
 }
 
 @media (max-width: 720px) {
@@ -684,6 +754,10 @@
   .lessonMeta {
     grid-column: 2 / 3;
   }
+
+  .shareRow {
+    grid-template-columns: 1fr;
+  }
 }
 
 :global(body[data-theme="dark"]) .practicePage {
@@ -701,7 +775,7 @@
 :global(body[data-theme="dark"]) .descriptionCard h3,
 :global(body[data-theme="dark"]) .chapterHeadLeft h3,
 :global(body[data-theme="dark"]) .lessonTitle,
-:global(body[data-theme="dark"]) .sideCard h3 {
+:global(body[data-theme="dark"]) .sideCardTitle {
   color: #ebf2ff;
 }
 
@@ -710,7 +784,7 @@
 :global(body[data-theme="dark"]) .chapterLockedLabel,
 :global(body[data-theme="dark"]) .sideCard p,
 :global(body[data-theme="dark"]) .trackList li,
-:global(body[data-theme="dark"]) .resourceLink {
+:global(body[data-theme="dark"]) .prerequisiteRow {
   color: #afc1dc;
 }
 
@@ -720,7 +794,7 @@
 
 :global(body[data-theme="dark"]) .chapterStatus,
 :global(body[data-theme="dark"]) .chapterIndex,
-:global(body[data-theme="dark"]) .sideGhostBtn {
+:global(body[data-theme="dark"]) .sideShareBtn {
   border-color: #40536f;
   background: #1c2e46;
   color: #c8d6eb;
@@ -728,4 +802,27 @@
 
 :global(body[data-theme="dark"]) .chapterFooter {
   border-color: #2a3d59;
+}
+
+:global(body[data-theme="dark"]) .linkedInBtn {
+  background: #1f69bf;
+  border-color: #1f69bf;
+  color: #eef5ff;
+}
+
+:global(body[data-theme="dark"]) .sideShareBtnPrimary {
+  background: #2877e6;
+  border-color: #2877e6;
+  color: #ffffff;
+}
+
+:global(body[data-theme="dark"]) .sideShareBtnDark {
+  background: #000000;
+  border-color: #000000;
+  color: #ffffff;
+}
+
+:global(body[data-theme="dark"]) .trackLink,
+:global(body[data-theme="dark"]) .showMoreTracksBtn {
+  color: #7fb4ff;
 }

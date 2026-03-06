@@ -56,6 +56,37 @@ export const algorithmsFoundationsLessons: UnitExercise[] = [
     },
   },
   {
+    id: "f-u1-e2-p",
+    type: "practice",
+    title: "2.1 Practice: Identify the algorithm",
+    practice: {
+      taskTitle: "Best description of an algorithm",
+      task: "Choose the statement that correctly describes what an algorithm is.",
+      input: "One conceptual question",
+      output: "One selected answer",
+      requirements: [
+        "Focus on input -> steps -> output.",
+        "Ignore implementation language details.",
+        "Pick the most general definition.",
+      ],
+      cases: [{ input: "Concept check", output: "Correct definition selected" }],
+      quiz: {
+        prompt:
+          "A junior developer says that an algorithm is just any piece of code that runs in a program. You need the more precise definition used in problem solving and interview prep.",
+        question: "Which statement best defines an algorithm?",
+        options: [
+          { id: "a", text: "A sequence of steps that transforms input into output.", hotkey: "1" },
+          { id: "b", text: "Any code snippet with variables and loops.", hotkey: "2" },
+          { id: "c", text: "A database query that returns rows.", hotkey: "3" },
+          { id: "d", text: "Only a highly optimized solution.", hotkey: "4" },
+        ],
+        correctOptionId: "a",
+        xp: 50,
+        hint: "The definition must work before you choose a programming language or optimize performance.",
+      },
+    },
+  },
+  {
     id: "f-u1-e3-t",
     type: "theory",
     title: "3. Time Complexity",
@@ -118,6 +149,37 @@ export const algorithmsFoundationsLessons: UnitExercise[] = [
     },
   },
   {
+    id: "f-u1-e4-p",
+    type: "practice",
+    title: "4.1 Practice: Complexity reasoning",
+    practice: {
+      taskTitle: "Fastest growth diagnosis",
+      task: "Read the scenario and identify the dominant time complexity.",
+      input: "One scaling scenario",
+      output: "One selected answer",
+      requirements: [
+        "Look at how many nested passes happen.",
+        "Reason about growth as n increases.",
+        "Choose the dominant complexity class.",
+      ],
+      cases: [{ input: "Nested iteration over the same collection", output: "Quadratic growth selected" }],
+      quiz: {
+        prompt:
+          "An app compares every user with every other user in the same list to detect duplicates. When the list doubles in size, the number of comparisons grows much faster than linearly.",
+        question: "What is the most likely time complexity of this approach?",
+        options: [
+          { id: "a", text: "O(1)", hotkey: "1" },
+          { id: "b", text: "O(log n)", hotkey: "2" },
+          { id: "c", text: "O(n)", hotkey: "3" },
+          { id: "d", text: "O(n^2)", hotkey: "4" },
+        ],
+        correctOptionId: "d",
+        xp: 50,
+        hint: "If every element is compared with many other elements in the same collection, think nested loops.",
+      },
+    },
+  },
+  {
     id: "f-u1-e5-t",
     type: "theory",
     title: "5. Big O Notation",
@@ -145,6 +207,37 @@ export const algorithmsFoundationsLessons: UnitExercise[] = [
       visualization: {
         title: "Growth Order",
         nodes: ["O(1)", "O(log n)", "O(n)", "O(n log n)", "O(n^2)", "O(2^n)", "O(n!)"],
+      },
+    },
+  },
+  {
+    id: "f-u1-e6-p",
+    type: "practice",
+    title: "6.1 Practice: Pick the better scaling",
+    practice: {
+      taskTitle: "Best scaling choice",
+      task: "Choose the algorithm that will scale better for large inputs.",
+      input: "Two complexity options",
+      output: "One selected answer",
+      requirements: [
+        "Ignore small constant differences.",
+        "Focus on long-term input growth.",
+        "Prefer the lower growth class.",
+      ],
+      cases: [{ input: "Compare O(n log n) vs O(n^2)", output: "O(n log n) selected" }],
+      quiz: {
+        prompt:
+          "You must sort increasingly large datasets. One implementation runs in O(n log n), and another runs in O(n^2). For large n, constant factors are not the deciding issue.",
+        question: "Which algorithm should scale better as the dataset grows?",
+        options: [
+          { id: "a", text: "O(n^2), because quadratic work uses simpler loops.", hotkey: "1" },
+          { id: "b", text: "O(n log n), because its growth is slower for large n.", hotkey: "2" },
+          { id: "c", text: "They scale the same once compiled.", hotkey: "3" },
+          { id: "d", text: "The answer cannot depend on complexity class.", hotkey: "4" },
+        ],
+        correctOptionId: "b",
+        xp: 50,
+        hint: "Big O compares growth trends, not how short the code looks.",
       },
     },
   },
@@ -219,6 +312,37 @@ export const algorithmsFoundationsLessons: UnitExercise[] = [
         "Write pseudocode before implementation for non-trivial tasks.",
         "Keep pseudocode clear and minimal.",
       ],
+    },
+  },
+  {
+    id: "f-u1-e8-p",
+    type: "practice",
+    title: "8.1 Practice: Before coding",
+    practice: {
+      taskTitle: "Best next step before implementation",
+      task: "Choose the strongest engineering move before writing code for a non-trivial task.",
+      input: "One workflow question",
+      output: "One selected answer",
+      requirements: [
+        "Prioritize correctness of logic first.",
+        "Separate reasoning from language syntax.",
+        "Pick the step that reduces implementation mistakes.",
+      ],
+      cases: [{ input: "Non-trivial problem solving workflow", output: "Pseudocode selected" }],
+      quiz: {
+        prompt:
+          "You are about to implement a medium-difficulty algorithm problem with multiple edge cases. You understand the goal, but the loop logic is still easy to get wrong.",
+        question: "What is the best next step before writing full code?",
+        options: [
+          { id: "a", text: "Start coding immediately and fix logic later.", hotkey: "1" },
+          { id: "b", text: "Write pseudocode for the core steps first.", hotkey: "2" },
+          { id: "c", text: "Skip planning and optimize memory usage first.", hotkey: "3" },
+          { id: "d", text: "Memorize syntax for a different language.", hotkey: "4" },
+        ],
+        correctOptionId: "b",
+        xp: 50,
+        hint: "The course explicitly frames pseudocode as a way to validate logic before syntax.",
+      },
     },
   },
 ];

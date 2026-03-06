@@ -22,9 +22,19 @@ export default function LearnStepPage() {
       unitId: params.unitId ?? "f-u1",
       step: params.step ?? "1",
     });
+  const theoryDoneHref = safeStep >= total ? "/practice" : nextHref;
 
   const completedSet = new Set(selectedTopic.completed);
-  const currentUnitIndex = selectedTopic.units.findIndex((unit) => unit.id === selectedUnit.id);
+  const lessonProgressSegments = selectedTopic.units.flatMap((unit) => {
+    const unitLessons = getUnitLessons(unit);
+    const isCompleted = completedSet.has(unit.id);
+
+    return unitLessons.map((unitLesson, lessonIndex) => ({
+      key: `${unit.id}-${unitLesson.id}`,
+      isDone: isCompleted || (unit.id === selectedUnit.id && lessonIndex < safeStep - 1),
+      isCurrent: unit.id === selectedUnit.id && lessonIndex === safeStep - 1,
+    }));
+  });
   const outlineChapters = selectedTopic.units.map((unit, unitIndex) => {
     const unitLessons = getUnitLessons(unit);
     const isCompleted = completedSet.has(unit.id);
@@ -71,20 +81,21 @@ export default function LearnStepPage() {
           <h1 className={styles.title}>{lesson.title}</h1>
         </section>
 
-        {lesson.type === "theory" ? <TheoryView lesson={lesson} /> : <PracticeView lesson={lesson} isDark={isDark} />}
+        {lesson.type === "theory" ? (
+          <TheoryView lesson={lesson} nextHref={theoryDoneHref} />
+        ) : (
+          <PracticeView lesson={lesson} isDark={isDark} nextHref={theoryDoneHref} />
+        )}
       </main>
 
       <div className={styles.topicProgressWrap} aria-label="Topic progress">
         <div className={styles.topicProgressRail}>
-          {selectedTopic.units.map((unit, index) => {
-            const isDone = completedSet.has(unit.id);
-            const isCurrent = index === currentUnitIndex;
-
+          {lessonProgressSegments.map((segment) => {
             return (
               <span
-                key={unit.id}
-                className={`${styles.topicProgressSegment} ${isDone ? styles.topicProgressSegmentDone : ""} ${
-                  isCurrent ? styles.topicProgressSegmentCurrent : ""
+                key={segment.key}
+                className={`${styles.topicProgressSegment} ${segment.isDone ? styles.topicProgressSegmentDone : ""} ${
+                  segment.isCurrent ? styles.topicProgressSegmentCurrent : ""
                 }`}
               />
             );

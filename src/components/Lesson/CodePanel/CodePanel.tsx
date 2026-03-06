@@ -20,6 +20,7 @@ type CodePanelProps = {
   starterCode?: string;
   terminalCases?: ExerciseTerminalCase[];
   terminalNote?: string;
+  onSubmitAnswer?: () => void;
 };
 
 export default function CodePanel({
@@ -30,6 +31,7 @@ export default function CodePanel({
   starterCode,
   terminalCases,
   terminalNote,
+  onSubmitAnswer,
 }: CodePanelProps) {
   const resolvedStarterCode = starterCode ?? defaultStarterCode;
   const { runCode, setUserInput, isExecuting } = useLessonStore();
@@ -38,6 +40,15 @@ export default function CodePanel({
     if (!isExecuting) {
       runCode(defaultLessonConfig.problemId);
     }
+  };
+
+  const handleSubmit = () => {
+    if (isExecuting) {
+      return;
+    }
+
+    runCode(defaultLessonConfig.problemId);
+    onSubmitAnswer?.();
   };
 
   return (
@@ -51,7 +62,7 @@ export default function CodePanel({
         isExecuting={isExecuting}
         onUndo={() => setUserInput(resolvedStarterCode)}
         onRun={handleRun}
-        onSubmit={handleRun}
+        onSubmit={handleSubmit}
       />
 
       <CodePanelTerminal cases={terminalCases} note={terminalNote} />

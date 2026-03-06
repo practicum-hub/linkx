@@ -1,4 +1,14 @@
 import Link from "next/link";
+import {
+  FaCheck,
+  FaCircleCheck,
+  FaFacebook,
+  FaLink,
+  FaLinkedin,
+  FaShareNodes,
+  FaSignsPost,
+  FaXTwitter,
+} from "react-icons/fa6";
 import { algorithmsRoadmap } from "@/data/mocks/courses/algorithmsRoadmap";
 import { getUnitLessons } from "@/lib/learn/lessons";
 import styles from "./page.module.css";
@@ -188,39 +198,64 @@ export default function Practice() {
 
           <aside className={styles.sideColumn}>
             <section className={styles.sideCard}>
-              <h3>Share</h3>
+              <h3 className={styles.sideCardTitle}>
+                <FaShareNodes aria-hidden="true" />
+                <span>Share</span>
+              </h3>
               <button type="button" className={styles.linkedInBtn}>
+                <FaLinkedin aria-hidden="true" />
                 Share on LinkedIn
               </button>
               <div className={styles.shareRow}>
-                <button type="button" className={styles.sideGhostBtn}>
-                  Copy Link
+                <button type="button" className={styles.sideShareBtn}>
+                  <FaLink aria-hidden="true" />
                 </button>
-                <button type="button" className={styles.sideGhostBtn}>
-                  X
+                <button type="button" className={`${styles.sideShareBtn} ${styles.sideShareBtnPrimary}`}>
+                  <FaFacebook aria-hidden="true" />
+                </button>
+                <button type="button" className={`${styles.sideShareBtn} ${styles.sideShareBtnDark}`}>
+                  <FaXTwitter aria-hidden="true" />
                 </button>
               </div>
             </section>
 
             <section className={styles.sideCard}>
-              <h3>Prerequisites</h3>
-              <p>Working with TypeScript basics and function syntax.</p>
+              <h3 className={styles.sideCardTitle}>
+                <FaCircleCheck aria-hidden="true" />
+                <span>Prerequisites</span>
+              </h3>
+              <p className={styles.prerequisiteRow}>
+                <FaCheck aria-hidden="true" />
+                <span>There are no prerequisites</span>
+              </p>
             </section>
 
             <section className={styles.sideCard}>
-              <h3>Resources</h3>
-              <span className={styles.resourceLink}>
-                Course Glossary
-              </span>
-            </section>
-
-            <section className={styles.sideCard}>
-              <h3>Part of these tracks</h3>
+              <h3 className={styles.sideCardTitle}>
+                <FaSignsPost aria-hidden="true" />
+                <span>Part of these tracks</span>
+              </h3>
               <ul className={styles.trackList}>
-                <li>Associate AI Engineer for Developers</li>
-                <li>Developing AI Applications</li>
-                <li>OpenAI Fundamentals</li>
+                <li>
+                  <Link href="/practice" className={styles.trackLink}>
+                    AWS Cloud Practitioner (CLF-C02)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/practice" className={styles.trackLink}>
+                    Data Engineer
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/practice" className={styles.trackLink}>
+                    Microsoft Azure Fundamentals (AZ-900)
+                  </Link>
+                </li>
               </ul>
+              <button type="button" className={styles.showMoreTracksBtn}>
+                <span>Show More</span>
+                <span className={styles.showMoreTracksIcon} aria-hidden="true" />
+              </button>
             </section>
           </aside>
         </div>
