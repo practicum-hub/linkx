@@ -108,18 +108,42 @@ h6 {
 :root {
   --font-family: var(--font-manrope), sans-serif;
   --main-header-height: 60px;
-  --bg-page: #f7f7fc;
+  --brand-primary: #ff3d81;
+  --brand-primary-hover: #e83172;
+  --brand-primary-soft: rgba(255, 61, 129, 0.14);
+  --accent-secondary: #00c2ff;
+  --accent-secondary-hover: #00addf;
+  --accent-secondary-soft: rgba(0, 194, 255, 0.14);
+  --premium-accent: #ffb703;
+  --premium-accent-top: #ffd166;
+  --premium-accent-border: #e0a100;
+  --premium-accent-text: #3d2a00;
+  --premium-accent-soft: rgba(255, 183, 3, 0.24);
+  --ui-graphite: #151515;
+  --ui-graphite-soft: #202020;
+  --ui-graphite-border: #2f2f2f;
+  --bg-page: #fafafa;
   --bg-surface: #ffffff;
-  --bg-surface-soft: #f5f9ff;
-  --border-default: #d2ddf0;
-  --text-primary: #1f2a44;
-  --text-secondary: #5e6f8b;
-  --text-muted: #7a8ba6;
-  --shadow-soft: 0 10px 22px rgba(33, 52, 84, 0.08);
-  --accent-primary: #03ef62;
-  --accent-primary-border: #03ef62;
-  --accent-primary-text: #062815;
-  --accent-primary-soft: rgba(3, 239, 98, 0.14);
+  --bg-surface-soft: #f3f3f3;
+  --border-default: #e5e5e5;
+  --text-primary: #1b1b1b;
+  --text-secondary: #5c5c5c;
+  --text-muted: #8a8a8a;
+  --text-on-dark: #f7f7f7;
+  --text-on-brand: #fff7fb;
+  --sidebar-text: rgba(247, 247, 247, 0.78);
+  --sidebar-text-strong: #ffffff;
+  --sidebar-hover: rgba(255, 255, 255, 0.06);
+  --focus-ring: rgba(255, 61, 129, 0.18);
+  --shadow-soft: 0 10px 22px rgba(21, 21, 21, 0.08);
+  --accent-primary: var(--brand-primary);
+  --accent-primary-border: var(--brand-primary);
+  --accent-primary-text: var(--text-on-brand);
+  --accent-primary-soft: var(--brand-primary-soft);
+  --card-action-bg: var(--accent-secondary);
+  --card-action-border: var(--accent-secondary);
+  --card-action-text: var(--ui-graphite);
+  --progress-fill: var(--accent-secondary);
 }
 
 body {
@@ -134,14 +158,14 @@ body {
 }
 
 body[data-theme="dark"] {
-  --bg-page: #0d1421;
-  --bg-surface: #141f33;
-  --bg-surface-soft: #1a2740;
-  --border-default: #2d4163;
-  --text-primary: #d7e5ff;
-  --text-secondary: #9bb2d8;
-  --text-muted: #8299be;
-  --shadow-soft: 0 14px 28px rgba(3, 8, 16, 0.5);
+  --bg-page: #151515;
+  --bg-surface: #1d1d1d;
+  --bg-surface-soft: #242424;
+  --border-default: #313131;
+  --text-primary: #f7f7f7;
+  --text-secondary: #c9c9c9;
+  --text-muted: #9f9f9f;
+  --shadow-soft: 0 14px 28px rgba(8, 10, 14, 0.5);
 }
 
 /* Для заголовков можно использовать более жирные веса */

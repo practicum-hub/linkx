@@ -71,9 +71,9 @@
 }
 
 .primaryAction {
-  border: 1px solid #17da74;
-  background: #12e067;
-  color: #032f1a;
+  border: 1px solid var(--card-action-border);
+  background: var(--card-action-bg);
+  color: var(--card-action-text);
 }
 
 .secondaryAction,
@@ -318,7 +318,7 @@
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: #19d762;
+  background: var(--progress-fill);
 }
 
 .chapterProgressWrap strong {
@@ -357,8 +357,8 @@
   padding: 0 16px;
   border-radius: 4px;
   border: 0;
-  background: #10df63;
-  color: #021b0d;
+  background: var(--card-action-bg);
+  color: var(--card-action-text);
   font-size: 13px;
   font-weight: 700;
   text-decoration: none;
@@ -603,7 +603,7 @@
   height: 22px;
   padding: 4px;
   border-radius: 50%;
-  background: #13c953;
+  background: var(--card-action-bg);
   color: #ffffff;
   box-sizing: border-box;
 }

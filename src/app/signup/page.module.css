@@ -209,8 +209,8 @@
   min-height: 44px;
   border: 0;
   border-radius: 6px;
-  background: #02e767;
-  color: #042c1b;
+  background: var(--card-action-bg);
+  color: var(--card-action-text);
   font-size: 15px;
   font-weight: 700;
   display: flex;

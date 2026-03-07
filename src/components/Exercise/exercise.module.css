@@ -32,8 +32,8 @@
 }
 
 .runButton {
-  background: #2ea043;
-  color: white;
+  background: var(--card-action-bg);
+  color: var(--card-action-text);
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
@@ -42,5 +42,5 @@
 }
 
 .runButton:hover {
-  background: #3fb950;
+  background: var(--accent-secondary-hover);
 }

@@ -604,8 +604,8 @@
 .videoFooterBtn {
   border: 0;
   border-radius: 8px;
-  background: #18db5b;
-  color: #032211;
+  background: var(--card-action-bg);
+  color: var(--card-action-text);
   min-width: 108px;
   height: 40px;
   padding: 0 18px;
@@ -622,7 +622,7 @@
 }
 
 .videoFooterBtn:hover {
-  background: #12cb52;
+  background: var(--accent-secondary-hover);
 }
 
 .practiceLayout {
@@ -858,8 +858,8 @@
 
 .quizSubmitBtn {
   border: 0;
-  background: #1ddd57;
-  color: #041b0b;
+  background: var(--card-action-bg);
+  color: var(--card-action-text);
   min-width: 168px;
   min-height: 42px;
   padding: 0 18px;
@@ -970,8 +970,8 @@
   margin-top: 16px;
   border: 0;
   border-radius: 6px;
-  background: #16e157;
-  color: #041a0c;
+  background: var(--card-action-bg);
+  color: var(--card-action-text);
   min-width: 138px;
   min-height: 36px;
   padding: 0 18px;
@@ -1121,9 +1121,9 @@
 }
 
 .checkBtn {
-  border-color: #7fdbad;
-  color: #1f5c45;
-  background: #e8fff2;
+  border-color: var(--card-action-border);
+  color: var(--card-action-text);
+  background: var(--card-action-bg);
 }
 
 .navBtnPrimary {
@@ -1355,8 +1355,8 @@
 }
 
 .pageDark .videoFooterBtn {
-  background: #22d863;
-  color: #052010;
+  background: var(--card-action-bg);
+  color: var(--card-action-text);
 }
 
 .pageDark .videoPlayIcon {
@@ -1464,8 +1464,8 @@
 }
 
 .pageDark .quizSubmitBtn {
-  background: #21d960;
-  color: #052010;
+  background: var(--card-action-bg);
+  color: var(--card-action-text);
 }
 
 .pageDark .ioCard,
@@ -1493,9 +1493,9 @@
 }
 
 .pageDark .checkBtn {
-  border-color: #3f8b69;
-  color: #d8ffea;
-  background: #173326;
+  border-color: var(--card-action-border);
+  color: var(--card-action-text);
+  background: var(--card-action-bg);
 }
 
 .pageDark .navBtnPrimary {

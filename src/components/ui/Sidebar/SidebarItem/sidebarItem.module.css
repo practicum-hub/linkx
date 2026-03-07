@@ -14,11 +14,12 @@
   background-color: transparent;
   border-radius: 0;
   font-weight: 600;
-  color: #c6d7f6;
+  color: var(--sidebar-text);
   text-decoration: none;
   transition:
     transform 0.14s ease,
-    color 0.14s ease;
+    color 0.14s ease,
+    background-color 0.14s ease;
   font-size: 13px;
 }
 
@@ -42,9 +43,12 @@
 }
 
 .link:hover {
-  color: #deebff;
+  color: var(--sidebar-text-strong);
+  background: var(--sidebar-hover);
 }
 
 .active {
-  color: #ffffff;
+  color: var(--sidebar-text-strong);
+  background: var(--ui-graphite);
+  box-shadow: inset 3px 0 0 var(--brand-primary);
 }

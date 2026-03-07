@@ -60,8 +60,8 @@
 
 .input:focus-visible {
   outline: none;
-  border-color: #86a8e3;
-  box-shadow: 0 0 0 3px rgba(90, 146, 230, 0.16);
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
 .searchIcon {
@@ -98,7 +98,7 @@
 
 .notificationsBtn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(90, 146, 230, 0.16);
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
 .notificationsIcon {
@@ -106,17 +106,17 @@
 }
 
 .btn {
-  border: 1px solid #efb561;
+  border: 1px solid var(--premium-accent-border);
   border-radius: 0;
   padding: 10px 16px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #473300;
+  color: var(--premium-accent-text);
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
-  background: linear-gradient(180deg, #ffd58f 0%, #ffbf63 100%);
+  background: linear-gradient(180deg, var(--premium-accent-top) 0%, var(--premium-accent) 100%);
 }
 
 .btn:hover {
@@ -125,7 +125,7 @@
 
 .btn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 191, 99, 0.3);
+  box-shadow: 0 0 0 3px var(--premium-accent-soft);
 }
 
 .crownIcon {

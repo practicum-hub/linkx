@@ -36,7 +36,7 @@
 .logoMark {
   width: 18px;
   height: 18px;
-  border: 2px solid #08de63;
+  border: 2px solid var(--brand-primary);
   border-radius: 4px;
   transform: skew(-10deg);
   flex: 0 0 auto;
@@ -46,7 +46,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  background-color: #efeff5;
+  background-color: var(--bg-surface-soft);
   padding: 3px;
   border-radius: 999px;
 }
@@ -69,10 +69,16 @@
 }
 
 .navItemActive {
-  color: #fff;
-  border-color: #000;
-  background: #000;
+  color: var(--text-on-dark);
+  border-color: var(--ui-graphite);
+  background: var(--ui-graphite);
   border-radius: 999px;
+}
+
+.navItemActive:hover {
+  color: var(--text-on-dark);
+  border-color: var(--ui-graphite);
+  background: var(--ui-graphite);
 }
 
 .search {
@@ -92,7 +98,7 @@
 
 .input:focus-visible {
   outline: none;
-  border-color: #8baee7;
+  border-color: var(--brand-primary);
 }
 
 .searchIcon {
@@ -113,10 +119,10 @@
 }
 
 .upgradeBtn {
-  border: 1px solid color-mix(in srgb, #6f5aff 55%, #192038 45%);
+  border: 0;
   border-radius: 6px;
-  background-color: rgb(122, 51, 255);
-  color: #ffffff;
+  background: var(--brand-primary);
+  color: var(--text-on-brand);
   padding: 10px 14px;
   font-size: 13px;
   font-weight: 700;
@@ -128,6 +134,7 @@
     transform 0.18s ease,
     filter 0.2s ease,
     box-shadow 0.2s ease;
+  box-shadow: none;
 }
 
 .upgradeBtn:hover {
@@ -152,7 +159,7 @@
 }
 
 .langBtn:hover {
-  background: rgb(245, 245, 245);
+  background: var(--bg-surface-soft);
 }
 
 .iconBtn {
@@ -171,7 +178,7 @@
 }
 
 .iconBtn:hover {
-  background: rgb(245, 245, 245);
+  background: var(--bg-surface-soft);
 }
 
 .badge {
@@ -181,7 +188,7 @@
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: #ff4242;
+  background: var(--accent-secondary);
 }
 
 .profileBtn {
@@ -202,8 +209,8 @@
 }
 
 .profileBtnActive {
-  border-color: #6d95d7;
-  box-shadow: 0 9px 20px rgba(66, 97, 157, 0.2);
+  border-color: color-mix(in srgb, var(--brand-primary) 65%, white 35%);
+  box-shadow: 0 9px 20px var(--focus-ring);
 }
 
 .profileBtn:hover {
@@ -295,8 +302,8 @@
 }
 
 .themeOptionActive {
-  border-color: #6d95d7;
-  background: color-mix(in srgb, #77a6f0 24%, var(--bg-surface-soft));
+  border-color: var(--brand-primary);
+  background: color-mix(in srgb, var(--brand-primary) 20%, var(--bg-surface-soft));
 }
 
 @media (max-width: 1200px) {

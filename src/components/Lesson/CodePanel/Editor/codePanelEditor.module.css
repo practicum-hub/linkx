@@ -64,9 +64,9 @@
 
 .submitBtn {
   padding: 0 24px;
-  background: #14e56d;
-  border-color: #14e56d;
-  color: #00280f;
+  background: var(--card-action-bg);
+  border-color: var(--card-action-border);
+  color: var(--card-action-text);
 }
 
 .undoBtn:hover:not(:disabled),

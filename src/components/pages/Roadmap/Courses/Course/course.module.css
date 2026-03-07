@@ -86,7 +86,7 @@
 
 .progressFill {
   height: 100%;
-  background: var(--accent-primary);
+  background: var(--progress-fill);
 }
 
 .progressInfo {
@@ -211,8 +211,8 @@
   height: 40px;
   padding: 0 18px;
   border-radius: 8px;
-  background: #15e35f;
-  color: #03273d;
+  background: var(--card-action-bg);
+  color: var(--card-action-text);
   font-size: 13px;
   font-weight: 800;
   display: inline-flex;
@@ -247,7 +247,7 @@
 }
 
 :global(body[data-theme="dark"]) .exploreAction {
-  color: #03273d;
+  color: var(--card-action-text);
 }
 
 :global(body[data-theme="dark"]) .rangeTag {

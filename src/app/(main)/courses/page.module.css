@@ -299,7 +299,7 @@
 .progressFill {
   height: 100%;
   border-radius: inherit;
-  background: var(--accent-primary);
+  background: var(--progress-fill);
 }
 
 .footerProgress {
@@ -330,9 +330,9 @@
   min-width: 104px;
   height: 38px;
   border-radius: 6px;
-  border: 1px solid var(--accent-primary-border);
-  background: var(--accent-primary);
-  color: var(--accent-primary-text);
+  border: 1px solid var(--card-action-border);
+  background: var(--card-action-bg);
+  color: var(--card-action-text);
   padding: 0 14px;
   font-size: 12px;
   font-weight: 800;

@@ -1,12 +1,12 @@
 ﻿.page {
   min-height: 100vh;
-  background: #05192d;
+  background: var(--ui-graphite);
   color: #ffffff;
 }
 
 .page main,
 .page section {
-  background: #05192d;
+  background: var(--ui-graphite);
 }
 
 .page :where(h1, h2, h3, p, span, li, strong, a) {
@@ -22,8 +22,8 @@
   position: sticky;
   top: 0;
   z-index: 30;
-  background: #05192d;
-  border-bottom: 1px solid #163550;
+  background: var(--ui-graphite);
+  border-bottom: 1px solid var(--ui-graphite-border);
 }
 
 .topBar .container {
@@ -43,7 +43,7 @@
 .brandMark {
   width: 18px;
   height: 18px;
-  border: 2px solid #08de63;
+  border: 2px solid var(--brand-primary);
   border-radius: 4px;
   transform: skew(-10deg);
 }
@@ -139,18 +139,18 @@
 .primaryBtn,
 .primaryBtnLarge,
 .panelCta {
-  border: 1px solid #ffffff;
-  background: #ffffff;
-  color: #0f2742;
+  border: 1px solid var(--brand-primary);
+  background: var(--brand-primary);
+  color: #f6fffd;
   padding: 10px 14px;
   font-size: 14px;
 }
 
 .primaryBtnLarge {
   padding: 14px 20px;
-  border-color: rgb(2, 240, 97);
-  background: rgb(2, 240, 97);
-  color: #032a16;
+  border-color: var(--brand-primary);
+  background: var(--brand-primary);
+  color: #f6fffd;
 }
 
 .secondaryBtn,
@@ -242,14 +242,14 @@
   display: inline-block;
   font-size: 20px;
   line-height: 1;
-  color: #ffd85a;
+  color: var(--premium-accent);
   letter-spacing: 0.07em;
 }
 
 .heroPanel {
-  border: 1px solid #d8d4cf;
+  border: 1px solid var(--border-default);
   border-radius: 8px;
-  background: #f9f9f9;
+  background: var(--bg-surface);
   width: 100%;
   max-width: 390px;
   padding: 24px 18px;
@@ -262,7 +262,7 @@
 
 .demoSection {
   padding: 8px 0 64px;
-  background: #ffffff;
+  background: var(--bg-surface);
 }
 
 .demoWrap {
@@ -301,7 +301,7 @@
 .signupSocialBtn {
   border: 1px solid #cec9c2;
   border-radius: 6px;
-  background: #f9f9f9;
+  background: var(--bg-surface-soft);
   min-height: 48px;
   font-size: 24px;
   font-weight: 700;
@@ -356,7 +356,7 @@
 .signupInput {
   width: 100%;
   margin-top: 7px;
-  border: 1px solid #d7d1ca;
+  border: 1px solid var(--border-default);
   border-radius: 6px;
   background: #ffffff;
   color: #17314d;
@@ -402,10 +402,10 @@
 .signupSubmit {
   margin-top: 20px;
   width: 100%;
-  border: 1px solid rgb(2, 240, 97);
+  border: 1px solid var(--brand-primary);
   border-radius: 6px;
-  background: rgb(2, 240, 97);
-  color: #062a1a;
+  background: var(--brand-primary);
+  color: #f6fffd;
   min-height: 44px;
   font-size: 16px;
   font-weight: 700;
@@ -423,15 +423,15 @@
 }
 
 .signupTerms a {
-  color: #0d5ed5;
+  color: var(--brand-primary);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .businessSection {
-  background: linear-gradient(180deg, #03182d 0%, #041f39 100%);
-  border-top: 1px solid #24405a;
-  border-bottom: 1px solid #173550;
+  background: linear-gradient(180deg, #16191f 0%, #1c1f26 100%);
+  border-top: 1px solid var(--ui-graphite-border);
+  border-bottom: 1px solid var(--ui-graphite-border);
   padding: 66px 0 72px;
 }
 
@@ -469,7 +469,7 @@
 
 .businessPrimaryBtn {
   margin-top: 18px;
-  border: 1px solid #8ea8c2;
+  border: 1px solid color-mix(in srgb, var(--brand-primary) 50%, #ffffff 50%);
   background: transparent;
   color: #ffffff;
 }
@@ -500,13 +500,13 @@
 }
 
 .catalogSection {
-  background: #ffffff;
+  background: var(--bg-surface);
   padding: 72px 0 84px;
 }
 
 .catalogSection::after {
   content: "";
-  background-color: #7933ff;
+  background-color: var(--premium-accent);
   top: 100%;
   left: 0;
   height: 1999px;
@@ -514,7 +514,7 @@
 }
 
 .page section.catalogSection {
-  background: #ffffff;
+  background: var(--bg-surface);
 }
 
 .catalogWrap {
@@ -550,7 +550,7 @@
 }
 
 .catalogTab {
-  border: 1px solid #9aafc7;
+  border: 1px solid var(--border-default);
   border-radius: 6px;
   background: #ffffff;
   color: #0c2138;
@@ -560,8 +560,8 @@
 }
 
 .catalogTabActive {
-  background: #0b2743;
-  border-color: #0b2743;
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
   color: #ffffff;
 }
 
@@ -582,7 +582,7 @@
 
 .catalogCard {
   position: relative;
-  border: 1px solid #d3dae6;
+  border: 1px solid var(--border-default);
   border-radius: 8px;
   background: #ffffff;
   padding: 28px 24px 26px;
@@ -599,7 +599,7 @@
   right: 0;
   bottom: 0;
   height: 6px;
-  background: #59aef7;
+  background: var(--accent-secondary);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
@@ -658,6 +658,7 @@
   font-size: 14px;
   font-weight: 600;
   padding-bottom: 8px;
+  color: var(--brand-primary);
 }
 
 .catalogLink::after {
@@ -670,7 +671,7 @@
 }
 
 .page section.section {
-  background: #ffffff;
+  background: var(--bg-surface);
 }
 
 .page section.section :where(h2, h3, p, span, a) {
@@ -678,7 +679,7 @@
 }
 
 .joinSection {
-  background: #05192d;
+  background: var(--ui-graphite);
   padding: 96px 0 108px;
   min-height: 640px;
   display: flex;
@@ -708,7 +709,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #8eacca;
+  color: #c0c7cf;
 }
 
 .joinTitle {
@@ -726,7 +727,7 @@
 }
 
 .joinCard {
-  border: 1px solid #d4dbe6;
+  border: 1px solid var(--border-default);
   border-radius: 8px;
   background: #ffffff;
   padding: 20px;
@@ -790,7 +791,7 @@
   width: 100%;
   justify-content: center;
   border-radius: 6px;
-  background: #08de63;
+  background: var(--brand-primary);
   color: #052139;
   padding: 12px 14px;
   font-size: 1px;
@@ -798,9 +799,9 @@
 }
 
 .sectionMuted {
-  background: #05192d;
-  border-top: 1px solid #183955;
-  border-bottom: 1px solid #183955;
+  background: var(--ui-graphite);
+  border-top: 1px solid var(--ui-graphite-border);
+  border-bottom: 1px solid var(--ui-graphite-border);
 }
 
 .sectionHeader {
@@ -857,9 +858,9 @@
 }
 
 .flowCard {
-  border: 1px solid #214362;
+  border: 1px solid var(--ui-graphite-border);
   border-radius: 16px;
-  background: #0b2844;
+  background: var(--ui-graphite-soft);
   padding: 18px;
 }
 
@@ -893,17 +894,17 @@
 }
 
 .planCard {
-  border: 1px solid #214362;
+  border: 1px solid var(--ui-graphite-border);
   border-radius: 16px;
-  background: #0a2641;
+  background: var(--ui-graphite-soft);
   padding: 20px;
   display: grid;
   gap: 10px;
 }
 
 .planCardFeatured {
-  border: 1px solid #ffffff;
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.26);
+  border: 1px solid var(--premium-accent);
+  box-shadow: 0 16px 34px rgba(212, 163, 115, 0.18);
 }
 
 .planName {
@@ -947,7 +948,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--premium-accent);
 }
 
 .faqList {
@@ -958,9 +959,9 @@
 }
 
 .faqItem {
-  border: 1px solid #214362;
+  border: 1px solid var(--ui-graphite-border);
   border-radius: 14px;
-  background: #0a2641;
+  background: var(--ui-graphite-soft);
   padding: 18px;
 }
 
@@ -978,7 +979,7 @@
 }
 
 .footer {
-  background: #041426;
+  background: #171a20;
   color: #d8e7f7;
   padding: 68px 0 34px;
 }
@@ -1100,12 +1101,12 @@
 }
 
 .reportSection {
-  background: #7933ff;
+  background: var(--accent-secondary);
   padding: 30px 0;
 }
 
 .page section.reportSection {
-  background: #7933ff;
+  background: var(--accent-secondary);
 }
 
 .reportWrap {
@@ -1120,7 +1121,7 @@
 .reportVisual {
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 10px;
-  background: #2c1e56;
+  background: rgba(71, 48, 21, 0.12);
   min-height: 126px;
   padding: 14px;
 }
@@ -1128,8 +1129,8 @@
 .reportTag {
   display: inline-flex;
   border-radius: 999px;
-  background: #2acf8b;
-  color: #0d253f;
+  background: var(--accent-secondary);
+  color: #fff6f6;
   padding: 4px 8px;
   font-size: 11px;
   font-weight: 700;
@@ -1157,17 +1158,17 @@
 .reportBtn {
   margin-top: 14px;
   display: inline-flex;
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(71, 48, 21, 0.18);
   border-radius: 8px;
-  background: #ffffff;
-  color: #1a2142;
+  background: #fff8f0;
+  color: #473015;
   font-size: 14px;
   font-weight: 600;
   padding: 10px 14px;
 }
 
 .pathSection {
-  background: #05192d;
+  background: var(--ui-graphite);
   padding: 88px 0 110px;
   min-height: 700px;
   display: flex;
@@ -1175,7 +1176,7 @@
 }
 
 .page section.pathSection {
-  background: #05192d;
+  background: var(--ui-graphite);
 }
 
 .page section.pathSection :where(h2, h3, p, span, a) {
@@ -1212,7 +1213,7 @@
   height: 220px;
   border-radius: 10px;
   overflow: hidden;
-  background: #113355;
+  background: #22303d;
 }
 
 .pathImage {
@@ -1241,7 +1242,7 @@
   text-align: center;
   font-size: 13px;
   font-weight: 600;
-  background: #123656;
+  background: var(--brand-primary);
   color: #ffffff;
   margin-top: 4px;
 }

@@ -139,7 +139,7 @@
   margin: 2px 0 0;
   font-size: 13px;
   font-weight: 700;
-  color: #0c5ac9;
+  color: var(--accent-secondary);
 }
 
 .cardExplore {
@@ -207,7 +207,7 @@
 .metaIcon::before {
   left: 0;
   height: 10px;
-  background: var(--accent-primary);
+  background: var(--progress-fill);
 }
 
 .metaIcon::after {
@@ -284,7 +284,7 @@
 .cardExplore .linkLabel {
   margin: 0;
   min-width: 92px;
-  color: #183457;
+  color: var(--accent-secondary);
   font-size: 13px;
   font-weight: 800;
   text-align: right;
