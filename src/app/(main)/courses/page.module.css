@@ -220,12 +220,18 @@
 }
 
 .card {
-  min-height: 292px;
+  min-height: 344px;
   border: 1px solid #d7dfec;
   border-radius: 6px;
   background: #fdfefe;
-  padding: 16px 16px 12px;
+  padding: 16px 16px 0;
   display: flex;
+  flex-direction: column;
+}
+
+.cardContent {
+  display: flex;
+  flex: 1;
   flex-direction: column;
 }
 
@@ -246,10 +252,46 @@
 }
 
 .cardLevel {
-  margin-top: 10px;
+  margin-top: 0;
   color: #2a4f84;
   font-size: 13px;
   font-weight: 600;
+}
+
+.levelRow {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.levelIcon {
+  position: relative;
+  width: 18px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.levelIcon::before,
+.levelIcon::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  border-radius: 1px;
+}
+
+.levelIcon::before {
+  left: 0;
+  height: 10px;
+  background: var(--accent-primary);
+}
+
+.levelIcon::after {
+  left: 7px;
+  height: 14px;
+  background: #e1e6ef;
+  box-shadow: 7px 0 0 #f0f3f8;
 }
 
 .cardDesc {
@@ -260,18 +302,23 @@
 }
 
 .authors {
-  margin-top: 14px;
+  margin-top: 18px;
   color: #39567f;
   font-size: 12px;
   font-weight: 700;
+  line-height: 1.55;
 }
 
 .cardBottom {
   margin-top: auto;
-  padding-top: 14px;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding: 16px;
+  border-top: 1px solid #d7dfec;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
 }
 
 .progressTrack {
@@ -284,30 +331,41 @@
 .progressFill {
   height: 100%;
   border-radius: inherit;
-  background: #11df6f;
+  background: var(--accent-primary);
+}
+
+.footerProgress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.footerProgress .progressTrack {
+  flex: 1;
 }
 
 .bottomRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
 }
 
 .percent {
   color: #49638a;
   font-size: 12px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .actionBtn {
   min-width: 114px;
-  height: 32px;
+  height: 44px;
   border-radius: 6px;
-  border: 1px solid #1fd46d;
-  background: #12e064;
-  color: #032e1a;
-  font-size: 12px;
+  border: 1px solid var(--accent-primary-border);
+  background: var(--accent-primary);
+  color: var(--accent-primary-text);
+  font-size: 13px;
   font-weight: 800;
   display: inline-flex;
   align-items: center;
@@ -346,6 +404,19 @@
 @media (max-width: 980px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .cardBottom {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bottomRow {
+    width: 100%;
+  }
+
+  .actionBtn {
+    width: 100%;
   }
 }
 

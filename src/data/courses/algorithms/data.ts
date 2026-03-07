@@ -1,4 +1,4 @@
-import type { AlgorithmsTopic } from "@/types/algorithms";
+﻿import type { AlgorithmsTopic } from "@/types/algorithms";
 import { algorithmsFoundationsLessons } from "@/data/courses/algorithms/content/algorithmsFoundationsLessons";
 import { arraysStringsLessons } from "@/data/courses/algorithms/content/arraysStringsLessons";
 import { binarySearchLessons } from "@/data/courses/algorithms/content/binarySearchLessons";
@@ -347,7 +347,6 @@ export function getTopicById(topicId: string) {
 export function getUnitById(topicId: string, unitId: string) {
   return getTopicById(topicId)?.units.find((unit) => unit.id === unitId);
 }
-
 
 
 

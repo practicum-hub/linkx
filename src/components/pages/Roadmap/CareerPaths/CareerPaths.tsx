@@ -14,6 +14,7 @@ type Props = {
   desc?: string;
   showAllHref?: string;
   showAllLabel?: string;
+  variant?: "default" | "explore";
 };
 
 export default function CareerPaths({
@@ -22,6 +23,7 @@ export default function CareerPaths({
   desc = "Structured roadmaps for specific job roles with clear outcomes.",
   showAllHref,
   showAllLabel = "See all",
+  variant = "default",
 }: Props) {
   const [columns, setColumns] = useState(4);
 
@@ -61,7 +63,10 @@ export default function CareerPaths({
   }, [hasHiddenCareers, maxVisibleCareers]);
 
   return (
-    <div className={styles.wrapper} id="careers">
+    <div
+      className={`${styles.wrapper} ${variant === "explore" ? styles.wrapperExplore : ""}`}
+      id="careers"
+    >
       <div className={styles.header}>
         <TextBlock title={title} desc={desc} />
         {showAllHref ? (
@@ -71,10 +76,14 @@ export default function CareerPaths({
         ) : null}
       </div>
 
-      <div className={`${styles.cardsViewport} ${hasHiddenCareers ? styles.cardsViewportFaded : ""}`}>
-        <ul className={styles.cards}>
+      <div
+        className={`${styles.cardsViewport} ${
+          hasHiddenCareers ? styles.cardsViewportFaded : ""
+        } ${variant === "explore" ? styles.cardsViewportExplore : ""}`}
+      >
+        <ul className={`${styles.cards} ${variant === "explore" ? styles.cardsExplore : ""}`}>
           {visibleCareers.map((path) => (
-            <CareerCard key={path.title} {...path} />
+            <CareerCard key={path.title} {...path} variant={variant} />
           ))}
         </ul>
       </div>

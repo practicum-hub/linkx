@@ -3,7 +3,9 @@ import Link from "next/link";
 import styles from "./course.module.css";
 import type { RoadmapCourse } from "@/types/roadmap";
 
-type Props = RoadmapCourse;
+type Props = RoadmapCourse & {
+  variant?: "default" | "explore";
+};
 
 const fallbackCover = "/images/algorithms.png";
 
@@ -16,10 +18,14 @@ export default function Course({
   xp,
   imageSrc,
   href,
+  variant = "default",
 }: Props) {
   return (
     <li className={styles.courseItem}>
-      <Link className={styles.course} href={href}>
+      <Link
+        className={`${styles.course} ${variant === "explore" ? styles.courseExplore : ""}`}
+        href={href}
+      >
         <div className={styles.cover}>
           <Image
             className={styles.coverImage}
@@ -37,6 +43,7 @@ export default function Course({
         </div>
 
         <div className={styles.info}>
+          {variant === "explore" ? <p className={styles.eyebrow}>Course</p> : null}
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.desc}>{desc}</p>
         </div>

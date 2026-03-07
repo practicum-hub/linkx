@@ -8,6 +8,10 @@
   box-shadow: none;
 }
 
+.wrapperExplore {
+  gap: 18px;
+}
+
 .header {
   display: flex;
   align-items: flex-end;
@@ -17,6 +21,10 @@
 
 .cardsViewport {
   position: relative;
+}
+
+.cardsViewportExplore::after {
+  display: none;
 }
 
 .cardsViewportFaded::after {
@@ -58,14 +66,20 @@
   gap: 16px;
 }
 
+.cardsExplore {
+  gap: 18px;
+}
+
 @media (max-width: 1450px) {
-  .cards {
+  .cards,
+  .cardsExplore {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 1050px) {
-  .cards {
+  .cards,
+  .cardsExplore {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -76,7 +90,8 @@
     flex-direction: column;
   }
 
-  .cards {
+  .cards,
+  .cardsExplore {
     grid-template-columns: 1fr;
   }
 }

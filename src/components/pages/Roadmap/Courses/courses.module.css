@@ -8,6 +8,10 @@
   box-shadow: none;
 }
 
+.wrapperExplore {
+  gap: 18px;
+}
+
 .header {
   display: flex;
   align-items: flex-end;
@@ -17,6 +21,10 @@
 
 .coursesViewport {
   position: relative;
+}
+
+.coursesViewportExplore::after {
+  display: none;
 }
 
 .coursesViewportFaded::after {
@@ -58,14 +66,21 @@
   gap: 16px;
 }
 
+.coursesExplore {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
 @media (max-width: 1650px) {
-  .courses {
+  .courses,
+  .coursesExplore {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 1200px) {
-  .courses {
+  .courses,
+  .coursesExplore {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -76,7 +91,8 @@
     flex-direction: column;
   }
 
-  .courses {
+  .courses,
+  .coursesExplore {
     grid-template-columns: 1fr;
   }
 }

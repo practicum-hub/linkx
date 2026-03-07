@@ -53,6 +53,7 @@ export default function ExplorePage() {
             title="Most popular courses"
             desc="Start your journey from zero to hero with curated, practical tracks."
             showAllHref="/courses"
+            variant="explore"
           />
         </div>
 
@@ -73,6 +74,7 @@ export default function ExplorePage() {
           title="Most popular career paths"
           desc="Structured roadmaps for specific job roles with clear outcomes."
           showAllHref="/careers"
+          variant="explore"
         />
 
         <section className={styles.bottomHero} aria-label="Learning momentum">

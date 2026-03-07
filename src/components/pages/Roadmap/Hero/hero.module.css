@@ -98,7 +98,8 @@
 }
 
 .primaryBtn {
-  background: #03ef62;
+  background: var(--accent-primary);
+  color: var(--accent-primary-text);
 }
 
 .secondaryBtn {

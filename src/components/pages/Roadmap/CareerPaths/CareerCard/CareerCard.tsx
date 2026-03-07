@@ -4,6 +4,9 @@ import styles from "./careerCard.module.css";
 import type { CareerPath } from "@/types/roadmap";
 
 type Props = CareerPath;
+type VariantProps = {
+  variant?: "default" | "explore";
+};
 
 const coverMap: Record<string, string> = {
   "AI Engineer": "/images/algorithms.png",
@@ -34,10 +37,14 @@ export default function CareerCard({
   salary,
   demand,
   href,
-}: Props) {
+  variant = "default",
+}: Props & VariantProps) {
   return (
     <li className={styles.cardItem}>
-      <Link className={styles.card} href={href}>
+      <Link
+        className={`${styles.card} ${variant === "explore" ? styles.cardExplore : ""}`}
+        href={href}
+      >
         <div className={styles.cover}>
           <Image
             className={styles.coverImage}

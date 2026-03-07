@@ -116,20 +116,27 @@ export default function CareersPage() {
 
             return (
               <article className={styles.card} key={career.title}>
-                <p className={styles.cardLabel}>Career</p>
-                <h2 className={styles.cardTitle}>{career.title}</h2>
-                <p className={styles.cardLevel}>{career.duration}</p>
-                <p className={styles.cardDesc}>{career.desc}</p>
-                <p className={styles.authors}>
-                  {career.courses} {" | "} {career.salary} {" | "} {career.demand}
-                </p>
+                <div className={styles.cardContent}>
+                  <p className={styles.cardLabel}>Career</p>
+                  <h2 className={styles.cardTitle}>{career.title}</h2>
+                  <div className={styles.levelRow}>
+                    <span className={styles.levelIcon} aria-hidden="true" />
+                    <p className={styles.cardLevel}>{career.duration}</p>
+                  </div>
+                  <p className={styles.cardDesc}>{career.desc}</p>
+                  <p className={styles.authors}>
+                    {career.courses} {" | "} {career.salary} {" | "} {career.demand}
+                  </p>
+                </div>
 
                 <div className={styles.cardBottom}>
-                  <div className={styles.progressTrack}>
-                    <div className={styles.progressFill} style={{ width: `${progress}%` }} />
+                  <div className={styles.footerProgress}>
+                    <div className={styles.progressTrack}>
+                      <div className={styles.progressFill} style={{ width: `${progress}%` }} />
+                    </div>
+                    <span className={styles.percent}>{progress}% matched</span>
                   </div>
                   <div className={styles.bottomRow}>
-                    <span className={styles.percent}>{progress}% matched</span>
                     <Link href={career.href} className={styles.actionBtn}>
                       {actionLabel}
                     </Link>

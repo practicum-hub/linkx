@@ -13,6 +13,7 @@ type Props = {
   desc?: string;
   showAllHref?: string;
   showAllLabel?: string;
+  variant?: "default" | "explore";
 };
 
 export default function Courses({
@@ -21,6 +22,7 @@ export default function Courses({
   desc = "Start your journey from zero to hero with curated, practical tracks.",
   showAllHref,
   showAllLabel = "See all",
+  variant = "default",
 }: Props) {
   const [columns, setColumns] = useState(4);
 
@@ -60,7 +62,7 @@ export default function Courses({
   }, [hasHiddenCourses, maxVisibleCourses]);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${variant === "explore" ? styles.wrapperExplore : ""}`}>
       <div className={styles.header}>
         <TextBlock title={title} desc={desc} />
         {showAllHref ? (
@@ -70,10 +72,14 @@ export default function Courses({
         ) : null}
       </div>
 
-      <div className={`${styles.coursesViewport} ${hasHiddenCourses ? styles.coursesViewportFaded : ""}`}>
-        <ul className={styles.courses}>
+      <div
+        className={`${styles.coursesViewport} ${
+          hasHiddenCourses ? styles.coursesViewportFaded : ""
+        } ${variant === "explore" ? styles.coursesViewportExplore : ""}`}
+      >
+        <ul className={`${styles.courses} ${variant === "explore" ? styles.coursesExplore : ""}`}>
           {visibleCourses.map((course) => (
-            <Course key={course.title} {...course} />
+            <Course key={course.title} {...course} variant={variant} />
           ))}
         </ul>
       </div>

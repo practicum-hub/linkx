@@ -9,8 +9,8 @@ export default function Sidebar() {
   const topItems: SidebarItemType[] = [
     { name: "Explore", href: "/explore", iconSrc: "" },
     { name: "My progress", href: "/progress", iconSrc: "" },
-    { name: "My library", href: "/library", iconSrc: "" },
-    { name: "Leaderboard", href: "/leaderboard", iconSrc: "" },
+    // { name: "My library", href: "/library", iconSrc: "" },
+    // { name: "Leaderboard", href: "/leaderboard", iconSrc: "" },
   ];
 
   const learnItems: SidebarItemType[] = [

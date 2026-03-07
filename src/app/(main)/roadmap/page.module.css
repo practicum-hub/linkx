@@ -22,68 +22,67 @@
 
 .exploreHero {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.9fr);
-  gap: 16px;
+  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.88fr);
+  gap: 18px;
 }
 
 .exploreHeroPrimary,
 .exploreHeroAside {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--border-default);
-  border-radius: 26px;
+  border: 1px solid #d7dfec;
+  border-radius: 18px;
 }
 
 .exploreHeroPrimary {
-  min-height: 228px;
-  padding: 22px 24px;
-  background: #0f2a52;
+  min-height: 236px;
+  padding: 28px;
+  background: linear-gradient(135deg, #031d3f 0%, #082a51 55%, #0a2340 100%);
   color: #f7fbff;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .exploreHeroPrimary::after {
   content: "";
   position: absolute;
-  top: -18px;
-  right: 6px;
-  width: 210px;
-  height: 300px;
-  border: 1px solid rgba(178, 205, 255, 0.14);
-  border-radius: 46% 54% 60% 40% / 38% 45% 55% 62%;
-  transform: rotate(11deg);
+  inset: auto auto -70px 58%;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(32, 120, 255, 0.28) 0%, rgba(32, 120, 255, 0) 70%);
 }
 
 .exploreHeroPrimary::before {
   content: "";
   position: absolute;
-  top: -6px;
-  right: 42px;
-  width: 154px;
-  height: 286px;
-  border: 1px solid rgba(178, 205, 255, 0.1);
-  border-radius: 46% 54% 60% 40% / 38% 45% 55% 62%;
-  transform: rotate(11deg);
+  top: 20px;
+  right: 26px;
+  width: 132px;
+  height: 132px;
+  border-radius: 24px;
+  border: 1px solid rgba(193, 218, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
 }
 
 .exploreHeroEyebrow {
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   font-size: 12px;
-  font-weight: 700;
-  color: #9db3d6;
+  font-weight: 800;
+  color: #91acd5;
 }
 
 .exploreHeroTitle {
   position: relative;
   z-index: 1;
-  max-width: 460px;
+  max-width: 520px;
   margin: 0;
-  font-size: 25px;
-  line-height: 1.12;
+  font-size: 34px;
+  line-height: 1.05;
   letter-spacing: -0.03em;
   font-weight: 800;
 }
@@ -94,21 +93,21 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
 .exploreHeroProgressTrack {
-  width: 154px;
-  height: 8px;
+  width: 180px;
+  height: 9px;
   border-radius: 999px;
-  background: rgba(214, 228, 255, 0.16);
+  background: rgba(214, 228, 255, 0.18);
   overflow: hidden;
 }
 
 .exploreHeroProgressFill {
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #19d96f 0%, #13f06a 100%);
+  background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-primary) 100%);
 }
 
 .exploreHeroProgressValue,
@@ -128,39 +127,39 @@
   margin-top: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
 }
 
 .exploreHeroPractice,
 .exploreHeroContinue {
   border: 0;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 14px;
   font-weight: 800;
   cursor: pointer;
 }
 
 .exploreHeroPractice {
-  min-width: 122px;
-  height: 38px;
-  background: rgba(255, 255, 255, 0.09);
+  min-width: 132px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.08);
   color: #f3f8ff;
-  box-shadow: inset 0 0 0 1px rgba(187, 208, 245, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(187, 208, 245, 0.14);
 }
 
 .exploreHeroContinue {
-  min-width: 104px;
-  height: 38px;
-  background: #15ee6d;
-  color: #082315;
-  padding: 0 16px;
+  min-width: 112px;
+  height: 40px;
+  background: var(--accent-primary);
+  color: var(--accent-primary-text);
+  padding: 0 18px;
 }
 
 .exploreHeroAside {
-  min-height: 228px;
-  padding: 22px 24px;
-  background: #dbe4f3;
+  min-height: 236px;
+  padding: 24px;
+  background: linear-gradient(180deg, #fbfdff 0%, #f3f7fc 100%);
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -169,11 +168,11 @@
 .exploreHeroAside::after {
   content: "";
   position: absolute;
-  right: -56px;
-  bottom: -58px;
-  width: 250px;
-  height: 250px;
-  border: 1px solid rgba(102, 128, 168, 0.2);
+  right: -64px;
+  bottom: -72px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(67, 117, 194, 0.11) 0%, rgba(67, 117, 194, 0) 72%);
   border-radius: 50%;
 }
 
@@ -182,8 +181,8 @@
   z-index: 1;
   margin: auto 0 0;
   max-width: 280px;
-  font-size: 20px;
-  line-height: 1.16;
+  font-size: 24px;
+  line-height: 1.12;
   letter-spacing: -0.02em;
   color: #183457;
 }
@@ -192,7 +191,7 @@
   position: relative;
   z-index: 1;
   width: fit-content;
-  color: #0e4fb6;
+  color: #183457;
   font-size: 14px;
   font-weight: 800;
   text-decoration: none;
@@ -270,38 +269,37 @@
 .bottomHero {
   position: relative;
   overflow: hidden;
-  padding: 24px 24px;
-  border: 1px solid var(--border-default);
-  border-radius: 24px;
-  background: linear-gradient(120deg, #0f2a52 0%, #14376a 58%, #0c2648 100%);
+  padding: 28px;
+  border: 1px solid #d7dfec;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #031d3f 0%, #082a51 55%, #0a2340 100%);
   color: #f7fbff;
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.82fr);
-  gap: 18px;
+  grid-template-columns: minmax(0, 1.42fr) minmax(300px, 0.84fr);
+  gap: 20px;
 }
 
 .bottomHero::after {
   content: "";
   position: absolute;
-  top: -24px;
-  right: 10px;
-  width: 220px;
-  height: 300px;
-  border: 1px solid rgba(178, 205, 255, 0.14);
-  border-radius: 46% 54% 60% 40% / 38% 45% 55% 62%;
-  transform: rotate(11deg);
+  inset: auto auto -92px 56%;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(32, 120, 255, 0.24) 0%, rgba(32, 120, 255, 0) 72%);
 }
 
 .bottomHero::before {
   content: "";
   position: absolute;
-  top: -8px;
-  right: 46px;
-  width: 164px;
-  height: 286px;
-  border: 1px solid rgba(178, 205, 255, 0.1);
-  border-radius: 46% 54% 60% 40% / 38% 45% 55% 62%;
-  transform: rotate(11deg);
+  top: 26px;
+  right: 28px;
+  width: 148px;
+  height: 148px;
+  border-radius: 24px;
+  border: 1px solid rgba(193, 218, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
 }
 
 .bottomHeroPrimary,
@@ -321,17 +319,17 @@
 
 .bottomHeroTitle {
   margin: 0;
-  max-width: 500px;
-  font-size: 28px;
-  line-height: 1.12;
+  max-width: 560px;
+  font-size: 32px;
+  line-height: 1.08;
   letter-spacing: -0.03em;
   color: #f7fbff;
 }
 
 .bottomHeroDesc {
   margin: 12px 0 0;
-  max-width: 460px;
-  font-size: 14px;
+  max-width: 520px;
+  font-size: 15px;
   line-height: 1.55;
   color: #c4d6f5;
 }
@@ -364,16 +362,17 @@
 .bottomHeroPrimaryBtn {
   min-width: 132px;
   padding: 0 18px;
-  background: #15ee6d;
-  color: #082315;
+  background: var(--accent-primary);
+  color: var(--accent-primary-text);
 }
 
 .bottomHeroAside {
-  min-height: 228px;
-  padding: 22px 24px;
+  min-height: 236px;
+  padding: 24px;
   border: 1px solid rgba(124, 154, 199, 0.26);
-  border-radius: 24px;
-  background: transparent;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
 }
@@ -417,7 +416,7 @@
 
 :global(body[data-theme="dark"]) .exploreHeroAside {
   border-color: #2b3f61;
-  background: #162235;
+  background: linear-gradient(180deg, #152133 0%, #101a2a 100%);
 }
 
 :global(body[data-theme="dark"]) .exploreHeroAsideTitle {
@@ -451,7 +450,7 @@
 
 :global(body[data-theme="dark"]) .bottomHeroAside {
   border-color: rgba(70, 99, 142, 0.55);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 :global(body[data-theme="dark"]) .bottomHeroMetric strong {
@@ -490,11 +489,11 @@
   .exploreHeroAside {
     min-height: unset;
     padding: 18px;
-    border-radius: 22px;
+    border-radius: 16px;
   }
 
   .exploreHeroTitle {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .exploreHeroActions {
@@ -529,12 +528,12 @@
 
   .bottomHero {
     padding: 20px;
-    border-radius: 24px;
+    border-radius: 16px;
     grid-template-columns: 1fr;
   }
 
   .bottomHeroTitle {
-    font-size: 24px;
+    font-size: 27px;
   }
 
   .bottomHeroDesc,
@@ -545,7 +544,7 @@
   .bottomHeroAside {
     min-height: unset;
     padding: 18px;
-    border-radius: 22px;
+    border-radius: 14px;
   }
 
   .bottomHeroActions {

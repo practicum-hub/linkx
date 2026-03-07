@@ -108,7 +108,7 @@ h6 {
 :root {
   --font-family: var(--font-manrope), sans-serif;
   --main-header-height: 60px;
-  --bg-page: #eef4ff;
+  --bg-page: #f7f7fc;
   --bg-surface: #ffffff;
   --bg-surface-soft: #f5f9ff;
   --border-default: #d2ddf0;
@@ -116,6 +116,10 @@ h6 {
   --text-secondary: #5e6f8b;
   --text-muted: #7a8ba6;
   --shadow-soft: 0 10px 22px rgba(33, 52, 84, 0.08);
+  --accent-primary: #03ef62;
+  --accent-primary-border: #03ef62;
+  --accent-primary-text: #062815;
+  --accent-primary-soft: rgba(3, 239, 98, 0.14);
 }
 
 body {
