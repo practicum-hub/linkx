@@ -1,7 +1,6 @@
 export const mainHeaderNavItems = [
-  { label: "Home", href: "/" },
-  { label: "Roadmap", href: "/roadmap" },
   { label: "Explore", href: "/explore" },
-  { label: "Community", href: "/community" },
-  { label: "Practice", href: "/practice" },
+  { label: "My Progress", href: "/progress" },
+  { label: "Courses", href: "/courses" },
+  { label: "Careers", href: "/careers" },
 ] as const;

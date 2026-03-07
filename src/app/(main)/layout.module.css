@@ -20,6 +20,7 @@
   min-width: 0;
   display: flex;
   justify-content: center;
+  background: #f7f7fc;
 }
 
 .contentAreaPractice {
@@ -36,6 +37,7 @@
   flex: 1;
   min-width: 0;
   display: flex;
+  background: #f7f7fc;
 }
 
 .mainPractice {

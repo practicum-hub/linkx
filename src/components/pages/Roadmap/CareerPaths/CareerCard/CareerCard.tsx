@@ -28,6 +28,24 @@ const coverMap: Record<string, string> = {
 };
 
 const fallbackCover = "/images/algorithms.png";
+const progressByTitle: Record<string, number> = {
+  "AI Engineer": 24,
+  "Frontend Engineer": 61,
+  "Backend Engineer": 38,
+  "ML Engineer": 12,
+  "DevOps Engineer": 47,
+  "Data Engineer": 33,
+  "Robotics Engineer": 8,
+  "Embedded Systems Engineer": 19,
+  "Electrical Engineer": 0,
+  "Energy Systems Engineer": 14,
+  "Aerospace Engineer": 5,
+  "Industrial Automation Engineer": 22,
+  "CAD / Mechanical Design Engineer": 41,
+  "Supply Chain & Logistics Engineer": 29,
+  "Smart Agriculture Engineer": 3,
+  "Climate Tech Engineer": 11,
+};
 
 export default function CareerCard({
   title,
@@ -39,12 +57,45 @@ export default function CareerCard({
   href,
   variant = "default",
 }: Props & VariantProps) {
+  if (variant === "explore") {
+    const progress = progressByTitle[title] ?? 0;
+
+    return (
+      <li className={styles.cardItem}>
+        <Link className={`${styles.card} ${styles.cardExplore}`} href={href}>
+          <div className={styles.exploreCardContent}>
+            <p className={styles.eyebrow}>Career</p>
+            <h3 className={styles.title}>{title}</h3>
+
+            <div className={styles.metaRow}>
+              <span className={styles.metaIcon} aria-hidden="true" />
+              <p className={styles.metaText}>{duration}</p>
+            </div>
+
+            <p className={styles.desc}>{desc}</p>
+            <p className={styles.exploreMetaSummary}>
+              {courses} | {salary} | {demand}
+            </p>
+          </div>
+
+          <div className={styles.exploreFooter}>
+            <div className={styles.exploreFooterProgress}>
+              <div className={styles.exploreProgressTrack}>
+                <div className={styles.exploreProgressFill} style={{ width: `${progress}%` }} />
+              </div>
+              <span className={styles.explorePercent}>{progress}% matched</span>
+            </div>
+
+            <span className={styles.linkLabel}>{progress > 0 ? "Continue path" : "Explore path"}</span>
+          </div>
+        </Link>
+      </li>
+    );
+  }
+
   return (
     <li className={styles.cardItem}>
-      <Link
-        className={`${styles.card} ${variant === "explore" ? styles.cardExplore : ""}`}
-        href={href}
-      >
+      <Link className={styles.card} href={href}>
         <div className={styles.cover}>
           <Image
             className={styles.coverImage}

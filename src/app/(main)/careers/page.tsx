@@ -119,10 +119,6 @@ export default function CareersPage() {
                 <div className={styles.cardContent}>
                   <p className={styles.cardLabel}>Career</p>
                   <h2 className={styles.cardTitle}>{career.title}</h2>
-                  <div className={styles.levelRow}>
-                    <span className={styles.levelIcon} aria-hidden="true" />
-                    <p className={styles.cardLevel}>{career.duration}</p>
-                  </div>
                   <p className={styles.cardDesc}>{career.desc}</p>
                   <p className={styles.authors}>
                     {career.courses} {" | "} {career.salary} {" | "} {career.demand}

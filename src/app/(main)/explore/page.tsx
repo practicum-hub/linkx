@@ -14,37 +14,32 @@ export default function ExplorePage() {
   return (
     <div className={`${styles.page} ${styles.explorePage}`}>
       <div className={`${styles.content} ${styles.exploreContent}`}>
-        <section className={styles.exploreHero} aria-label="Featured learning journey">
-          <div className={styles.exploreHeroPrimary}>
-            <p className={styles.exploreHeroEyebrow}>Course</p>
-            <h1 className={styles.exploreHeroTitle}>Prompt Engineering with the OpenAI API</h1>
-
-            <div className={styles.exploreHeroProgressRow}>
-              <div className={styles.exploreHeroProgressTrack}>
-                <div className={styles.exploreHeroProgressFill} style={{ width: "15%" }} />
-              </div>
-              <span className={styles.exploreHeroProgressValue}>15%</span>
-              <span className={styles.exploreHeroMeta}>3 hr 24 min</span>
+        <section className={styles.exploreHero} aria-label="Promotion banner">
+          <div className={styles.exploreHeroArt} aria-hidden="true">
+            <div className={styles.exploreHeroCubeTop}>
+              <span>Build</span>
             </div>
+            <div className={styles.exploreHeroCubeMiddle}>
+              <span>data</span>
+            </div>
+            <div className={styles.exploreHeroCubeSide}>
+              <span>+ AI skills</span>
+            </div>
+            <div className={styles.exploreHeroDiscount}>50% off</div>
+          </div>
 
+          <div className={styles.exploreHeroBody}>
+            <button type="button" className={styles.exploreHeroClose} aria-label="Close promotion">
+              <span />
+              <span />
+            </button>
+            <h1 className={styles.exploreHeroTitle}>Don&apos;t compromise. Get unlimited learning.</h1>
             <div className={styles.exploreHeroActions}>
-              <button type="button" className={styles.exploreHeroPractice}>
-                Practice
-              </button>
               <button type="button" className={styles.exploreHeroContinue}>
-                Continue
+                Buy Now
               </button>
             </div>
           </div>
-
-          <aside className={styles.exploreHeroAside}>
-            <p className={styles.exploreHeroEyebrow}>Enrolled track</p>
-            <h2 className={styles.exploreHeroAsideTitle}>Associate Data Analyst in SQL</h2>
-            <Link href="/careers" className={styles.exploreHeroAsideLink}>
-              See track
-            </Link>
-          </aside>
-
         </section>
 
         <div className={styles.exploreCoursesBlock}>

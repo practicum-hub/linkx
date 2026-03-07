@@ -44,7 +44,8 @@ export default function MainHeader() {
     <header className={styles.header}>
       <div className={styles.left}>
         <Link href="/explore" className={styles.logo}>
-          <span>EqualLearning</span>
+          <span className={styles.logoMark} aria-hidden="true" />
+          <span>Uppermind</span>
         </Link>
 
         <nav className={styles.nav}>

@@ -2,7 +2,7 @@ import type { RoadmapSidebarContent } from "@/types/roadmap";
 
 export const defaultSidebarContent: RoadmapSidebarContent = {
   sidebarItems: [
-    { name: "Roadmap", href: "/roadmap", iconSrc: "/icons/layers.png" },
+    { name: "Explore", href: "/explore", iconSrc: "/icons/layers.png" },
     { name: "Interviews", href: "/interviews", iconSrc: "/icons/run.png" },
     { name: "Leaderboards", href: "/leaderboard", iconSrc: "/icons/streak.png" },
     { name: "Profile", href: "/profile", iconSrc: "/icons/question.png" },
@@ -32,7 +32,7 @@ export const defaultSidebarContent: RoadmapSidebarContent = {
 
 export const algorithmsSidebarContent: RoadmapSidebarContent = {
   sidebarItems: [
-    { name: "Roadmap", href: "/roadmap", iconSrc: "/icons/layers.png" },
+    { name: "Explore", href: "/explore", iconSrc: "/icons/layers.png" },
     { name: "Practice", href: "/practice", iconSrc: "/icons/run.png" },
     { name: "Mistakes", href: "/mistakes", iconSrc: "/icons/streak.png" },
     { name: "Certificate", href: "/certificate", iconSrc: "/icons/arrowhead-up.png" },

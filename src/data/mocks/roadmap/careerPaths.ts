@@ -10,7 +10,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$125k avg",
     demand: "High demand",
     gradient: "linear-gradient(140deg, #4f8cff 0%, #57c3ff 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "Frontend Engineer",
@@ -20,7 +20,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$110k avg",
     demand: "Very high",
     gradient: "linear-gradient(140deg, #5f67ff 0%, #8f7dff 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "Backend Engineer",
@@ -30,7 +30,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$118k avg",
     demand: "High demand",
     gradient: "linear-gradient(140deg, #06b6d4 0%, #3b82f6 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "ML Engineer",
@@ -40,7 +40,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$132k avg",
     demand: "Growing fast",
     gradient: "linear-gradient(140deg, #8b5cf6 0%, #d946ef 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "DevOps Engineer",
@@ -50,7 +50,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$116k avg",
     demand: "High demand",
     gradient: "linear-gradient(140deg, #10b981 0%, #22c55e 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "Data Engineer",
@@ -60,7 +60,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$122k avg",
     demand: "Very high",
     gradient: "linear-gradient(140deg, #f59e0b 0%, #f97316 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
 
   // --- New: “Education of the Future” engineering paths ---
@@ -72,7 +72,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$128k avg",
     demand: "Growing fast",
     gradient: "linear-gradient(140deg, #22c55e 0%, #06b6d4 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "Embedded Systems Engineer",
@@ -82,7 +82,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$120k avg",
     demand: "High demand",
     gradient: "linear-gradient(140deg, #0ea5e9 0%, #6366f1 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "Electrical Engineer",
@@ -92,7 +92,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$121k avg",
     demand: "High demand",
     gradient: "linear-gradient(140deg, #f97316 0%, #ef4444 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "Energy Systems Engineer",
@@ -102,7 +102,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$124k avg",
     demand: "Very high",
     gradient: "linear-gradient(140deg, #10b981 0%, #84cc16 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "Aerospace Engineer",
@@ -112,7 +112,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$130k avg",
     demand: "Selective",
     gradient: "linear-gradient(140deg, #60a5fa 0%, #a78bfa 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "Industrial Automation Engineer",
@@ -122,7 +122,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$117k avg",
     demand: "High demand",
     gradient: "linear-gradient(140deg, #14b8a6 0%, #3b82f6 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "CAD / Mechanical Design Engineer",
@@ -132,7 +132,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$112k avg",
     demand: "Steady demand",
     gradient: "linear-gradient(140deg, #a3e635 0%, #22c55e 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "Supply Chain & Logistics Engineer",
@@ -142,7 +142,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$108k avg",
     demand: "Very high",
     gradient: "linear-gradient(140deg, #f59e0b 0%, #fb7185 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "Smart Agriculture Engineer",
@@ -152,7 +152,7 @@ export const careerPaths: CareerPath[] = [
     salary: "$105k avg",
     demand: "Growing fast",
     gradient: "linear-gradient(140deg, #22c55e 0%, #f59e0b 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
   {
     title: "Climate Tech Engineer",
@@ -162,6 +162,6 @@ export const careerPaths: CareerPath[] = [
     salary: "$118k avg",
     demand: "Growing fast",
     gradient: "linear-gradient(140deg, #06b6d4 0%, #10b981 100%)",
-    href: "/roadmap",
+    href: "/courses",
   },
 ];

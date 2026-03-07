@@ -47,7 +47,7 @@ export default function SignInPage() {
               <input id="remember-me" type="checkbox" />
               <span>Remember me</span>
             </label>
-            <Link href="/roadmap" className={styles.helpLink}>
+            <Link href="/explore" className={styles.helpLink}>
               Need Help?
             </Link>
           </div>
@@ -74,8 +74,8 @@ export default function SignInPage() {
           </div>
 
           <p className={styles.terms}>
-            By signing in, you accept our <Link href="/roadmap">Terms of Use</Link>,
-            our <Link href="/roadmap">Privacy Policy</Link> and that your data is
+            By signing in, you accept our <Link href="/explore">Terms of Use</Link>,
+            our <Link href="/explore">Privacy Policy</Link> and that your data is
             stored in the USA.
           </p>
         </div>

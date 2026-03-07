@@ -1,5 +1,5 @@
 .page {
-  background: linear-gradient(180deg, #eef4ff 0%, #e8f0ff 100%);
+  background: #f7f7fc;
   min-height: 100vh;
 }
 
@@ -8,197 +8,203 @@
 }
 
 .content {
-  padding: 20px 20px 20px;
+  padding: 18px 20px 20px;
   display: flex;
   flex-direction: column;
-  gap: 52px;
+  gap: 44px;
 }
 
 .exploreContent {
   width: min(1120px, 100%);
   margin: 0 auto;
-  gap: 42px;
+  gap: 36px;
 }
 
 .exploreHero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.88fr);
-  gap: 18px;
-}
-
-.exploreHeroPrimary,
-.exploreHeroAside {
   position: relative;
   overflow: hidden;
-  border: 1px solid #d7dfec;
-  border-radius: 18px;
-}
-
-.exploreHeroPrimary {
-  min-height: 236px;
-  padding: 28px;
-  background: linear-gradient(135deg, #031d3f 0%, #082a51 55%, #0a2340 100%);
+  min-height: 238px;
+  padding: 28px 30px;
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at 88% 10%, rgba(141, 59, 255, 0.95) 0%, rgba(141, 59, 255, 0) 18%),
+    linear-gradient(90deg, #001b33 0%, #1c2159 42%, #5f2fd5 78%, #7a35ff 100%);
   color: #f7fbff;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  align-items: stretch;
+  gap: 28px;
+}
+
+.exploreHeroArt {
+  position: relative;
+  min-height: 136px;
+}
+
+.exploreHeroCubeTop,
+.exploreHeroCubeMiddle,
+.exploreHeroCubeSide {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.exploreHeroPrimary::after {
-  content: "";
-  position: absolute;
-  inset: auto auto -70px 58%;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(32, 120, 255, 0.28) 0%, rgba(32, 120, 255, 0) 70%);
-}
-
-.exploreHeroPrimary::before {
-  content: "";
-  position: absolute;
-  top: 20px;
-  right: 26px;
-  width: 132px;
-  height: 132px;
-  border-radius: 24px;
-  border: 1px solid rgba(193, 218, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(10px);
-}
-
-.exploreHeroEyebrow {
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 42px;
+  transform: skewY(-30deg);
+  transform-origin: center;
   font-weight: 800;
-  color: #91acd5;
+  letter-spacing: -0.04em;
+}
+
+.exploreHeroCubeTop span,
+.exploreHeroCubeMiddle span,
+.exploreHeroCubeSide span {
+  display: inline-block;
+  transform: skewY(30deg) rotate(-35deg);
+}
+
+.exploreHeroCubeTop {
+  position: absolute;
+  top: 12px;
+  left: 6px;
+  background: #73e0ff;
+  color: #07213a;
+}
+
+.exploreHeroCubeMiddle {
+  position: absolute;
+  top: 12px;
+  left: 104px;
+  background: #7ce3ff;
+  color: #07213a;
+}
+
+.exploreHeroCubeSide {
+  position: absolute;
+  top: 56px;
+  left: 104px;
+  width: 96px;
+  height: 54px;
+  background: #6d4cff;
+  color: #eef1ff;
+}
+
+.exploreHeroCubeTop::after,
+.exploreHeroCubeMiddle::after,
+.exploreHeroCubeSide::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 20px solid currentColor;
+  border-left: 33px solid transparent;
+  border-right: 33px solid transparent;
+  opacity: 0.22;
+}
+
+.exploreHeroCubeTop::after,
+.exploreHeroCubeMiddle::after {
+  color: #6d4cff;
+}
+
+.exploreHeroCubeSide::after {
+  border-left-width: 42px;
+  border-right-width: 42px;
+  color: #4321b6;
+}
+
+.exploreHeroDiscount {
+  position: absolute;
+  top: 0;
+  left: 176px;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: #00ef68;
+  color: #03273d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.exploreHeroBody {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 22px;
 }
 
 .exploreHeroTitle {
-  position: relative;
-  z-index: 1;
-  max-width: 520px;
+  max-width: 680px;
   margin: 0;
-  font-size: 34px;
-  line-height: 1.05;
+  font-size: 31px;
+  line-height: 1.1;
   letter-spacing: -0.03em;
   font-weight: 800;
 }
 
-.exploreHeroProgressRow {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.exploreHeroProgressTrack {
-  width: 180px;
-  height: 9px;
-  border-radius: 999px;
-  background: rgba(214, 228, 255, 0.18);
-  overflow: hidden;
-}
-
-.exploreHeroProgressFill {
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-primary) 100%);
-}
-
-.exploreHeroProgressValue,
-.exploreHeroMeta {
-  font-size: 12px;
-  font-weight: 700;
-  color: #f7fbff;
-}
-
-.exploreHeroMeta {
-  color: #c4d6f5;
-}
-
 .exploreHeroActions {
-  position: relative;
-  z-index: 1;
-  margin-top: auto;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
-.exploreHeroPractice,
 .exploreHeroContinue {
   border: 0;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 5px;
+  font-size: 16px;
   font-weight: 800;
   cursor: pointer;
 }
 
-.exploreHeroPractice {
-  min-width: 132px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #f3f8ff;
-  box-shadow: inset 0 0 0 1px rgba(187, 208, 245, 0.14);
-}
-
 .exploreHeroContinue {
-  min-width: 112px;
-  height: 40px;
-  background: var(--accent-primary);
-  color: var(--accent-primary-text);
-  padding: 0 18px;
+  min-width: 188px;
+  height: 58px;
+  background: #07eb63;
+  color: #03273d;
+  padding: 0 28px;
 }
 
-.exploreHeroAside {
-  min-height: 236px;
-  padding: 24px;
-  background: linear-gradient(180deg, #fbfdff 0%, #f3f7fc 100%);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.exploreHeroAside::after {
-  content: "";
+.exploreHeroClose {
   position: absolute;
-  right: -64px;
-  bottom: -72px;
-  width: 220px;
-  height: 220px;
-  background: radial-gradient(circle, rgba(67, 117, 194, 0.11) 0%, rgba(67, 117, 194, 0) 72%);
-  border-radius: 50%;
+  top: 2px;
+  right: 0;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
-.exploreHeroAsideTitle {
-  position: relative;
-  z-index: 1;
-  margin: auto 0 0;
-  max-width: 280px;
-  font-size: 24px;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  color: #183457;
+.exploreHeroClose span {
+  position: absolute;
+  top: 12px;
+  left: 3px;
+  width: 20px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
 }
 
-.exploreHeroAsideLink {
-  position: relative;
-  z-index: 1;
-  width: fit-content;
-  color: #183457;
-  font-size: 14px;
-  font-weight: 800;
-  text-decoration: none;
+.exploreHeroClose span:first-child {
+  transform: rotate(45deg);
+}
+
+.exploreHeroClose span:last-child {
+  transform: rotate(-45deg);
 }
 
 .exploreCoursesBlock {
-  margin-top: -22px;
+  margin-top: -14px;
 }
 
 .addSection {
@@ -215,11 +221,11 @@
 
 .addTitle {
   margin: 0;
-  font-size: 32px;
-  line-height: 1.15;
+  font-size: 24px;
+  line-height: 1.12;
   letter-spacing: -0.4px;
   color: var(--text-primary);
-  max-width: 420px;
+  max-width: 320px;
 }
 
 .addGoals {
@@ -238,7 +244,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
   transition: box-shadow 0.14s ease, border-color 0.14s ease;
@@ -250,15 +256,15 @@
 }
 
 .addGoalIcon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: #1f67df;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1;
 }
 
@@ -313,15 +319,15 @@
   color: #9db3d6;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
 }
 
 .bottomHeroTitle {
   margin: 0;
   max-width: 560px;
-  font-size: 32px;
-  line-height: 1.08;
+  font-size: 22px;
+  line-height: 1.1;
   letter-spacing: -0.03em;
   color: #f7fbff;
 }
@@ -329,7 +335,7 @@
 .bottomHeroDesc {
   margin: 12px 0 0;
   max-width: 520px;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 1.55;
   color: #c4d6f5;
 }
@@ -346,7 +352,7 @@
   height: 38px;
   border: 0;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 800;
   cursor: pointer;
 }
@@ -385,14 +391,14 @@
 }
 
 .bottomHeroMetric strong {
-  font-size: 24px;
-  line-height: 1.12;
+  font-size: 18px;
+  line-height: 1.14;
   letter-spacing: -0.03em;
   color: #f7fbff;
 }
 
 .bottomHeroMetric span {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.45;
   color: #c4d6f5;
 }
@@ -401,30 +407,13 @@
   margin-top: 18px;
   width: fit-content;
   color: #f7fbff;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 800;
   text-decoration: none;
 }
 
 :global(body[data-theme="dark"]) .page {
-  background: linear-gradient(180deg, #0f1828 0%, #121e31 100%);
-}
-
-:global(body[data-theme="dark"]) .exploreHeroPrimary {
-  border-color: #2b3f61;
-}
-
-:global(body[data-theme="dark"]) .exploreHeroAside {
-  border-color: #2b3f61;
-  background: linear-gradient(180deg, #152133 0%, #101a2a 100%);
-}
-
-:global(body[data-theme="dark"]) .exploreHeroAsideTitle {
-  color: #edf4ff;
-}
-
-:global(body[data-theme="dark"]) .exploreHeroAsideLink {
-  color: #7ab3ff;
+  background: #0f1828;
 }
 
 :global(body[data-theme="dark"]) .addGoal {
@@ -481,15 +470,11 @@
   }
 
   .exploreHero {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .exploreHeroPrimary,
-  .exploreHeroAside {
-    min-height: unset;
     padding: 18px;
     border-radius: 16px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    min-height: unset;
   }
 
   .exploreHeroTitle {
@@ -497,13 +482,21 @@
   }
 
   .exploreHeroActions {
-    flex-direction: column;
-    align-items: stretch;
+    justify-content: flex-start;
   }
 
-  .exploreHeroPractice,
   .exploreHeroContinue {
-    width: 100%;
+    min-width: 160px;
+    height: 48px;
+    font-size: 15px;
+  }
+
+  .exploreHeroArt {
+    min-height: 112px;
+  }
+
+  .exploreHeroDiscount {
+    left: 166px;
   }
 
   .addSection {

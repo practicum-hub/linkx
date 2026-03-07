@@ -5,20 +5,20 @@ import styles from "./page.module.css";
 
 const features = [
   {
-    title: "Step-by-step tracks",
-    text: "A clear path from core math to algorithms and interview-style problems.",
+    title: "Career paths",
+    text: "Move from your current level to a target role with structured paths, milestones, and practical outcomes.",
   },
   {
-    title: "Practice in every lesson",
-    text: "Short theory blocks followed by tasks with checks, hints, and error breakdowns.",
+    title: "Courses and programs",
+    text: "Combine short courses, deeper programs, and guided sequences in one platform.",
   },
   {
-    title: "Your own pace",
-    text: "Learn in 20-minute sessions and keep progress synced across devices.",
+    title: "Practice in every step",
+    text: "Study with lessons, exercises, checkpoints, and progress tracking across the full journey.",
   },
   {
-    title: "Interview readiness",
-    text: "Train with real-world task formats and build a strong portfolio of solutions.",
+    title: "Flexible pace",
+    text: "Learn on your own schedule, keep momentum in short sessions, and pick up where you left off.",
   },
 ] as const;
 
@@ -64,20 +64,20 @@ const catalogCourses = [
 const pathCards = [
   {
     title: "I'm switching careers",
-    text: "Break into data and AI with zero coding experience. Learn step-by-step and build a job-ready portfolio.",
-    cta: "Learn More About Career Switching",
+    text: "Move into a new field with guided career paths, core courses, and practical programs that build confidence.",
+    cta: "Explore Career Paths",
     image: "/images/algorithms.png",
   },
   {
     title: "I'm a team leader",
-    text: "Transform your organization's data capabilities with structured learning paths and team progress tracking.",
-    cta: "DataCamp for Business",
+    text: "Give your team clear development routes with role-based programs, shared progress, and upskilling plans.",
+    cta: "For Teams",
     image: "/images/nextjs.webp",
   },
   {
     title: "I want to skill up",
-    text: "Level up your toolkit with advanced data and AI techniques through practical, self-paced courses.",
-    cta: "Learn More About Skill Paths",
+    text: "Add new skills through focused courses and programs in data, AI, analytics, and technical foundations.",
+    cta: "Browse Programs",
     image: "/images/rust.png",
   },
 ] as const;
@@ -118,23 +118,28 @@ export default function Home() {
     <div className={styles.page}>
       <header className={styles.topBar}>
         <div className={styles.container}>
+          <Link href="/" className={styles.brand} aria-label="Uppermind home">
+            <span className={styles.brandMark} aria-hidden="true" />
+            <span className={styles.logo}>Uppermind</span>
+          </Link>
+
           <nav className={styles.nav}>
-            <Link href="/roadmap" className={styles.navLink}>
+            <Link href="/courses" className={styles.navLink}>
               Catalog <span className={styles.navArrow}>v</span>
             </Link>
-            <Link href="/roadmap" className={styles.navLink}>
+            <Link href="/explore" className={styles.navLink}>
               AI Upskilling <span className={styles.navArrow}>v</span>
             </Link>
-            <Link href="/roadmap" className={styles.navLink}>
+            <Link href="/explore" className={styles.navLink}>
               Resources <span className={styles.navArrow}>v</span>
             </Link>
-            <Link href="/roadmap" className={styles.navLink}>
+            <Link href="/signup" className={styles.navLink}>
               Pricing <span className={styles.navArrow}>v</span>
             </Link>
-            <Link href="/roadmap" className={styles.navLink}>
+            <Link href="/community" className={styles.navLink}>
               For Business
             </Link>
-            <Link href="/roadmap" className={styles.navLink}>
+            <Link href="/community" className={styles.navLink}>
               For Universities
             </Link>
           </nav>
@@ -182,20 +187,20 @@ export default function Home() {
           <div className={styles.container}>
             <div className={styles.heroGrid}>
               <div className={styles.textBlock}>
-                <p className={styles.eyebrow}>Structured learning platform</p>
                 <h1 className={styles.title}>
-                  Learn math and algorithms through real practice
+                  Build skills with career paths, courses, and programs
                 </h1>
                 <p className={styles.subtitle}>
-                  Build strong fundamentals, solve tasks every day, and prepare
-                  for interviews in one focused workspace.
+                  Uppermind helps learners grow through guided career tracks,
+                  practical courses, and structured programs in one focused
+                  platform.
                 </p>
                 <div className={styles.heroActions}>
-                  <Link href="/roadmap" className={styles.primaryBtnLarge}>
-                    Open learning roadmap
+                  <Link href="/explore" className={styles.primaryBtnLarge}>
+                    Explore paths
                   </Link>
-                  <Link href="/roadmap" className={styles.secondaryBtn}>
-                    Watch demo lesson
+                  <Link href="/courses" className={styles.secondaryBtn}>
+                    Browse courses
                   </Link>
                 </div>
                 <p className={styles.heroRating}>
@@ -251,18 +256,34 @@ export default function Home() {
                   <span className={styles.signupEye} aria-hidden="true" />
                 </div>
 
-                <Link href="/roadmap" className={styles.signupSubmit}>
+                <Link href="/explore" className={styles.signupSubmit}>
                   Start Learning for Free
                 </Link>
 
                 <p className={styles.signupTerms}>
                   By continuing, you accept our{" "}
-                  <Link href="/roadmap">Terms of Use</Link>, our{" "}
-                  <Link href="/roadmap">Privacy Policy</Link> and that your data
+                  <Link href="/explore">Terms of Use</Link>, our{" "}
+                  <Link href="/explore">Privacy Policy</Link> and that your data
                   is stored in the USA.
                 </p>
               </aside>
             </div>
+          </div>
+        </section>
+
+        <section className={styles.demoSection}>
+          <div className={styles.demoWrap}>
+            <video
+              className={styles.demoVideo}
+              src="/videos/ui/LearningPlatformDemo.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+            >
+              Your browser does not support the video tag.
+            </video>
           </div>
         </section>
 
@@ -289,7 +310,7 @@ export default function Home() {
                 </button>
               </div>
 
-              <Link href="/roadmap" className={styles.catalogCta}>
+              <Link href="/courses" className={styles.catalogCta}>
                 Explore Catalog
               </Link>
             </div>
@@ -305,7 +326,7 @@ export default function Home() {
                     </span>
                   </p>
                   <p className={styles.catalogText}>{course.text}</p>
-                  <Link href="/roadmap" className={styles.catalogLink}>
+                  <Link href="/courses" className={styles.catalogLink}>
                     See Details
                   </Link>
                 </article>
@@ -327,7 +348,7 @@ export default function Home() {
                 Uncover what 500+ leaders in the US & UK believe about their
                 team&apos;s data and AI skills.
               </p>
-              <Link href="/roadmap" className={styles.reportBtn}>
+              <Link href="/explore" className={styles.reportBtn}>
                 Download the Report
               </Link>
             </div>
@@ -336,7 +357,7 @@ export default function Home() {
 
         <section className={styles.pathSection}>
           <div className={styles.container}>
-            <h2 className={styles.pathTitle}>Find your data and AI path</h2>
+            <h2 className={styles.pathTitle}>Find the path that fits your goal</h2>
 
             <div className={styles.pathGrid}>
               {pathCards.map((card) => (
@@ -351,7 +372,7 @@ export default function Home() {
                   </div>
                   <h3>{card.title}</h3>
                   <p>{card.text}</p>
-                  <Link href="/roadmap" className={styles.pathBtn}>
+                  <Link href="/careers" className={styles.pathBtn}>
                     {card.cta}
                   </Link>
                 </article>
@@ -437,14 +458,14 @@ export default function Home() {
                   <span className={styles.signupEye} aria-hidden="true" />
                 </div>
 
-                <Link href="/roadmap" className={styles.signupSubmit}>
+                <Link href="/explore" className={styles.signupSubmit}>
                   Start Learning for Free
                 </Link>
 
                 <p className={styles.signupTerms}>
                   By continuing, you accept our{" "}
-                  <Link href="/roadmap">Terms of Use</Link>, our{" "}
-                  <Link href="/roadmap">Privacy Policy</Link> and that your data
+                  <Link href="/explore">Terms of Use</Link>, our{" "}
+                  <Link href="/explore">Privacy Policy</Link> and that your data
                   is stored in the USA.
                 </p>
               </aside>
@@ -457,12 +478,12 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.footerMain}>
             <div className={styles.footerIntro}>
-              <p className={styles.footerBrand}>EqualLearning</p>
+              <p className={styles.footerBrand}>Uppermind</p>
               <p className={styles.footerText}>
-                A platform for learning math, algorithms, and interview
-                preparation.
+                Uppermind is a platform for career paths, courses, and
+                upskilling programs.
               </p>
-              <Link href="/roadmap" className={styles.footerCta}>
+              <Link href="/explore" className={styles.footerCta}>
                 Start Learning
               </Link>
             </div>
@@ -474,7 +495,7 @@ export default function Home() {
                   <ul className={styles.footerColList}>
                     {col.links.map((link) => (
                       <li key={link}>
-                        <Link href="/roadmap">{link}</Link>
+                        <Link href="/explore">{link}</Link>
                       </li>
                     ))}
                   </ul>
@@ -485,9 +506,9 @@ export default function Home() {
 
           <div className={styles.footerTop}>
             <div className={styles.footerLegal}>
-              <Link href="/roadmap">Terms</Link>
-              <Link href="/roadmap">Privacy</Link>
-              <Link href="/roadmap">Cookies</Link>
+              <Link href="/explore">Terms</Link>
+              <Link href="/explore">Privacy</Link>
+              <Link href="/explore">Cookies</Link>
             </div>
             <div className={styles.footerSocial}>
               <span>Follow us</span>
@@ -496,11 +517,11 @@ export default function Home() {
           </div>
 
           <div className={styles.footerBottom}>
-            <span>© 2026 EqualLearning</span>
+            <span>© 2026 Uppermind</span>
             <div className={styles.footerLinks}>
-              <Link href="/roadmap">Roadmap</Link>
-              <Link href="/roadmap">Policy</Link>
-              <Link href="/roadmap">Contact</Link>
+              <Link href="/explore">Explore</Link>
+              <Link href="/explore">Policy</Link>
+              <Link href="/community">Contact</Link>
             </div>
           </div>
         </div>

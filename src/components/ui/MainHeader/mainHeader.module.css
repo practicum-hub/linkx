@@ -24,12 +24,22 @@
 .logo {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
   color: var(--text-primary);
   font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.02em;
   padding: 0 6px 0 2px;
   white-space: nowrap;
+}
+
+.logoMark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #08de63;
+  border-radius: 4px;
+  transform: skew(-10deg);
+  flex: 0 0 auto;
 }
 
 .nav {
@@ -75,7 +85,7 @@
   border: 1px solid var(--border-default);
   background: var(--bg-surface-soft);
   border-radius: 999px;
-  padding: 10px 12px 10px 38px;
+  padding: 8px 12px 8px 38px;
   font-size: 14px;
   color: var(--text-primary);
 }

@@ -19,29 +19,14 @@
   gap: 16px;
 }
 
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .cardsViewport {
   position: relative;
-}
-
-.cardsViewportExplore::after {
-  display: none;
-}
-
-.cardsViewportFaded::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 340px;
-  background: linear-gradient(
-    to bottom,
-    rgba(232, 240, 255, 0) 0%,
-    rgba(232, 240, 255, 0.28) 44%,
-    rgba(232, 240, 255, 0.56) 72%,
-    rgba(232, 240, 255, 0.78) 100%
-  );
-  pointer-events: none;
 }
 
 .showAll {
@@ -53,8 +38,55 @@
   white-space: nowrap;
 }
 
+.showAllExplore {
+  min-width: 88px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 8px;
+  background: #0b2743;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .showAll:hover {
   text-decoration: underline;
+}
+
+.showAllExplore:hover {
+  text-decoration: none;
+  background: #14365a;
+}
+
+.sliderBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid #c8d3e4;
+  background: transparent;
+  color: #183457;
+  font-size: 16px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.sliderBtn:hover {
+  border-color: #aebfd8;
+}
+
+.sliderBtnLeft {
+  left: -28px;
+}
+
+.sliderBtnRight {
+  right: -28px;
 }
 
 .cards {
@@ -67,7 +99,30 @@
 }
 
 .cardsExplore {
-  gap: 18px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(260px, 1fr);
+  grid-template-columns: none;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-x;
+}
+
+.cardsExplore::-webkit-scrollbar {
+  display: none;
+}
+
+.cardsExplore > li {
+  scroll-snap-align: start;
+}
+
+.cardsExplore:active {
+  cursor: grabbing;
 }
 
 @media (max-width: 1450px) {
@@ -90,18 +145,14 @@
     flex-direction: column;
   }
 
+  .headerActions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .cards,
   .cardsExplore {
     grid-template-columns: 1fr;
   }
 }
 
-:global(body[data-theme="dark"]) .cardsViewportFaded::after {
-  background: linear-gradient(
-    to bottom,
-    rgba(18, 30, 49, 0) 0%,
-    rgba(18, 30, 49, 0.28) 44%,
-    rgba(18, 30, 49, 0.56) 72%,
-    rgba(18, 30, 49, 0.78) 100%
-  );
-}

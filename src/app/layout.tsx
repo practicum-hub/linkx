@@ -9,8 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Алгоритмы с нуля",
-  description: "Приложение для изучения алгоритмов",
+  title: "Uppermind | Career Paths, Courses, and Programs",
+  description:
+    "Uppermind is a learning platform with career paths, courses, and programs for practical growth.",
 };
 
 export default function RootLayout({

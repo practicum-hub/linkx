@@ -1,6 +1,6 @@
 "use client";
 
-import SocialFooter from "../SocialFooter/SocialFooter";
+import Link from "next/link";
 import styles from "./sidebar.module.css";
 import SidebarItem from "./SidebarItem/SidebarItem";
 import type { SidebarItemType } from "@/types/roadmap";
@@ -35,8 +35,10 @@ export default function Sidebar() {
         </ul>
       </div>
 
-      <div className={styles.socialWrap}>
-        <SocialFooter />
+      <div className={styles.bottomArea}>
+        <Link href="/learn" className={styles.ctaCard}>
+          <span className={styles.ctaText}>Getting Started (3/4)</span>
+        </Link>
       </div>
     </aside>
   );

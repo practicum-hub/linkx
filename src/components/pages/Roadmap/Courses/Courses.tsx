@@ -66,7 +66,10 @@ export default function Courses({
       <div className={styles.header}>
         <TextBlock title={title} desc={desc} />
         {showAllHref ? (
-          <Link className={styles.showAll} href={showAllHref}>
+          <Link
+            className={`${styles.showAll} ${variant === "explore" ? styles.showAllExplore : ""}`}
+            href={showAllHref}
+          >
             {showAllLabel}
           </Link>
         ) : null}
@@ -83,6 +86,14 @@ export default function Courses({
           ))}
         </ul>
       </div>
+
+      {variant === "explore" && showAllHref ? (
+        <div className={styles.bottomAction}>
+          <Link className={styles.bottomActionBtn} href={showAllHref}>
+            Search for all
+          </Link>
+        </div>
+      ) : null}
     </div>
   );
 }

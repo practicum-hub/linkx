@@ -91,15 +91,14 @@
 
 .progressInfo {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 10px;
   font-size: 12px;
   color: var(--text-secondary);
   font-weight: 600;
 }
 
-.percentage,
-.units {
+.percentage {
   margin: 0;
 }
 
@@ -119,84 +118,114 @@
 }
 
 .courseExplore {
-  padding: 0 0 14px;
+  min-height: 344px;
+  padding: 16px 16px 0;
   border: 1px solid #d7dfec;
-  border-radius: 12px;
+  border-radius: 6px;
   background: #fdfefe;
   box-shadow: none;
+  gap: 0;
 }
 
 .courseExplore:hover {
-  box-shadow: 0 14px 28px rgba(33, 52, 84, 0.08);
-}
-
-.courseExplore .cover {
-  height: 186px;
-  margin: 0;
-  border-radius: 12px 12px 0 0;
-  background: #e7edf6;
-}
-
-.courseExplore .info,
-.courseExplore .progress,
-.courseExplore .bottomRow {
-  padding-left: 16px;
-  padding-right: 16px;
+  box-shadow: 0 12px 20px rgba(33, 52, 84, 0.1);
 }
 
 .courseExplore .info {
   flex: 1;
-  gap: 8px;
-  padding-top: 14px;
+  gap: 0;
 }
 
 .courseExplore .title {
-  font-size: 20px;
+  margin-top: 8px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 1.18;
+  line-height: 1.16;
   color: #12284a;
 }
 
-.courseExplore .desc {
-  color: #4c607f;
-  min-height: 64px;
+.rangeTag {
+  margin: auto 0 12px;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eef3fb;
+  color: #49638a;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 800;
 }
 
-.courseExplore .progressBar {
+.courseExplore .desc {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #4c607f;
+  min-height: 54px;
+  line-height: 1.5;
+}
+
+.xpExplore {
+  margin: 18px 0 0;
+  color: #39567f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.exploreFooter {
+  margin-top: auto;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding: 16px;
+  border-top: 1px solid #d7dfec;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.footerProgress {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.footerProgress .progressBar {
   height: 8px;
+  width: 100%;
   background: #e2e8f2;
 }
 
-.courseExplore .progress {
-  margin-top: auto;
-}
-
-.courseExplore .progressFill {
-  background: var(--accent-primary);
-}
-
 .courseExplore .progressInfo {
+  display: flex;
+  justify-content: flex-start;
+  gap: 14px;
   color: #49638a;
   font-weight: 700;
 }
 
-.courseExplore .bottomRow {
-  margin-top: 0;
-}
-
-.courseExplore .xp {
-  color: #39567f;
-  font-size: 12px;
+.exploreAction {
+  min-width: 110px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 8px;
+  background: #15e35f;
+  color: #03273d;
+  font-size: 13px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 :global(body[data-theme="dark"]) .courseExplore {
   border-color: #2b3f61;
   background: #152133;
   box-shadow: none;
-}
-
-:global(body[data-theme="dark"]) .courseExplore .cover {
-  background: #1b2a40;
 }
 
 :global(body[data-theme="dark"]) .courseExplore .eyebrow {
@@ -209,6 +238,19 @@
 
 :global(body[data-theme="dark"]) .courseExplore .desc,
 :global(body[data-theme="dark"]) .courseExplore .progressInfo,
-:global(body[data-theme="dark"]) .courseExplore .xp {
+:global(body[data-theme="dark"]) .xpExplore {
   color: #9bb0d0;
+}
+
+:global(body[data-theme="dark"]) .exploreFooter {
+  border-top-color: #2b3f61;
+}
+
+:global(body[data-theme="dark"]) .exploreAction {
+  color: #03273d;
+}
+
+:global(body[data-theme="dark"]) .rangeTag {
+  background: #24354f;
+  color: #cfe0ff;
 }

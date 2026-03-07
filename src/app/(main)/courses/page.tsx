@@ -89,10 +89,6 @@ export default function CoursesPage() {
               <div className={styles.cardContent}>
                 <p className={styles.cardLabel}>Course</p>
                 <h2 className={styles.cardTitle}>{course.title}</h2>
-                <div className={styles.levelRow}>
-                  <span className={styles.levelIcon} aria-hidden="true" />
-                  <p className={styles.cardLevel}>{course.level}</p>
-                </div>
                 <p className={styles.cardDesc}>{course.description}</p>
                 <p className={styles.authors}>{course.authors.join(" / ")}</p>
               </div>

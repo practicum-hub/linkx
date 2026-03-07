@@ -81,8 +81,8 @@ export default function SignupPage() {
 
           <p className={styles.terms}>
             By continuing, you accept our{" "}
-            <Link href="/roadmap">Terms of Use</Link>, our{" "}
-            <Link href="/roadmap">Privacy Policy</Link> and that your data is
+            <Link href="/explore">Terms of Use</Link>, our{" "}
+            <Link href="/explore">Privacy Policy</Link> and that your data is
             stored in the USA. You confirm you are at least 16 years old.
           </p>
         </div>

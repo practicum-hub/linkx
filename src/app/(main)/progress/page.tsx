@@ -63,7 +63,7 @@ export default function ProgressPage() {
         </section>
 
         <p className={styles.enrolled}>
-          You&apos;re enrolled in the <Link href="/roadmap">Associate Data Analyst in SQL</Link>{" "}
+          You&apos;re enrolled in the <Link href="/careers">Associate Data Analyst in SQL</Link>{" "}
           track.
         </p>
 
