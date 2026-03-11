@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   FaBars,
+  FaArrowRightFromBracket,
   FaChevronLeft,
   FaChevronRight,
   FaGlobe,
@@ -12,7 +13,6 @@ import {
 import styles from "@/app/(main)/learn/page.module.css";
 
 type Props = {
-  courseTitle: string;
   prevHref: string;
   nextHref: string;
   canGoPrev: boolean;
@@ -22,7 +22,6 @@ type Props = {
 };
 
 export default function LearnHeader({
-  courseTitle,
   prevHref,
   nextHref,
   canGoPrev,
@@ -33,15 +32,10 @@ export default function LearnHeader({
   return (
     <header className={styles.learnHeader}>
       <div className={styles.headerPath}>
-        <Link href="/learn" className={styles.pathLink}>
-          Learn
+        <Link href="/practice" className={styles.exitBtn}>
+          <FaArrowRightFromBracket aria-hidden="true" />
+          <span>Exit</span>
         </Link>
-        <span className={styles.pathDivider}>/</span>
-        <Link href="/courses" className={styles.pathLink}>
-          Courses
-        </Link>
-        <span className={styles.pathDivider}>/</span>
-        <span className={styles.pathCurrent}>{courseTitle}</span>
       </div>
 
       <div className={styles.outlineNav}>
@@ -93,9 +87,6 @@ export default function LearnHeader({
         <button type="button" className={styles.iconBtn} aria-label="Warnings">
           <FaTriangleExclamation aria-hidden="true" />
         </button>
-        <Link href="/practice" className={styles.exitBtn}>
-          Exit
-        </Link>
       </div>
     </header>
   );

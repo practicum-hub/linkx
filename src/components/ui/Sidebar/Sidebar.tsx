@@ -3,41 +3,25 @@
 import Link from "next/link";
 import styles from "./sidebar.module.css";
 import SidebarItem from "./SidebarItem/SidebarItem";
-import type { SidebarItemType } from "@/types/roadmap";
+import { appSidebarContent } from "@/data/mocks/sidebar";
 
 export default function Sidebar() {
-  const topItems: SidebarItemType[] = [
-    { name: "Explore", href: "/explore", iconSrc: "" },
-    { name: "My progress", href: "/progress", iconSrc: "" },
-    // { name: "My library", href: "/library", iconSrc: "" },
-    // { name: "Leaderboard", href: "/leaderboard", iconSrc: "" },
-  ];
-
-  const learnItems: SidebarItemType[] = [
-    { name: "Courses", href: "/courses", iconSrc: "" },
-    { name: "Careers", href: "/careers", iconSrc: "" },
-  ];
-
   return (
     <aside className={styles.sidebar}>
-      <ul className={styles.items}>
-        {topItems.map((item, i) => (
-          <SidebarItem key={i} item={item} />
-        ))}
-      </ul>
-
-      <div className={styles.section}>
-        <p className={styles.sectionTitle}>LEARN</p>
-        <ul className={styles.items}>
-          {learnItems.map((item, i) => (
-            <SidebarItem key={item.href + i} item={item} />
-          ))}
-        </ul>
-      </div>
+      {appSidebarContent.sections.map((section, sectionIndex) => (
+        <div key={`section-${sectionIndex}`} className={section.title ? styles.section : ""}>
+          {section.title ? <p className={styles.sectionTitle}>{section.title.toUpperCase()}</p> : null}
+          <ul className={styles.items}>
+            {section.items.map((item) => (
+              <SidebarItem key={item.href} item={item} />
+            ))}
+          </ul>
+        </div>
+      ))}
 
       <div className={styles.bottomArea}>
-        <Link href="/learn" className={styles.ctaCard}>
-          <span className={styles.ctaText}>Getting Started (3/4)</span>
+        <Link href={appSidebarContent.cta.href} className={styles.ctaCard}>
+          <span className={styles.ctaText}>{appSidebarContent.cta.label}</span>
         </Link>
       </div>
     </aside>

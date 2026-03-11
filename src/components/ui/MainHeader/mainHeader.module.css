@@ -121,7 +121,7 @@
 .upgradeBtn {
   border: 0;
   border-radius: 6px;
-  background: var(--brand-primary);
+  background: var(--sidebar-cta-bg);
   color: var(--text-on-brand);
   padding: 10px 14px;
   font-size: 13px;

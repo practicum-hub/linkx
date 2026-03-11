@@ -1,4 +1,4 @@
-﻿.page {
+.page {
   min-height: 100vh;
   background: var(--ui-graphite);
   color: #ffffff;
@@ -246,20 +246,6 @@
   letter-spacing: 0.07em;
 }
 
-.heroPanel {
-  border: 1px solid var(--border-default);
-  border-radius: 8px;
-  background: var(--bg-surface);
-  width: 100%;
-  max-width: 390px;
-  padding: 24px 18px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
-}
-
-.heroPanel :where(h3, p, label, a, button, span) {
-  color: #08203c;
-}
-
 .demoSection {
   padding: 8px 0 64px;
   background: var(--bg-surface);
@@ -281,151 +267,6 @@
   background: transparent;
   border: 0;
   border-radius: 0;
-}
-
-.signupTitle {
-  text-align: center;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-}
-
-.signupSocialRow {
-  margin-top: 16px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.signupSocialBtn {
-  border: 1px solid #cec9c2;
-  border-radius: 6px;
-  background: var(--bg-surface-soft);
-  min-height: 48px;
-  font-size: 24px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.signupSocialBtn:nth-child(1) {
-  color: #db4437;
-}
-
-.signupSocialBtn:nth-child(2) {
-  color: #0a66c2;
-}
-
-.signupSocialBtn:nth-child(3) {
-  color: #1877f2;
-}
-
-.signupSocialBtn:nth-child(4) {
-  color: #111111;
-}
-
-.signupDivider {
-  margin-top: 14px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.signupDivider::before,
-.signupDivider::after {
-  content: "";
-  height: 1px;
-  flex: 1 1 auto;
-  background: #d6dbe3;
-}
-
-.signupDivider span {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.signupLabel {
-  display: block;
-  margin-top: 12px;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.signupInput {
-  width: 100%;
-  margin-top: 7px;
-  border: 1px solid var(--border-default);
-  border-radius: 6px;
-  background: #ffffff;
-  color: #17314d;
-  padding: 10px 13px;
-  font-size: 14px;
-}
-
-.signupInput::placeholder {
-  color: #61758d;
-}
-
-.signupPasswordWrap {
-  position: relative;
-}
-
-.signupPasswordWrap .signupInput {
-  padding-right: 46px;
-}
-
-.signupEye {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 13px;
-  border: 2px solid #8b97a6;
-  border-radius: 999px;
-}
-
-.signupEye::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #8b97a6;
-  transform: translate(-50%, -50%);
-}
-
-.signupSubmit {
-  margin-top: 20px;
-  width: 100%;
-  border: 1px solid var(--brand-primary);
-  border-radius: 6px;
-  background: var(--brand-primary);
-  color: #f6fffd;
-  min-height: 44px;
-  font-size: 16px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.signupTerms {
-  margin-top: 14px;
-  font-size: 12px;
-  line-height: 1.45;
-  color: #5f7390;
-}
-
-.signupTerms a {
-  color: var(--brand-primary);
-  text-decoration: underline;
-  text-underline-offset: 2px;
 }
 
 .businessSection {
@@ -662,7 +503,7 @@
 }
 
 .catalogLink::after {
-  content: "  →";
+  content: "  >";
 }
 
 .section,
@@ -1251,11 +1092,6 @@
   .heroGrid {
     grid-template-columns: 1fr;
   }
-
-  .heroPanel {
-    max-width: 520px;
-  }
-
   .flowGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1380,29 +1216,6 @@
   .subtitle {
     font-size: 16px;
   }
-
-  .signupTitle {
-    font-size: 24px;
-  }
-
-  .signupLabel {
-    font-size: 15px;
-  }
-
-  .signupInput {
-    font-size: 14px;
-  }
-
-  .signupSocialBtn {
-    min-height: 48px;
-    font-size: 24px;
-  }
-
-  .signupSubmit {
-    min-height: 44px;
-    font-size: 16px;
-  }
-
   .businessTitle {
     font-size: clamp(30px, 9vw, 40px);
   }
@@ -1497,3 +1310,4 @@
     padding: 50px 0;
   }
 }
+

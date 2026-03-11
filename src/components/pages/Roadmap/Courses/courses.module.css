@@ -23,23 +23,6 @@
   position: relative;
 }
 
-.coursesViewportFaded::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 220px;
-  background: linear-gradient(
-    to bottom,
-    rgba(232, 240, 255, 0) 0%,
-    rgba(232, 240, 255, 0.14) 36%,
-    rgba(232, 240, 255, 0.36) 68%,
-    rgba(232, 240, 255, 0.58) 100%
-  );
-  pointer-events: none;
-}
-
 .showAll {
   text-align: center;
   color: #0f59bc;
@@ -135,12 +118,3 @@
   }
 }
 
-:global(body[data-theme="dark"]) .coursesViewportFaded::after {
-  background: linear-gradient(
-    to bottom,
-    rgba(18, 30, 49, 0) 0%,
-    rgba(18, 30, 49, 0.16) 36%,
-    rgba(18, 30, 49, 0.38) 68%,
-    rgba(18, 30, 49, 0.62) 100%
-  );
-}

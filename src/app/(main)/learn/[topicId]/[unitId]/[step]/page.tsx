@@ -67,7 +67,6 @@ export default function LearnStepPage() {
   return (
     <div className={`${styles.page} ${isDark ? styles.pageDark : ""}`}>
       <LearnHeader
-        courseTitle={selectedTopic.title}
         prevHref={prevHref}
         nextHref={nextHref}
         canGoPrev={safeStep > 1}

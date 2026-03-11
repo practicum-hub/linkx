@@ -1,11 +1,11 @@
 .sidebar {
-  min-width: 232px;
-  width: 232px;
+  min-width: 14.5rem;
+  width: 14.5rem;
   height: calc(100vh - var(--main-header-height));
   position: sticky;
   top: var(--main-header-height);
   align-self: flex-start;
-  padding: 14px 12px 12px;
+  padding: 0.875rem 0.75rem 0.75rem;
   border-right: 1px solid var(--ui-graphite-border);
   background-color: var(--ui-graphite);
   display: flex;
@@ -18,29 +18,29 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
   overflow-y: auto;
 }
 
 .section {
-  margin-top: 10px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 0.625rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--sidebar-divider);
 }
 
 .sectionTitle {
-  margin: 0 0 8px;
-  padding: 0 10px;
+  margin: 0 0 0.5rem;
+  padding: 0 0.625rem;
   color: var(--sidebar-text);
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
 
 .bottomArea {
   margin-top: auto;
-  padding-top: 12px;
-  padding-bottom: 16px;
+  padding-top: 0.75rem;
+  padding-bottom: 1rem;
 }
 
 .ctaCard {
@@ -48,11 +48,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
-  padding: 8px 12px;
-  border-radius: 8px;
+  min-height: 2.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
   border: 0;
-  background: var(--brand-primary-hover);
+  background: var(--sidebar-cta-bg);
   color: var(--text-on-brand);
   text-decoration: none;
   box-shadow: none;
@@ -60,15 +60,15 @@
 
 .ctaText {
   position: relative;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: -0.02em;
 }
 
 @media (max-width: 1200px) {
   .sidebar {
-    width: 246px;
-    min-width: 232px;
+    width: 15.375rem;
+    min-width: 14.5rem;
   }
 }
 

@@ -75,11 +75,7 @@ export default function Courses({
         ) : null}
       </div>
 
-      <div
-        className={`${styles.coursesViewport} ${
-          hasHiddenCourses ? styles.coursesViewportFaded : ""
-        } ${variant === "explore" ? styles.coursesViewportExplore : ""}`}
-      >
+      <div className={`${styles.coursesViewport} ${variant === "explore" ? styles.coursesViewportExplore : ""}`}>
         <ul className={`${styles.courses} ${variant === "explore" ? styles.coursesExplore : ""}`}>
           {visibleCourses.map((course) => (
             <Course key={course.title} {...course} variant={variant} />

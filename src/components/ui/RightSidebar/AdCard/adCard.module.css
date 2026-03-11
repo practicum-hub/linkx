@@ -1,0 +1,70 @@
+.card {
+  border: 0.0625rem solid var(--right-sidebar-card-border);
+  border-radius: 0.75rem;
+  background: var(--right-sidebar-card-bg);
+  padding: 0.75rem;
+}
+
+.cardPrimary {
+  border-color: var(--right-sidebar-card-primary-border);
+  background: var(--right-sidebar-card-primary-bg);
+}
+
+.cardCompact {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.tag {
+  margin: 0;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.title {
+  margin: 0.5rem 0 0;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.titleCompact {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.text {
+  margin: 0.4375rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--text-secondary);
+}
+
+.textCompact {
+  margin-top: 0.375rem;
+  font-size: 0.75rem;
+}
+
+.action {
+  margin-top: 0.6875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.0625rem solid var(--right-sidebar-button-border);
+  border-radius: 0.625rem;
+  background: var(--right-sidebar-button-bg);
+  color: var(--right-sidebar-button-text);
+  padding: 0.5625rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.actionAlt {
+  border-color: var(--border-default);
+  background: var(--bg-surface-soft);
+  color: var(--text-primary);
+}

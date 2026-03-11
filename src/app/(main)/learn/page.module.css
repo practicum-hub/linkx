@@ -26,30 +26,8 @@
 .headerPath {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   min-width: 0;
-}
-
-.pathLink {
-  text-decoration: none;
-  color: #425472;
-  font-size: 15px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.pathDivider {
-  color: #7f8da8;
-  font-size: 15px;
-}
-
-.pathCurrent {
-  color: #142033;
-  font-size: 15px;
-  font-weight: 800;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .outlineNav {
@@ -324,12 +302,15 @@
 .exitBtn {
   color: #3c4c67;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 700;
-  padding: 6px 10px;
-  border: 1px solid #c8d0df;
-  border-radius: 8px;
-  background: #f7f9fd;
+  padding: 0.375rem 0.625rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
 }
 
 .themeBtn {
@@ -1198,18 +1179,6 @@
   border-bottom-color: #27344f;
 }
 
-.pageDark .pathLink {
-  color: #9db2d8;
-}
-
-.pageDark .pathDivider {
-  color: #5f7499;
-}
-
-.pageDark .pathCurrent {
-  color: #d4e4ff;
-}
-
 .pageDark .outlineArrow,
 .pageDark .outlineBtn {
   background: #162136;
@@ -1302,8 +1271,7 @@
 }
 
 .pageDark .exitBtn {
-  background: #162136;
-  border-color: #3c5275;
+  background: transparent;
 }
 
 .pageDark .themeBtn {
@@ -1563,12 +1531,8 @@
   }
 
   .headerPath {
-    grid-column: 1 / -1;
-    order: 3;
-  }
-
-  .pathCurrent {
-    max-width: 100%;
+    grid-column: auto;
+    order: initial;
   }
 
   .headerActions {
@@ -1576,8 +1540,7 @@
   }
 
   .outlineBtn span,
-  .xp,
-  .exitBtn {
+  .xp {
     display: none;
   }
 
